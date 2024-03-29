@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray05"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".component.main.MainActivity"
+        android:orientation="vertical"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size56"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="@string/txt_home_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_help"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/TextView.Header.Header1"
+                android:layout_marginLeft="@dimen/size16"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_help"
+                android:layout_width="@dimen/size32"
+                android:layout_height="@dimen/size32"
+                android:layout_marginEnd="@dimen/size10"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/size6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_setting"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_help"
+                app:tint="@color/main" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="@dimen/size32"
+                android:layout_height="@dimen/size32"
+                android:layout_marginEnd="@dimen/size10"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/size6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bottom_setting"
+                app:tint="@color/main" />
+
+            <View
+                android:id="@+id/maskActiveHeader"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="@id/iv_help"
+                app:layout_constraintRight_toRightOf="@id/iv_setting"
+                app:layout_constraintTop_toTopOf="@id/iv_help"
+                app:layout_constraintBottom_toBottomOf="@id/iv_help"
+                android:background="@color/gray05"
+                android:alpha="0.7"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            android:id="@+id/imvCurrentSound"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size100"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size24"
+            android:adjustViewBounds="true"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size32"
+            >
+
+            <LinearLayout
+                android:id="@+id/llTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <TextView
+                    android:id="@+id/tv15s"
+                    android:text="@string/txt_15s"
+                    style="@style/TextView.Body.Body1"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/gray5"
+                    android:paddingHorizontal="@dimen/size16"
+                    android:paddingVertical="@dimen/size5"
+                    />
+
+                <TextView
+                    android:id="@+id/tv30s"
+                    style="@style/TextView.Body.Body1"
+                    android:layout_centerInParent="true"
+                    android:paddingHorizontal="@dimen/size16"
+                    android:paddingVertical="@dimen/size5"
+                    android:text="@string/txt_30s"
+                    android:textColor="@color/gray5" />
+
+                <TextView
+                    android:id="@+id/tv1m"
+                    android:text="@string/txt_1m"
+                    style="@style/TextView.Body.Body1"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/gray5"
+                    android:paddingHorizontal="@dimen/size16"
+                    android:paddingVertical="@dimen/size5"
+                    />
+                <TextView
+                    android:id="@+id/tv2m"
+                    android:text="@string/txt_2m"
+                    style="@style/TextView.Body.Body1"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/gray5"
+                    android:paddingHorizontal="@dimen/size16"
+                    android:paddingVertical="@dimen/size5"
+                    />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/maskActiveTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="@id/llTime"
+                app:layout_constraintRight_toRightOf="@id/llTime"
+                app:layout_constraintTop_toTopOf="@id/llTime"
+                app:layout_constraintBottom_toBottomOf="@id/llTime"
+                android:background="@color/gray05"
+                android:alpha="0.7"
+                android:clickable="true"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txtActive"
+            android:text="@string/txt_tap_to_active"
+            style="@style/TextView.Header.Button1"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_main_round20"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/size16"
+            android:gravity="center"
+            android:paddingVertical="@dimen/size10"
+            android:layout_marginTop="@dimen/size32"
+            />
+
+        <TextView
+            android:text="@string/txt_sound"
+            style="@style/TextView.Header.Header2"
+            android:layout_marginLeft="@dimen/size16"
+            android:layout_marginTop="@dimen/size32"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/reSound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size8"
+                android:paddingBottom="@dimen/size30"
+                android:clipToPadding="false"
+                />
+            <View
+                android:id="@+id/maskActiveList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray05"
+                android:alpha="0.7"
+                android:clickable="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

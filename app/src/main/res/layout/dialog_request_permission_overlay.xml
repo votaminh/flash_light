@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_rectangle_white_rad_10"
+    android:paddingVertical="@dimen/size24">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_preview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="180:108"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.6"
+        app:srcCompat="@drawable/img_overlay_permission" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size24"
+        android:layout_marginTop="@dimen/size5"
+        android:gravity="center"
+        android:text="@string/txt_grant_overlay_permission"
+        android:textColor="#242424"
+        android:textSize="@dimen/size18"
+        app:layout_constraintTop_toBottomOf="@id/iv_preview" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_yes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size13"
+        android:layout_marginTop="@dimen/size12"
+        android:background="@drawable/shape_rectangle_white_border_gray_rad_40"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center"
+        android:paddingVertical="@dimen/size8"
+        android:text="@string/txt_allow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_no"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size13"
+        android:layout_marginEnd="@dimen/size13"
+        android:background="@drawable/shape_rectangle_white_border_gray_rad_40"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center"
+        android:paddingVertical="@dimen/size8"
+        android:text="@string/txt_deny"
+        app:layout_constraintBottom_toBottomOf="@id/tv_yes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_yes"
+        app:layout_constraintTop_toTopOf="@id/tv_yes" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "271940607711",
+    "project_id": "don-ttouchmyphone",
+    "storage_bucket": "don-ttouchmyphone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271940607711:android:dfce8d337c1139f618d36a",
+        "android_client_info": {
+          "package_name": "com.flash.light"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2PWo2dRv2jO8g2dSDsPPL1tQnvDOalns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

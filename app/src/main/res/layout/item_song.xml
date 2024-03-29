@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size70"
+    android:layout_height="@dimen/size70"
+    android:layout_marginHorizontal="@dimen/size7"
+    android:background="@drawable/selector_item_sound_selected">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size10" />
+
+    <View
+        android:id="@+id/highlight_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size2"
+        android:background="?selectableItemBackground" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,174 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+
+}
+
+android {
+    namespace 'com.vinalinux.findphone'
+    compileSdk 33
+
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
+    defaultConfig {
+        applicationId "com.flash.light"
+        minSdk 23
+        targetSdk 33
+        versionCode 8
+        versionName "8.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def formattedDate = new Date().format("MM.dd.yyyy")
+        archivesBaseName = "DontTouchMyPhone_v${versionName}(${versionCode})_${formattedDate}"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("key/key_find_phone.jks")
+            storePassword "android"
+            keyAlias "keyfindphone"
+            keyPassword "android"
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            manifestPlaceholders = [ad_app_id: "ca-app-pub-7121787699260095~2083361919"]
+
+            buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/3355192938\""
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/1842800710\""
+            buildConfigField "String", "inter_click", "\"ca-app-pub-7121787699260095/9338147352\""
+            buildConfigField "String", "inter_apply", "\"ca-app-pub-7121787699260095/4644401489\""
+            buildConfigField "String", "native_language", "\"ca-app-pub-7121787699260095/3558372915\""
+            buildConfigField "String", "native_onboarding", "\"ca-app-pub-7121787699260095/7462136519\""
+            buildConfigField "String", "native_tutorial", "\"ca-app-pub-7121787699260095/5981356275\""
+            buildConfigField "String", "native_sound", "\"ca-app-pub-7121787699260095/9381722846\""
+            buildConfigField "String", "native_home", "\"ca-app-pub-7121787699260095/2042111266\""
+        }
+
+        debug {
+            manifestPlaceholders = [ad_app_id: "ca-app-pub-3940256099942544~3347511713"]
+
+            buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "inter_click", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "inter_apply", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "native_language", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_onboarding", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_tutorial", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_sound", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_home", "\"ca-app-pub-3940256099942544/2247696110\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["libs"]
+        }
+    }
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+    flavorDimensions "default"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.so'])
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:2.46.1"
+    kapt "com.google.dagger:hilt-compiler:2.46.1"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
+
+    //firebase
+    implementation 'com.google.firebase:firebase-config-ktx:21.5.0'
+    implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+
+    // Tensorflow
+    // Import the Audio Task Library dependency (NNAPI is included)
+    implementation 'org.tensorflow:tensorflow-lite-task-audio:0.4.4'
+    // Import the GPU delegate plugin Library for GPU inference
+    implementation 'org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.4'
+
+    // Preference
+    implementation 'androidx.preference:preference:1.2.1'
+
+    // gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // viewpager dot indicator
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+    /*ads*/
+    def ads_version = "22.1.0"
+    implementation "com.google.android.gms:play-services-ads:$ads_version"
+
+    //review
+    implementation 'com.google.android.play:review:2.0.1'
+    implementation 'com.google.android.play:review-ktx:2.0.1'
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    implementation 'com.google.ads.mediation:facebook:6.16.0.0'
+    implementation 'com.facebook.android:facebook-android-sdk:16.0.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+
+    //Mediation
+    implementation("com.google.ads.mediation:facebook:6.16.0.0")
+    implementation("com.google.ads.mediation:vungle:7.0.0.1")
+    implementation("com.google.ads.mediation:pangle:5.5.0.9.0")
+    implementation("com.google.ads.mediation:mintegral:16.5.51.0")
+    implementation ("com.google.ads.mediation:applovin:11.11.3.0")
+
+    implementation("com.google.android.ump:user-messaging-platform:2.1.0")
+
+    // lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
+    implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.5.1"
+}

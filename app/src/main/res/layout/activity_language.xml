@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_language"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/size50"
+            android:layout_height="@dimen/size50"
+            android:src="@drawable/ic_back"
+            app:tint="@color/black"
+            android:padding="@dimen/size13"
+            />
+
+        <TextView
+            android:text="@string/language"
+            style="@style/TextView.Header.Header1"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/ivDone"
+            android:text="@string/txt_save"
+            style="@style/TextView.Header.Button1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/main"
+            android:background="@drawable/bg_stroke1_main__round10"
+            android:paddingVertical="@dimen/size5"
+            android:paddingHorizontal="@dimen/size12"
+            android:layout_marginRight="@dimen/size10"
+            />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcl_language"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/size10"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/fl_adplaceholder"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_language" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/fl_adplaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <include
+            android:id="@+id/native_ad_view"
+            layout="@layout/ad_unified"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FindPhone"
+        tools:targetApi="31">
+        <activity
+            android:name=".component.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".component.ump.UMPActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".component.main.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:theme="@style/AdTheme"
+            tools:replace="android:theme" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${ad_app_id}" />
+
+        <activity
+            android:name=".component.soundsetting.SoundSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.help.HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.setting.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.language.LanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.permission.PermissionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.onboarding.OnBoardingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.sound.SoundActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+
+        <service
+            android:name=".service.AudioClassifierService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchTheme" parent="Theme.FindPhone">
+        <item name="colorControlActivated">@color/main</item>
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Appearance">
+
+    </style>
+
+    <style name="TextView" parent="Appearance"/>
+
+    <style name="TextView.Header" parent="TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextView.Header.Header1" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size20</item>
+    </style>
+
+    <style name="TextView.Header.Header2" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size16</item>
+    </style>
+
+    <style name="TextView.Header.Header3" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
+    <style name="TextView.Header.Button1" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
+    <style name="TextView.Body" parent="TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextView.Body.Body1">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+</resources>
