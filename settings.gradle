@@ -15,5 +15,5 @@ dependencyResolutionManagement {
         maven { url 'https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea' }
     }
 }
-rootProject.name = "dont_touch"
+rootProject.name = "flash_light"
 include ':app'
