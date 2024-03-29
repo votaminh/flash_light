@@ -15,17 +15,6 @@ import com.flash.light.domain.layer.SoundModel
 import com.flash.light.domain.layer.VibrationMode
 import java.util.Locale
 
-
-fun isTiramisuPlus() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-
-fun Context?.isPermissionGranted(permission: String?): Boolean {
-    val context = this
-    return if (context == null || permission.isNullOrEmpty()) false else ContextCompat.checkSelfPermission(
-        context,
-        permission
-    ) == PackageManager.PERMISSION_GRANTED
-}
-
 fun SoundModel.toJson(): String {
     return Gson().toJson(this)
 }

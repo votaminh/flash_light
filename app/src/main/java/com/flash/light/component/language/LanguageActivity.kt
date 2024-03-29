@@ -13,7 +13,6 @@ import com.flash.light.component.onboarding.OnBoardingActivity
 import com.flash.light.databinding.ActivityLanguageBinding
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.SpManager
-import com.flash.light.utils.setAppLanguage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -37,7 +36,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         viewBinding.ivDone.setOnClickListener {
             languageAdapter.selectedLanguage()?.let { languageModel ->
                 spManager.saveLanguage(languageModel)
-                setAppLanguage(languageModel.languageCode)
+//                setAppLanguage(languageModel.languageCode)
                 val fromSplash = intent.getBooleanExtra(KEY_FROM_SPLASH, false)
                 if (fromSplash) {
                     OnBoardingActivity.start(this)

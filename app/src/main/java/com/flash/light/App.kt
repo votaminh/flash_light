@@ -17,10 +17,8 @@ import com.mbridge.msdk.MBridgeConstans
 import com.mbridge.msdk.out.MBridgeSDKFactory
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.OpenAdmob
-import com.flash.light.utils.LocaleHelper
 import com.flash.light.utils.RemoteConfig
 import com.flash.light.utils.SpManager
-import com.flash.light.utils.getDeviceLanguage
 import dagger.hilt.android.HiltAndroidApp
 import java.util.Locale
 import javax.inject.Inject
@@ -84,18 +82,6 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         AppLovinPrivacySettings.setDoNotSell(true, applicationContext)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        val locale = getDeviceLanguage()
-        val language = spManager.getLanguage()
-        LocaleHelper.onAttach(this, language.languageCode)
-        super.onConfigurationChanged(newConfig)
-    }
-
-    override fun attachBaseContext(base: Context?) {
-        val context = LocaleHelper.onAttach(base, Locale.getDefault().language)
-        super.attachBaseContext(context)
-    }
-
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         if(spManager.getBoolean(NameRemoteAdmob.APP_RESUME, true)){
@@ -106,11 +92,9 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
     }
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        Log.i(TAG, "onActivityCreated: ")
     }
 
     override fun onActivityStarted(activity: Activity) {
-        Log.i(TAG, "onActivityStarted: ")
         currentActivity = activity
     }
 

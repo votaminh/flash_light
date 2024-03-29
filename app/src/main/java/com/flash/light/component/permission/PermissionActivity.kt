@@ -13,11 +13,7 @@ import com.flash.light.R
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.main.MainActivity
 import com.flash.light.databinding.ActivityPermissionBinding
-import com.flash.light.utils.DialogUtils
-import com.flash.light.utils.DialogUtils.showDialogGuidePermissionSetting
-import com.flash.light.utils.Logger
-import com.flash.light.utils.Utils
-import com.flash.light.utils.isTiramisuPlus
+//import com.flash.light.utils.isTiramisuPlus
 
 class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
     companion object {
@@ -31,11 +27,11 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
     private lateinit var mAskCheckPermissionStorage: ActivityResultLauncher<Array<String>>
 
     private val listPermission by lazy {
-        if (isTiramisuPlus()) {
-            arrayOf(Manifest.permission.RECORD_AUDIO , Manifest.permission.POST_NOTIFICATIONS)
-        } else {
-            arrayOf(Manifest.permission.RECORD_AUDIO)
-        }
+//        if (isTiramisuPlus()) {
+//            arrayOf(Manifest.permission.RECORD_AUDIO , Manifest.permission.POST_NOTIFICATIONS)
+//        } else {
+//            arrayOf(Manifest.permission.RECORD_AUDIO)
+//        }
     }
 
     override fun provideViewBinding(): ActivityPermissionBinding =
@@ -92,131 +88,131 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
 //        }
 //    }
 
-    private fun needRequiredOpenSettingPermission(): Boolean {
-        listPermission.forEach { permission ->
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    permission
-                )
-            ) return true
-        }
-        return false
-    }
-
-    private val settingPermissionContract =
-        registerForActivityResult(SettingPermissionResultContract()) {
-            if (Utils.isPermissionGranted(this, Manifest.permission.RECORD_AUDIO)) {
-                viewBinding.swAudioRecord.isChecked = false
-                updateNextButtonStatus()
-            } else if (Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)) {
-                viewBinding.swNotification.isChecked = false
-                updateNextButtonStatus()
-            }
-        }
-
-    override fun initViews() {
-
-        mAskCheckPermissionStorage =
-            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
-                if (result.entries.firstOrNull { !it.value } == null) {
-                    Logger.e("success")
-                    MainActivity.start(this@PermissionActivity)
-                    finish()
-                } else {
-                    if (needRequiredOpenSettingPermission()) {
-                        showDialogRequestPermissionFromSettings()
-                        Logger.e("onPermissionDenyForever")
-                    } else {
-                        showDialogRequestPermissionFromSettings()
-                        Logger.e("onPermissionDeny")
-                    }
-                }
-            }
-
-        viewBinding.ivBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-        viewBinding.layoutNotification.isVisible = isTiramisuPlus() && !Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)
-        viewBinding.layoutAudioRecord.setOnClickListener {
-            viewBinding.swAudioRecord.isChecked = !viewBinding.swAudioRecord.isChecked
-            updateNextButtonStatus()
-        }
-        viewBinding.layoutNotification.setOnClickListener {
-            viewBinding.swNotification.isChecked = !viewBinding.swNotification.isChecked
-            updateNextButtonStatus()
-        }
-        viewBinding.tvNext.setOnClickListener {
-            requestPermission()
-        }
-    }
-
-    private fun updateStateChecked() {
-        viewBinding.swAudioRecord.isChecked = Utils.isPermissionGranted(this, Manifest.permission.RECORD_AUDIO)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            viewBinding.swNotification.isChecked = Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)
-        }
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        updateNextButtonStatus()
-        updateStateChecked()
-    }
-
-    private fun updateNextButtonStatus() {
-        val isNotificationGranted = if (isTiramisuPlus() && !Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)) {
-            viewBinding.swNotification.isChecked
-        } else true
-        viewBinding.tvNext.isEnabled = viewBinding.swAudioRecord.isChecked && isNotificationGranted
-        if (viewBinding.tvNext.isEnabled) {
-            viewBinding.tvNext.setTextColor(ContextCompat.getColor(this , R.color.orange))
-        } else {
-            viewBinding.tvNext.setTextColor(ContextCompat.getColor(this , R.color.colorDisable))
-        }
-    }
-
-    private fun requestPermission() {
-        listPermission.forEach {
-            Logger.e(it)
-        }
-//        val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
-//        if (isTiramisuPlus()) {
-//            permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+//    private fun needRequiredOpenSettingPermission(): Boolean {
+//        listPermission.forEach { permission ->
+//            if (!ActivityCompat.shouldShowRequestPermissionRationale(
+//                    this,
+//                    permission
+//                )
+//            ) return true
 //        }
-//        requestPermissionLauncher.launch(permissions.toTypedArray())
-
-        mAskCheckPermissionStorage.launch(listPermission)
-    }
-
-    private fun showDialogRequestPermissionFromSettings() {
-        showDialogGuidePermissionSetting(
-            title = getTitleDialogGuidePermissionSetting(),
-            description = getDescriptionDialogGuidePermissionSetting(),
-            submitAction = {
-                openSettingsToGrantPermission()
-                DialogUtils.dismissDialog()
-            }
-        )
-    }
-
-    private fun getTitleDialogGuidePermissionSetting(): String {
-        return getString(R.string.txt_open_settings_permission_title)
-    }
-
-    private fun getDescriptionDialogGuidePermissionSetting(): String {
-        return getString(R.string.txt_open_settings_message_permission)
-    }
-
-    private fun permissionGranted(permission: String, alreadyGranted: Boolean = false) {
-        finish()
-    }
-
-    private fun openSettingsToGrantPermission() {
-        settingPermissionContract.runCatching {
-            settingPermissionContract.launch(0)
-        }.onFailure {
-            //Toast.makeText(this, getString(R.string.txt_no_activity_camera), Toast.LENGTH_SHORT).show()
-        }
-    }
+//        return false
+//    }
+//
+//    private val settingPermissionContract =
+//        registerForActivityResult(SettingPermissionResultContract()) {
+//            if (Utils.isPermissionGranted(this, Manifest.permission.RECORD_AUDIO)) {
+//                viewBinding.swAudioRecord.isChecked = false
+//                updateNextButtonStatus()
+//            } else if (Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)) {
+//                viewBinding.swNotification.isChecked = false
+//                updateNextButtonStatus()
+//            }
+//        }
+//
+//    override fun initViews() {
+//
+//        mAskCheckPermissionStorage =
+//            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
+//                if (result.entries.firstOrNull { !it.value } == null) {
+//                    Logger.e("success")
+//                    MainActivity.start(this@PermissionActivity)
+//                    finish()
+//                } else {
+//                    if (needRequiredOpenSettingPermission()) {
+//                        showDialogRequestPermissionFromSettings()
+//                        Logger.e("onPermissionDenyForever")
+//                    } else {
+//                        showDialogRequestPermissionFromSettings()
+//                        Logger.e("onPermissionDeny")
+//                    }
+//                }
+//            }
+//
+//        viewBinding.ivBack.setOnClickListener {
+//            onBackPressedDispatcher.onBackPressed()
+//        }
+//        viewBinding.layoutNotification.isVisible = isTiramisuPlus() && !Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)
+//        viewBinding.layoutAudioRecord.setOnClickListener {
+//            viewBinding.swAudioRecord.isChecked = !viewBinding.swAudioRecord.isChecked
+//            updateNextButtonStatus()
+//        }
+//        viewBinding.layoutNotification.setOnClickListener {
+//            viewBinding.swNotification.isChecked = !viewBinding.swNotification.isChecked
+//            updateNextButtonStatus()
+//        }
+//        viewBinding.tvNext.setOnClickListener {
+//            requestPermission()
+//        }
+//    }
+//
+//    private fun updateStateChecked() {
+//        viewBinding.swAudioRecord.isChecked = Utils.isPermissionGranted(this, Manifest.permission.RECORD_AUDIO)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            viewBinding.swNotification.isChecked = Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)
+//        }
+//    }
+//
+//
+//    override fun onResume() {
+//        super.onResume()
+//        updateNextButtonStatus()
+//        updateStateChecked()
+//    }
+//
+//    private fun updateNextButtonStatus() {
+//        val isNotificationGranted = if (isTiramisuPlus() && !Utils.isPermissionGranted(this, Manifest.permission.POST_NOTIFICATIONS)) {
+//            viewBinding.swNotification.isChecked
+//        } else true
+//        viewBinding.tvNext.isEnabled = viewBinding.swAudioRecord.isChecked && isNotificationGranted
+//        if (viewBinding.tvNext.isEnabled) {
+//            viewBinding.tvNext.setTextColor(ContextCompat.getColor(this , R.color.orange))
+//        } else {
+//            viewBinding.tvNext.setTextColor(ContextCompat.getColor(this , R.color.colorDisable))
+//        }
+//    }
+//
+//    private fun requestPermission() {
+//        listPermission.forEach {
+//            Logger.e(it)
+//        }
+////        val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
+////        if (isTiramisuPlus()) {
+////            permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+////        }
+////        requestPermissionLauncher.launch(permissions.toTypedArray())
+//
+//        mAskCheckPermissionStorage.launch(listPermission)
+//    }
+//
+//    private fun showDialogRequestPermissionFromSettings() {
+//        showDialogGuidePermissionSetting(
+//            title = getTitleDialogGuidePermissionSetting(),
+//            description = getDescriptionDialogGuidePermissionSetting(),
+//            submitAction = {
+//                openSettingsToGrantPermission()
+//                DialogUtils.dismissDialog()
+//            }
+//        )
+//    }
+//
+//    private fun getTitleDialogGuidePermissionSetting(): String {
+//        return getString(R.string.txt_open_settings_permission_title)
+//    }
+//
+//    private fun getDescriptionDialogGuidePermissionSetting(): String {
+//        return getString(R.string.txt_open_settings_message_permission)
+//    }
+//
+//    private fun permissionGranted(permission: String, alreadyGranted: Boolean = false) {
+//        finish()
+//    }
+//
+//    private fun openSettingsToGrantPermission() {
+//        settingPermissionContract.runCatching {
+//            settingPermissionContract.launch(0)
+//        }.onFailure {
+//            //Toast.makeText(this, getString(R.string.txt_no_activity_camera), Toast.LENGTH_SHORT).show()
+//        }
+//    }
 }

@@ -11,36 +11,18 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewbinding.ViewBinding
-import com.flash.light.dialog.DialogShowAdsLoading
-import com.flash.light.utils.LocaleHelper
-import com.flash.light.utils.SpManager
-import com.flash.light.utils.getDeviceLanguage
-import com.flash.light.utils.setAppLanguage
 
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     lateinit var viewBinding: V
-
-    private val dialogLoadingAd by lazy { DialogShowAdsLoading(this) }
 
     open fun onBack() {
         finish()
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        val locale = getDeviceLanguage()
-        val language = SpManager.getInstance(this).getLanguage()
-//            CommonSharedPreferences.getInstance().getString(DataLocal.KEY_LANGUAGE, locale)
-//                ?: locale
-        super.attachBaseContext(LocaleHelper.onAttach(newBase, language.languageCode))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        setAppLanguage(SpManager.getInstance(this).getLanguage().languageCode)
 
         super.onCreate(savedInstanceState)
         hideSystemUI()
-//        setStatusBarColor(ContextCompat.getColor(this, initStatusBarColor()))
         viewBinding = provideViewBinding()
         setContentView(viewBinding.root)
         initViews()
@@ -68,8 +50,6 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         })
     }
 
-//    open fun initStatusBarColor(): Int = R.color.colorPrimary
-
     fun replaceFragment(id: Int, fragment: Fragment) {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
@@ -85,20 +65,6 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
             add(id, fragment, fragment::class.java.simpleName)
         }
     }
-
-
-//    private fun hideSystemUI() {
-//        val decorView = window.decorView
-//        val uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//        decorView.systemUiVisibility = uiOptions
-//    }
-//
-//    override fun onWindowFocusChanged(hasFocus: Boolean) {
-//        super.onWindowFocusChanged(hasFocus)
-//        if (hasFocus) {
-//            hideSystemUI()
-//        }
-//    }
 
     abstract fun provideViewBinding(): V
 
