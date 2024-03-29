@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace 'com.vinalinux.findphone'
+    namespace 'com.flash.light'
     compileSdk 33
 
     lint {
