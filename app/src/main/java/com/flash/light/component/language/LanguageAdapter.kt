@@ -2,6 +2,7 @@ package com.flash.light.component.language
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.flash.light.R
 import com.flash.light.base.adapter.BaseAdapter
 import com.flash.light.databinding.ItemLanguageBinding
 import com.flash.light.domain.layer.LanguageModel
@@ -15,6 +16,13 @@ class LanguageAdapter : BaseAdapter<LanguageModel, ItemLanguageBinding>() {
         viewBinding.imgLanguage.setImageResource(item.iconRes)
         viewBinding.tvTitleLanguage.setText(item.nameRes)
         viewBinding.swLanguage.isChecked = item.selected
+
+        if(item.selected){
+            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_main_round10)
+        }else{
+            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_gray1_round10)
+        }
+
         viewBinding.root.setOnClickListener {
             onClick?.invoke(item)
         }

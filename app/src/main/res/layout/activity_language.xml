@@ -12,31 +12,23 @@
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="@dimen/size50"
-            android:layout_height="@dimen/size50"
-            android:src="@drawable/ic_back"
-            app:tint="@color/black"
-            android:padding="@dimen/size13"
-            />
-
         <TextView
             android:text="@string/language"
             style="@style/TextView.Header.Header1"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size16"
             />
 
         <TextView
             android:id="@+id/ivDone"
-            android:text="@string/txt_save"
+            android:text="@string/txt_next"
             style="@style/TextView.Header.Button1"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:textColor="@color/main"
-            android:background="@drawable/bg_stroke1_main__round10"
-            android:paddingVertical="@dimen/size5"
-            android:paddingHorizontal="@dimen/size12"
+            android:background="@drawable/bg_stroke1_main__round20"
+            android:paddingVertical="@dimen/size10"
+            android:paddingHorizontal="@dimen/size25"
             android:layout_marginRight="@dimen/size10"
             />
     </RelativeLayout>

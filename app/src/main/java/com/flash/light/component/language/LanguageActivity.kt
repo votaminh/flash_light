@@ -48,14 +48,9 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
                 }
             }
         }
-        viewBinding.ivBack.setOnClickListener {
-            finish()
-        }
 
         if(spManager.getShowOnBoarding()){
             viewBinding.ivDone.setText(R.string.txt_next)
-        }else {
-            viewBinding.ivDone.setText(R.string.txt_save)
         }
 
         if (isTempNativeAd != null) {

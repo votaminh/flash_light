@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_app">
+    android:background="@color/black">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpOnBoarding"
@@ -13,21 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvSkip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tt_txt_skip"
-        android:textSize="@dimen/size14"
-        android:textStyle="bold"
-        android:textColor="@color/gray3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/size10"
-        android:layout_marginRight="@dimen/size10"
-        android:padding="@dimen/size5"
-        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigation_layout"

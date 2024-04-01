@@ -2,28 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<!--    <color name="colorAccent">#E44708</color>-->
-    <color name="colorAccent">#BB3C0A</color>
-    <color name="colorBackground">#ffffff</color>
-    <color name="colorDisable">#C7C7C7</color>
-    <color name="gray_setting_alpha_50">#80a6b1b6</color>
-    <color name="color_text_blu">#739aff</color>
-    <color name="titleText">#273247</color>
-    <color name="colorPrimary">#ff8e65</color>
-    <color name="orange">#ff6f57</color>
-    <color name="home_shimmer_color">#dddddd</color>
-    <color name="color_gray">#4B5052</color>
-    <color name="gnt_ad_green">#3A6728</color>
-    <color name="gnt_gray">#808080</color>
-    <color name="gnt_white">#FFFFFF</color>
+    <color name="main">#F89A0D</color>
+    <color name="gray1">#F5F5F5</color>
 
-    <color name="main">#FE6000</color>
-
-    <color name="gray05">#fffcfb</color>
-    <color name="gray1">#F1F1F1</color>
-    <color name="gray2">#CDCDCD</color>
-    <color name="gray3">#A6A6A6</color>
-    <color name="gray4">#808080</color>
-    <color name="gray5">#555555</color>
-    <color name="transparent">#00000000</color>
 </resources>

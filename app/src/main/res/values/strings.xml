@@ -2,45 +2,10 @@
 
     <string name="facebook_app_id" translatable="false">251056887922505</string>
     <string name="facebook_client_token" translatable="false">cc17abe0daf194936ff07030b918f78f</string>
-
-    <string name="txt_15s" translatable="false">15s</string>
-    <string name="txt_30s" translatable="false">30s</string>
-    <string name="txt_1m" translatable="false">1m</string>
-    <string name="txt_2m" translatable="false">2m</string>
-    <string name="app_name" translatable="false">Don\'tTouchMyPhone</string>
-    <string name="txt_police">Police</string>
-    <string name="txt_doorbell">Doorbell</string>
-    <string name="txt_hello">Hello</string>
-    <string name="txt_harp">Harp</string>
-    <string name="txt_laughing">Laughing</string>
-    <string name="txt_alarm_clock">Alarm Clock</string>
-    <string name="txt_rooster">Rooster</string>
-    <string name="txt_piano">Piano</string>
-    <string name="txt_sneeze">Sneeze</string>
-    <string name="txt_train">Train</string>
-    <string name="txt_wind_chimes">Wind Chimes</string>
-    <string name="txt_whistle">Whistle</string>
-    <string name="txt_apply">Apply</string>
-    <string name="txt_flash">Flash</string>
-    <string name="txt_vibration">Vibration</string>
-    <string name="txt_sound">Sound</string>
-    <string name="txt_volume">Volume</string>
-    <string name="txt_duration">Duration</string>
-    <string name="txt_home_title">Don\’t Touch My Phone</string>
-    <string name="how_to_use">How to use?</string>
-    <string name="title_use">To learn how to use this app, please read the guide below</string>
-    <string name="txt_sensitivity">Sensitivity</string>
-    <string name="txt_extension">Extension</string>
-    <string name="txt_light_up_the_screen_when_searching">Light up the screen when searching</string>
-    <string name="flash_mode">Flash Mode</string>
-    <string name="defaults">Default</string>
-    <string name="disco_mode">Disco Mode</string>
-    <string name="sos_mode">SOS Mode</string>
-    <string name="vibration_mode">Vibration Mode</string>
-    <string name="strong_vibration">Strong vibration</string>
-    <string name="heartbeat">Heartbeat</string>
-    <string name="ticktock">Ticktock</string>
     <string name="language">Language</string>
+    <string name="txt_next">Next</string>
+    <string name="this_action_contain_ads">This action contain Ads</string>
+
     <string name="english">English</string>
     <string name="txt_setting">Setting</string>
     <string name="vietnamese">Vietnamese</string>
@@ -48,47 +13,11 @@
     <string name="spanish">Spanish</string>
     <string name="french">French</string>
     <string name="portuguese">Portuguese</string>
-    <string name="txt_tap_to_active">Tap to active</string>
-    <string name="txt_tap_to_deactive">Tap to deactive</string>
-    <string name="txt_open_settings_guide_1">1. Open Settings</string>
-    <string name="txt_open_settings_guide_2">2. Click on Permissions</string>
-    <string name="txt_open_settings">Open Settings</string>
-    <string name="txt_open_settings_permission_title">Allow the application to access the permissions on your device.</string>
-    <string name="txt_open_settings_message_permission">Turn on all permission</string>
-    <string name="txt_grant_permission">Grant permission</string>
-    <string name="txt_audio_record_permission">Audio record permission</string>
-    <string name="txt_notification_permission">Notification</string>
-    <string name="txt_next">Next</string>
+    <string name="txt_get_start">Get start</string>
+
     <string name="onboarding_title1">Don\'t touch my phone</string>
     <string name="onboarding_intro1">This alarm keeps your device safe from strangers and theft</string>
     <string name="onboarding_intro2">Easily detect lost phone by sound or flash mode</string>
     <string name="onboarding_intro3">Customize alarm sound</string>
-    <string name="txt_sound_description">Avatar and device sound options</string>
-    <string name="txt_flash_description">Flash options</string>
-    <string name="txt_exit">Exit</string>
-    <string name="txt_confirm_exit">Do you want to exit?</string>
-    <string name="txt_yes">Yes</string>
-    <string name="txt_no">No</string>
-    <string name="txt_grant_overlay_permission">Grant screen overlay permissions to use this function</string>
-    <string name="txt_deny">Deny</string>
-    <string name="txt_allow">Allow</string>
-    <string name="txt_vibration_description">Vibration options</string>
-    <string name="txt_find_my_phone_by_clap">Find my phone by clap</string>
-    <string name="this_action_contain_ads">This action may contain ads</string>
-    <string name="txt_overlay_description">Press button to stop alert</string>
-    <string name="txt_clap_to_find_phone_alert">Clap to find phone alert</string>
-    <string name="loading_ads">Loading ads...</string>
-    <string name="title_rate">Do you like the app?</string>
-    <string name="rate_content">Let us know your experience. 5 stars is the best on Google Play!</string>
-    <string name="cancel">Cancel</string>
-    <string name="submit">Submit</string>
     <string name="loading_cmp">Loading Consent Management Platform</string>
-    <string name="policy_setting">Policy Settings</string>
-    <string name="txt_save">Save</string>
-    <string name="txt_get_start">Get Start</string>
-    <string name="use_title_1">Tap the sound to activate the “Don\'t touch my phone” feature.</string>
-    <string name="use_title_2">Before activating, you can set the flashlight, volume, and time as you like.</string>
-    <string name="use_title_3">If someone arbitrarily moves your phone, the application will detect that action and start ringing</string>
-    <string name="txt_message_grant_permission">The app needs permissions to operate</string>
-
 </resources>

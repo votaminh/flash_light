@@ -63,11 +63,6 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                 }
             }
 
-            tvSkip.setOnClickListener {
-                MainActivity.start(this@OnBoardingActivity)
-                finish()
-            }
-
             dotIndicator.attachTo(vpOnBoarding)
             onBoardingAdapter.setData(ArrayList(viewModel.listOnBoarding))
         }

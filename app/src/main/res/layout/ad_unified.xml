@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_gray05_stroke1_gray1_round10"
     >
 
     <LinearLayout
@@ -26,7 +25,7 @@
                 android:layout_width="@dimen/size30"
                 android:layout_height="@dimen/size30"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher_background"
+                tools:background="@color/black"
                 />
 
             <LinearLayout

@@ -36,7 +36,8 @@
         android:paddingEnd="@dimen/size10"
         android:indeterminate="true"
         app:trackColor="#ACACAC"
-        app:indicatorColor="@android:color/white"
+        app:indicatorColor="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:progress="50"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

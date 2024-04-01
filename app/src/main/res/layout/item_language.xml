@@ -12,7 +12,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size56"
-        android:background="@drawable/bg_gray05_stroke1_gray1_round10"
+        android:background="@drawable/bg_stroke1_gray1_round10"
         android:paddingVertical="8dp"
         android:paddingStart="15dp"
         android:paddingTop="8dp"
