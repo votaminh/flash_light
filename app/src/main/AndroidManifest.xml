@@ -51,25 +51,10 @@
             android:value="${ad_app_id}" />
 
         <activity
-            android:name=".component.soundsetting.SoundSettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".component.help.HelpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".component.setting.SettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".component.language.LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".component.permission.PermissionActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".component.onboarding.OnBoardingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".component.sound.SoundActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -83,11 +68,6 @@
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
-
-        <service
-            android:name=".service.AudioClassifierService"
-            android:enabled="true"
-            android:exported="true" />
     </application>
 
 </manifest>

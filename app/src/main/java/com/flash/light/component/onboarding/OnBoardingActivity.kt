@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.flash.light.R
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
-import com.flash.light.component.permission.PermissionActivity
+import com.flash.light.component.main.MainActivity
 import com.flash.light.databinding.ActivityOnboardingBinding
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.SpManager
@@ -58,13 +58,13 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                 if (currentPosition < viewModel.listOnBoarding.size - 1) {
                     vpOnBoarding.setCurrentItem(currentPosition + 1, true)
                 } else {
-                    startActivity(PermissionActivity.getIntent(this@OnBoardingActivity))
+                    MainActivity.start(this@OnBoardingActivity)
                     finish()
                 }
             }
 
             tvSkip.setOnClickListener {
-                startActivity(PermissionActivity.getIntent(this@OnBoardingActivity))
+                MainActivity.start(this@OnBoardingActivity)
                 finish()
             }
 
