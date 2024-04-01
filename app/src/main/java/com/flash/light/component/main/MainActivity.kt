@@ -28,7 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun buildPagerHome() {
         viewBinding.viewPager2.run {
             offscreenPageLimit = 4
-            isUserInputEnabled = false
+            isUserInputEnabled = true
             adapter = ViewPagerAdapter(this@MainActivity)
         }
     }

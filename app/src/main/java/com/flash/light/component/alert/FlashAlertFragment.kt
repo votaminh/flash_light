@@ -1,4 +1,4 @@
-package com.flash.light.component.light
+package com.flash.light.component.alert
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

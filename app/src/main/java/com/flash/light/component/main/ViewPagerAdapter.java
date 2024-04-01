@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.flash.light.component.light.FlashAlertFragment;
-
-import kotlin.jvm.internal.Intrinsics;
+import com.flash.light.component.alert.FlashAlertFragment;
+import com.flash.light.component.light.FlashLightFragment;
 
 public final class ViewPagerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
@@ -25,7 +24,7 @@ public final class ViewPagerAdapter extends FragmentStateAdapter {
             return new FlashAlertFragment();
         }
         if (i == 1) {
-            return new FlashAlertFragment();
+            return new FlashLightFragment();
         }
         if (i == 2) {
             return new FlashAlertFragment();

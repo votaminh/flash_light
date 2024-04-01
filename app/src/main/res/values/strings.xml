@@ -27,4 +27,9 @@
     <string name="txt_turn_on_for_incoming_calls">Turn On For Incoming Calls</string>
     <string name="txt_turn_on_for_sms">Turn On For SMS</string>
     <string name="txt_turn_on_for_amp_notification">Turn On For Notification</string>
+    <string name="txt_flash_light">Flash Light</string>
+    <string name="txt_flashing">Flashing</string>
+    <string name="txt_on_time">On time</string>
+    <string name="txt_off_time">Off time</string>
+    <string name="txt_flash_is_on_press_the_off_button_to_stop">Flash is on.Press the \\\'\\\'OFF\\\'\\\' button to stop</string>
 </resources>
