@@ -3,12 +3,16 @@ package com.flash.light.utils
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.graphics.PorterDuff
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.flash.light.R
 import com.google.gson.Gson
 import com.flash.light.domain.layer.LanguageModel
 import com.flash.light.domain.layer.SoundModel
@@ -110,4 +114,12 @@ fun RadioButton.changeTint(colorResEnable : Int, colorResDisable : Int){
     )
     buttonTintList = colorStateList // set the color tint list
     invalidate() // Could not be necessary
+}
+
+fun ImageView.changeTint(resColor : Int){
+    setColorFilter(ContextCompat.getColor(this.context, resColor), PorterDuff.Mode.SRC_IN)
+}
+
+fun TextView.changeTextColor(resColor : Int){
+    setTextColor(ContextCompat.getColor(this.context, resColor))
 }

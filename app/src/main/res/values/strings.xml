@@ -32,4 +32,5 @@
     <string name="txt_on_time">On time</string>
     <string name="txt_off_time">Off time</string>
     <string name="txt_flash_is_on_press_the_off_button_to_stop">Flash is on.Press the \\\'\\\'OFF\\\'\\\' button to stop</string>
+    <string name="txt_flash_blinks">Flash Blinks</string>
 </resources>
