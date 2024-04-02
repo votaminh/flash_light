@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/bg_light_app"
     >
 
     <androidx.core.widget.NestedScrollView
@@ -30,72 +30,40 @@
                     android:id="@+id/layoutTop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size20"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size64"
                         android:layout_gravity="center"
                         android:text="@string/txt_flash_alert"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/size23" />
+                        android:textSize="@dimen/size20"
+                        android:gravity="center"
+                        android:background="@color/bg_dark_app"
+                        />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layoutSwitchStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/size25">
+                        android:layout_marginVertical="@dimen/size50"
+                        >
 
-                        <TextView
-                            android:id="@+id/tvOff"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/size5"
-                            android:text="@string/txt_off"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/size15"
-                            app:layout_constraintBottom_toBottomOf="@+id/swTapHome"
-                            app:layout_constraintEnd_toStartOf="@+id/swTapHome"
-                            app:layout_constraintTop_toTopOf="@+id/swTapHome" />
-
-                        <TextView
-                            android:id="@+id/tvOn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/size5"
-                            android:text="@string/txt_on"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/size15"
-                            app:layout_constraintBottom_toBottomOf="@+id/swTapHome"
-                            app:layout_constraintStart_toEndOf="@+id/swTapHome"
-                            app:layout_constraintTop_toTopOf="@+id/swTapHome" />
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/swTapHome"
                             android:layout_width="wrap_content"
-                            android:layout_height="@dimen/size30"
+                            android:layout_height="wrap_content"
                             android:thumb="@drawable/thumb_custom_home"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:track="@drawable/layout_track_home" />
 
-                        <ImageView
-                            android:id="@+id/ivFingerHome"
-                            android:layout_width="@dimen/size40"
-                            android:layout_height="@dimen/size40"
-                            android:layout_marginStart="@dimen/size10"
-                            android:layout_marginTop="@dimen/size30"
-                            android:layout_marginBottom="@dimen/size20"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_finger_switch"
-                            app:layout_constraintBottom_toBottomOf="@+id/swTapHome"
-                            app:layout_constraintStart_toStartOf="@+id/swTapHome" />
 
                         <TextView
                             android:id="@+id/tvStatus"
@@ -104,19 +72,17 @@
                             android:layout_marginTop="@dimen/size10"
                             android:text="@string/txt_tap_to_turn_on"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/size15"
+                            android:textSize="@dimen/size16"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/ivFingerHome" />
+                            app:layout_constraintTop_toBottomOf="@+id/swTapHome"
+                            />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layoutContainFeature"
-                    android:layout_marginHorizontal="@dimen/size7"
-                    android:layout_marginLeft="@dimen/size7"
-                    android:layout_marginTop="@dimen/size15"
-                    android:layout_marginRight="@dimen/size7"
+                    android:layout_marginHorizontal="@dimen/size16"
                     android:background="@drawable/corner_16_light_background"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +96,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/size7">
+                        android:padding="@dimen/size7"
+                        android:layout_marginVertical="@dimen/size2"
+                        >
 
                         <ImageView
                             android:id="@+id/iv1"
@@ -147,7 +115,9 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/ivTurnOnForComingPhone"
                             app:layout_constraintStart_toEndOf="@+id/iv1"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center_vertical"
+                            />
 
                         <ImageView
                             android:id="@+id/ivTurnOnForComingPhone"
@@ -159,12 +129,20 @@
                             app:tint="@color/white" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size1"
+                        android:background="@color/gray4"
+                        />
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ftTurnOnSms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/size7">
+                        android:padding="@dimen/size7"
+                        android:layout_marginVertical="@dimen/size2"
+                        >
 
                         <ImageView
                             android:id="@+id/iv2"
@@ -181,7 +159,8 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/ivTurnOnForSMS"
                             app:layout_constraintStart_toEndOf="@+id/iv2"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center_vertical" />
 
                         <ImageView
                             android:id="@+id/ivTurnOnForSMS"
@@ -193,11 +172,18 @@
                             app:tint="@color/white" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size1"
+                        android:background="@color/gray4"
+                        />
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ftTurnOnNoti"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
+                        android:layout_marginVertical="@dimen/size2"
                         android:padding="@dimen/size7">
 
                         <ImageView
@@ -215,7 +201,8 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/ivTurnOnForNoti"
                             app:layout_constraintStart_toEndOf="@+id/iv3"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center_vertical"/>
 
                         <ImageView
                             android:id="@+id/ivTurnOnForNoti"

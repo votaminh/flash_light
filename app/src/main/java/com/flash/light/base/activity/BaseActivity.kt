@@ -7,10 +7,12 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewbinding.ViewBinding
+import com.flash.light.R
 
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     lateinit var viewBinding: V
@@ -20,8 +22,8 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+        setStatusBarColor(ContextCompat.getColor(this, R.color.bg_dark_app))
         hideSystemUI()
         viewBinding = provideViewBinding()
         setContentView(viewBinding.root)
@@ -84,7 +86,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     }
 
-    private fun setStatusBarColor(color: Int) {
+    fun setStatusBarColor(color: Int) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = color
         WindowCompat.getInsetsController(window, window.decorView).apply {

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityManager
 import android.content.Intent
 import android.provider.Settings
+import androidx.core.content.ContextCompat
 import com.flash.light.R
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
