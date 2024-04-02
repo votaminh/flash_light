@@ -88,4 +88,9 @@
         <item name="android:thumb">@drawable/layout_switch_thumb_setting</item>
         <item name="track">@drawable/layout_switch_track_setting</item>
     </style>
+
+    <style name="tv_header_1">
+        <item name="android:textColor">@color/main</item>
+        <item name="android:textSize">@dimen/size22</item>
+    </style>
 </resources>
