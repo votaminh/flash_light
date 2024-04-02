@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/size10"
+    android:paddingTop="@dimen/size10"
+    android:paddingBottom="@dimen/size10"
+    android:background="@color/bg_light_app"
+    >
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/size20"
+        android:layout_height="@dimen/size20"
+        android:layout_marginStart="@dimen/size15"
+        android:layout_marginTop="@dimen/size20"
+        android:src="@drawable/ic_blink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size15"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size16"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/size7"
+            android:layout_marginLeft="@dimen/size7"
+            android:layout_marginTop="@dimen/size15"
+            android:layout_marginRight="@dimen/size7">
+
+            <LinearLayout
+                android:id="@+id/layoutStatus"
+                style="@style/LayoutContainFeature"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_status"
+                    android:textColor="#fbfbfb"
+                    android:textSize="@dimen/size11" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size10">
+
+                    <ImageView
+                        android:id="@+id/ivType"
+                        style="@style/IconColorPrimary24"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/tvContentType"
+                        style="@style/CustomTextViewFeature12sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/swStatus"
+                        android:layout_toEndOf="@+id/ivType"
+                        android:paddingHorizontal="@dimen/size5"
+                        android:paddingLeft="@dimen/size5"
+                        android:paddingRight="@dimen/size5"
+                        android:text="@string/txt_turn_on_for_incoming_calls"
+                        android:textColor="#fbfbfb" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swStatus"
+                        style="@style/CustomSmallSwitch"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                style="@style/LayoutContainFeature"
+                android:layout_marginTop="@dimen/size15"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutStatus">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        style="@style/IconColorPrimary24"
+                        android:src="@drawable/ic_speed" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_speed"
+                        android:textColor="#fbfbfb"
+                        android:textSize="@dimen/size11" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size10">
+
+                    <TextView
+                        style="@style/CustomTextViewFeature12sp"
+                        android:layout_toStartOf="@+id/secondAlertOnTime"
+                        android:text="@string/txt_on_time"
+                        android:textColor="#fbfbfb" />
+
+                    <TextView
+                        android:id="@+id/secondAlertOnTime"
+                        style="@style/CustomTextViewFeature12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="#fbfbfb" />
+
+                    <SeekBar
+                        android:id="@+id/sbAlertOnTime"
+                        style="@style/CustomSeekbar"
+                        android:layout_below="@+id/secondAlertOnTime" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size10">
+
+                    <TextView
+                        style="@style/CustomTextViewFeature12sp"
+                        android:layout_toStartOf="@+id/secondAlertOffTime"
+                        android:text="@string/txt_off_time"
+                        android:textColor="#fbfbfb" />
+
+                    <TextView
+                        android:id="@+id/secondAlertOffTime"
+                        style="@style/CustomTextViewFeature12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="#fbfbfb" />
+
+                    <SeekBar
+                        android:id="@+id/sbAlertOffTime"
+                        style="@style/CustomSeekbar"
+                        android:layout_below="@+id/secondAlertOffTime" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/btnTest"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size40"
+                    android:layout_marginHorizontal="@dimen/size5"
+                    android:layout_marginLeft="@dimen/size5"
+                    android:layout_marginTop="@dimen/size15"
+                    android:layout_marginRight="@dimen/size5"
+                    android:background="@drawable/corner_12"
+                    android:backgroundTint="#31343e"
+                    android:gravity="center"
+                    android:text="@string/txt_test"
+                    android:textColor="#fbfbfb"
+                    android:textSize="@dimen/size14" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

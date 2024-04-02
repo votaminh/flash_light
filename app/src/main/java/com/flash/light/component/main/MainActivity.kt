@@ -1,16 +1,18 @@
 package com.flash.light.component.main
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.content.Intent
-import android.graphics.PorterDuff
-import androidx.core.content.ContextCompat
-import androidx.viewpager2.widget.ViewPager2
+import android.provider.Settings
 import com.flash.light.R
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
+import com.flash.light.service.PhoneCallComingService
+import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.changeTextColor
 import com.flash.light.utils.changeTint
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -56,6 +58,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
 
         }
+
+        if(!PermissionUtils.isNotificationListenerPermission(this)){
+            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+        }else{
+            playCallPhoneService()
+        }
     }
 
     private fun resetAllMenu() {
@@ -77,5 +85,33 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             isUserInputEnabled = false
             adapter = ViewPagerAdapter(this@MainActivity)
         }
+    }
+
+    private fun playCallPhoneService() {
+        startService(Intent(this, PhoneCallComingService::class.java))
+    }
+
+    private fun stopCallPhoneService() {
+        stopService(Intent(this, PhoneCallComingService::class.java))
+    }
+
+    private fun isStartedService(): Boolean {
+        val systemService = getSystemService(android.content.Context.ACTIVITY_SERVICE)
+        Intrinsics.checkNotNull(
+            systemService,
+            "null cannot be cast to non-null type android.app.ActivityManager"
+        )
+        for (runningServiceInfo in (systemService as ActivityManager).getRunningServices(
+            Int.MAX_VALUE
+        )) {
+            if (Intrinsics.areEqual(
+                    runningServiceInfo.service.className as Any,
+                    PhoneCallComingService::class.java.getName() as Any
+                )
+            ) {
+                return true
+            }
+        }
+        return false
     }
 }

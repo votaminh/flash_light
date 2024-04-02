@@ -33,4 +33,15 @@
     <string name="txt_off_time">Off time</string>
     <string name="txt_flash_is_on_press_the_off_button_to_stop">Flash is on.Press the \\\'\\\'OFF\\\'\\\' button to stop</string>
     <string name="txt_flash_blinks">Flash Blinks</string>
+
+    <string name="txt_start">Start</string>
+    <string name="txt_status">STATUS</string>
+    <string name="txt_status_off">Status: Off</string>
+    <string name="txt_status_on">Status: On</string>
+    <string name="txt_speed">SPEED</string>
+    <string name="txt_test">Test</string>
+
+    <string name="tedpermission_close">Close</string>
+    <string name="tedpermission_confirm">Confirm</string>
+    <string name="tedpermission_setting">Setting</string>
 </resources>
