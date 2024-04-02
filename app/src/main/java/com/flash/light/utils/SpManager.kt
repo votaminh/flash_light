@@ -89,4 +89,20 @@ class SpManager(private val preferences: SharedPreferences) {
     fun isSettingUMPShowing() : Boolean {
         return preferences.getBoolean(Constant.KEY_SP_UMP_SETTING_SHOWED, false)
     }
+
+    fun setTurnOnTimeMs(second : Long){
+        preferences.edit().putLong("turn_on_time_second", second).apply()
+    }
+
+    fun getTurnOnTimeMs() : Long{
+        return preferences.getLong("turn_on_time_second", 100)
+    }
+
+    fun setTurnOffTimeMs(second : Long){
+        preferences.edit().putLong("turn_off_time_second", second).apply()
+    }
+
+    fun getTurnOffTimeMs() : Long{
+        return preferences.getLong("turn_off_time_second", 100)
+    }
 }

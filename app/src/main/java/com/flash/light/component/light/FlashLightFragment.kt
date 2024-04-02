@@ -18,7 +18,17 @@ class FlashLightFragment : BaseFragment<FragmentFlashLightBinding>() {
 
     override fun initViews() {
         viewBinding.btnTurnOnFlash.setOnClickListener {
-            viewModel.startFlash()
+            if(viewModel.isFlashTurnOn.value == false){
+                viewModel.startFlash()
+            }else{
+                viewModel.stopFlash()
+            }
+        }
+    }
+
+    override fun initObserver() {
+        viewModel.isFlashTurnOn.observe(this){
+
         }
     }
 }

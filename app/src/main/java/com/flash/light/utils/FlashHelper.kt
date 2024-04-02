@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
-import android.os.Handler
-import android.os.Looper
 
 class FlashHelper {
     private var cameraManager : CameraManager? = null
