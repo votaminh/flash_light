@@ -1,6 +1,10 @@
 package com.flash.light.utils
 
 object Constant {
+
+    const val MIN_TIME_FLASH = 100f
+    const val MAX_TIME_FLASH = 2000f
+
     const val KEY_SP_CURRENT_LANGUAGE = "KEY_SP_CURRENT_LANGUAGE"
     const val KEY_SP_SHOW_ONBOARDING = "KEY_SP_SHOW_ONBOARDING"
     const val KEY_SP_UMP_SHOWED = "KEY_SP_UMP_SHOWED"

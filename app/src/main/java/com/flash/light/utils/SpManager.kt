@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.flash.light.R
-import com.flash.light.domain.layer.FlashMode
 import com.flash.light.domain.layer.LanguageModel
-import com.flash.light.domain.layer.SoundModel
-import com.flash.light.domain.layer.VibrationMode
 
 class SpManager(private val preferences: SharedPreferences) {
     companion object {
@@ -104,5 +101,77 @@ class SpManager(private val preferences: SharedPreferences) {
 
     fun getTurnOffTimeMs() : Long{
         return preferences.getLong("turn_off_time_second", 100)
+    }
+
+    fun setTurnOnCall(turnOn : Boolean){
+        preferences.edit().putBoolean("turn_on_incoming_calls", turnOn).apply()
+    }
+
+    fun getTurnOnCall() : Boolean{
+        return preferences.getBoolean("turn_on_incoming_calls", false)
+    }
+
+    fun setOnTimeFlashCall(onTime : Long){
+        preferences.edit().putLong("on_time_flash_call", onTime).apply()
+    }
+
+    fun getOnTimeFlashCallMS() : Long{
+        return preferences.getLong("on_time_flash_call", 100)
+    }
+
+    fun setOffTimeFlashCall(onTime : Long){
+        preferences.edit().putLong("off_time_flash_call", onTime).apply()
+    }
+
+    fun getOffTimeFlashCallMS() : Long{
+        return preferences.getLong("off_time_flash_call", 100)
+    }
+
+    fun setTurnOnNotification(turnOn : Boolean){
+        preferences.edit().putBoolean("turn_on_notification", turnOn).apply()
+    }
+
+    fun getTurnOnNotification() : Boolean{
+        return preferences.getBoolean("turn_on_notification", false)
+    }
+
+    fun setOnTimeFlashNotification(onTime : Long){
+        preferences.edit().putLong("on_time_Notification", onTime).apply()
+    }
+
+    fun getOnTimeFlashNotificationMS() : Long{
+        return preferences.getLong("on_time_Notification", 100)
+    }
+
+    fun setOffTimeFlashNotification(onTime : Long){
+        preferences.edit().putLong("off_time_Notification", onTime).apply()
+    }
+
+    fun getOffTimeFlashNotificationMS() : Long{
+        return preferences.getLong("off_time_Notification", 100)
+    }
+
+    fun setTurnOnSMS(turnOn : Boolean){
+        preferences.edit().putBoolean("turn_on_SMS", turnOn).apply()
+    }
+
+    fun getTurnOnSMS() : Boolean{
+        return preferences.getBoolean("turn_on_SMS", false)
+    }
+
+    fun setOnTimeFlashSMS(onTime : Long){
+        preferences.edit().putLong("on_time_SMS", onTime).apply()
+    }
+
+    fun getOnTimeFlashSMSMS() : Long{
+        return preferences.getLong("on_time_SMS", 100)
+    }
+
+    fun setOffTimeFlashSMS(onTime : Long){
+        preferences.edit().putLong("off_time_SMS", onTime).apply()
+    }
+
+    fun getOffTimeFlashSMSMS() : Long{
+        return preferences.getLong("off_time_SMS", 100)
     }
 }

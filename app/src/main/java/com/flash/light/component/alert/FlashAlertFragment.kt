@@ -9,8 +9,14 @@ import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
 import com.flash.light.databinding.FragmentFlashAlertBinding
 import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
+import com.flash.light.utils.SpManager
+import javax.inject.Inject
 
 class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
+
+    @Inject
+    lateinit var spManager: SpManager
+
     override fun provideViewBinding(container: ViewGroup?): FragmentFlashAlertBinding {
         return FragmentFlashAlertBinding.inflate(LayoutInflater.from(context))
     }
@@ -19,13 +25,23 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
         super.initViews()
         viewBinding.run {
             ftTurnOnComingCall.setOnClickListener {
-                activity?.let {
-                    if(PermissionUtils.isPhoneStatePermissionGranted(it)){
-                        SettingsFlashAlertActivity.start(it, SettingsFlashAlertActivity.ALERT_CALL_PHONE)
-                    }else{
-                        PermissionActivity.start(it)
-                    }
-                }
+                checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_CALL_PHONE)
+            }
+            ftTurnOnNoti.setOnClickListener {
+                checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_NOTIFICATION)
+            }
+            ftTurnOnSms.setOnClickListener {
+                checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_SMS)
+            }
+        }
+    }
+
+    private fun checkPermissionToOpenSetting(type: String) {
+        activity?.let {
+            if(PermissionUtils.isPhoneStatePermissionGranted(it)){
+                SettingsFlashAlertActivity.start(it, type)
+            }else{
+                PermissionActivity.start(it)
             }
         }
     }

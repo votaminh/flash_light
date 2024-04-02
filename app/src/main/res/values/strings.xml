@@ -51,4 +51,8 @@
     <string name="txt_permission_is_not_allowed">Permission is not allowed</string>
     <string name="txt_continue">Continue</string>
     <string name="txt_grant_permission_later">Grant permission later</string>
+    <string name="txt_incoming_calls">Incoming calls</string>
+    <string name="txt_SMS">SMS</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_seconds">seconds</string>
 </resources>
