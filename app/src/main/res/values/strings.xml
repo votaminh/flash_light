@@ -55,4 +55,15 @@
     <string name="txt_SMS">SMS</string>
     <string name="txt_notification">Notification</string>
     <string name="txt_seconds">seconds</string>
+    <string name="txt_advanced">Advanced</string>
+    <string name="txt_do_not_flash_when_screen">Do not flash the flash while the screen is on</string>
+    <string name="txt_save_battery">Save battery</string>
+    <string name="txt_turn_off_flash_battery">Turn off flash when battery is low</string>
+    <string name="txt_flash">Flash</string>
+    <string name="txt_normal">Normal</string>
+    <string name="txt_vibrate">Vibrate</string>
+    <string name="txt_silent">Silent</string>
+    <string name="txt_policy">Policy</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_language">Language</string>
 </resources>

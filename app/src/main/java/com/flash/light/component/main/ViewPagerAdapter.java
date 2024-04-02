@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.flash.light.component.alert.FlashAlertFragment;
 import com.flash.light.component.light.FlashLightFragment;
+import com.flash.light.component.setting.SettingFragment;
 
 public final class ViewPagerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
@@ -29,8 +30,8 @@ public final class ViewPagerAdapter extends FragmentStateAdapter {
         if (i == 2) {
             return new FlashAlertFragment();
         }
-        if (i != 3) {
-            return new FlashAlertFragment();
+        if (i == 3) {
+            return new SettingFragment();
         }
         return new FlashAlertFragment();
     }
