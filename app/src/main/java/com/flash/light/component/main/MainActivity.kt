@@ -59,11 +59,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         }
 
-        if(!PermissionUtils.isNotificationListenerPermission(this)){
-            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
-        }else{
-            playCallPhoneService()
-        }
+//        if(!PermissionUtils.isNotificationListenerPermission(this)){
+//            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+//        }else{
+//            playCallPhoneService()
+//        }
     }
 
     private fun resetAllMenu() {
@@ -85,33 +85,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             isUserInputEnabled = false
             adapter = ViewPagerAdapter(this@MainActivity)
         }
-    }
-
-    private fun playCallPhoneService() {
-        startService(Intent(this, PhoneCallComingService::class.java))
-    }
-
-    private fun stopCallPhoneService() {
-        stopService(Intent(this, PhoneCallComingService::class.java))
-    }
-
-    private fun isStartedService(): Boolean {
-        val systemService = getSystemService(android.content.Context.ACTIVITY_SERVICE)
-        Intrinsics.checkNotNull(
-            systemService,
-            "null cannot be cast to non-null type android.app.ActivityManager"
-        )
-        for (runningServiceInfo in (systemService as ActivityManager).getRunningServices(
-            Int.MAX_VALUE
-        )) {
-            if (Intrinsics.areEqual(
-                    runningServiceInfo.service.className as Any,
-                    PhoneCallComingService::class.java.getName() as Any
-                )
-            ) {
-                return true
-            }
-        }
-        return false
     }
 }

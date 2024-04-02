@@ -79,6 +79,9 @@
         <activity
             android:name=".component.onboarding.OnBoardingActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.PermissionActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.facebook.FacebookActivity"

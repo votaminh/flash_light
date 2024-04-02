@@ -44,4 +44,11 @@
     <string name="tedpermission_close">Close</string>
     <string name="tedpermission_confirm">Confirm</string>
     <string name="tedpermission_setting">Setting</string>
+    <string name="txt_permission_required">Permission Required</string>
+    <string name="txt_content_permission_2">Please grant Flash Alert necessary permissions to protect your phone privacy</string>
+    <string name="txt_manager_call">Manager Call</string>
+    <string name="txt_camera">Camera</string>
+    <string name="txt_permission_is_not_allowed">Permission is not allowed</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_grant_permission_later">Grant permission later</string>
 </resources>
