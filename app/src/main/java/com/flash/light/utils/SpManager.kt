@@ -91,18 +91,6 @@ class SpManager(private val preferences: SharedPreferences) {
         preferences.edit().putLong("turn_on_time_second", second).apply()
     }
 
-    fun getTurnOnTimeMs() : Long{
-        return preferences.getLong("turn_on_time_second", 100)
-    }
-
-    fun setTurnOffTimeMs(second : Long){
-        preferences.edit().putLong("turn_off_time_second", second).apply()
-    }
-
-    fun getTurnOffTimeMs() : Long{
-        return preferences.getLong("turn_off_time_second", 100)
-    }
-
     fun setTurnOnCall(turnOn : Boolean){
         preferences.edit().putBoolean("turn_on_incoming_calls", turnOn).apply()
     }

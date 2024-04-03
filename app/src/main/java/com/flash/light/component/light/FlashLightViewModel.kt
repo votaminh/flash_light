@@ -41,8 +41,8 @@ class FlashLightViewModel @Inject constructor(@ApplicationContext val context: C
     }
 
     fun startFlash(){
-        val timeTurnOn = spManager.getTurnOnTimeMs()
-        val timeTurnOff = spManager.getTurnOffTimeMs()
+        val timeTurnOn = spManager.getOnTimeFlashLightMS()
+        val timeTurnOff = spManager.getOffTimeFlashLightMS()
         flashHelper.start(context, timeTurnOn, timeTurnOff)
         isFlashTurnOn.postValue(true)
     }
