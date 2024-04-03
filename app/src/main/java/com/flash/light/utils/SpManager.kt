@@ -178,4 +178,12 @@ class SpManager(private val preferences: SharedPreferences) {
     fun getOffTimeFlashLightMS() : Long{
         return preferences.getLong("off_time_Light", 100)
     }
+
+    fun setStateFlash(state : Boolean){
+        preferences.edit().putBoolean("sate_flash_notification", state).apply()
+    }
+
+    fun getStateFlash() : Boolean{
+        return preferences.getBoolean("sate_flash_notification", false)
+    }
 }

@@ -13,12 +13,21 @@ import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
 class NotificationListener : NotificationListenerService() {
+    private val TAG = "NotificationListener"
+
     @Inject
     lateinit var spManager: SpManager
     @Inject
     lateinit var flashHelper: FlashHelper
 
     override fun onNotificationPosted(statusBarNotification: StatusBarNotification) {
+
+        val state = spManager.getStateFlash()
+        if(!state){
+            return
+        }
+
+        Log.i(TAG, "onNotificationPosted: ${statusBarNotification.packageName}")
         if (!Intrinsics.areEqual(
                 statusBarNotification.packageName as Any,
                 "sms_default_application" as Any
@@ -27,6 +36,7 @@ class NotificationListener : NotificationListenerService() {
                 "com.google.android.apps.messaging" as Any
             )
         ) {
+            Log.i(TAG, "onNotificationPosted: notification")
             val state = spManager.getTurnOnNotification()
             if(state){
                 val onTime = spManager.getOnTimeFlashNotificationMS()
@@ -37,6 +47,7 @@ class NotificationListener : NotificationListenerService() {
                 }, 5000)
             }
         } else{
+            Log.i(TAG, "onNotificationPosted: SMS")
             val state = spManager.getTurnOnSMS()
             if(state){
                 val onTime = spManager.getOnTimeFlashSMSMS()

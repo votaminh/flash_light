@@ -64,7 +64,6 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:track="@drawable/layout_track_home" />
 
-
                         <TextView
                             android:id="@+id/tvStatus"
                             android:layout_width="wrap_content"

@@ -11,7 +11,7 @@
     <item android:state_checked="false">
         <shape>
             <corners android:radius="@dimen/size30"/>
-            <solid android:color="#272727"/>
+            <solid android:color="@color/gray5"/>
             <size android:height="@dimen/size44" android:width="@dimen/size100"/>
             <padding/>
         </shape>

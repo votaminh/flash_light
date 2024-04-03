@@ -58,6 +58,11 @@ class PhoneCallComingService : Service() {
         lateinit var spManager: SpManager
 
         override fun onReceive(context: Context, intent: Intent) {
+            val stateFlash = spManager.getStateFlash()
+            if(!stateFlash){
+                return
+            }
+
             val state = intent.extras?.getString("state")
             Log.i(TAG, "onReceive: $state")
             if(state == "RINGING"){

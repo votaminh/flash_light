@@ -24,6 +24,7 @@
     <string name="txt_off">Off</string>
     <string name="txt_on">On</string>
     <string name="txt_tap_to_turn_on">Tap to turn on</string>
+    <string name="txt_tap_to_turn_off">Tap to turn off</string>
     <string name="txt_turn_on_for_incoming_calls">Turn On For Incoming Calls</string>
     <string name="txt_turn_on_for_sms">Turn On For SMS</string>
     <string name="txt_turn_on_for_amp_notification">Turn On For Notification</string>
