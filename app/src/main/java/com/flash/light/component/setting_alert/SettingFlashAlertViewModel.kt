@@ -17,7 +17,8 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
     @Inject
     lateinit var spManager: SpManager
 
-    private val flashHelper = FlashHelper()
+    @Inject
+    lateinit var flashHelper : FlashHelper
 
     val stateLive = MutableLiveData<Boolean>()
     val onTimeLive = MutableLiveData<Float>()

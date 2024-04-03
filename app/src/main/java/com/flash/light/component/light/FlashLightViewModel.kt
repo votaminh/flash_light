@@ -19,7 +19,8 @@ class FlashLightViewModel @Inject constructor(@ApplicationContext val context: C
 
     @Inject
     lateinit var spManager : SpManager
-    private val flashHelper = FlashHelper()
+    @Inject
+    lateinit var flashHelper : FlashHelper
 
     val isFlashTurnOn = MutableLiveData(false)
     val onTimeLive = MutableLiveData<Float>()

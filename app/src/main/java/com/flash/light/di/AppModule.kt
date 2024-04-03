@@ -3,6 +3,7 @@ package com.flash.light.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.flash.light.utils.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.Module
 import dagger.Provides
@@ -24,5 +25,11 @@ object AppModule {
     @Singleton
     fun provideSpManager(@ApplicationContext context: Context): SpManager {
         return SpManager.getInstance(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFlashHelper(): FlashHelper {
+        return FlashHelper.getInstance()
     }
 }

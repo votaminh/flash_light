@@ -4,12 +4,29 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
+import androidx.preference.PreferenceManager
+
 
 class FlashHelper {
     private var cameraManager : CameraManager? = null
     private var idCamera = ""
-    private var endFlash = false
+    private var endFlash = true
+
+    companion object {
+        private var instance: FlashHelper? = null
+
+        fun getInstance(): FlashHelper {
+            if (instance == null) {
+                instance = FlashHelper()
+            }
+            return instance!!
+        }
+    }
+
     fun start(context : Context, turnOnTime : Long, turnOffTime : Long){
+        if(!endFlash){
+            return
+        }
         endFlash = false
         Thread{
             val isFlashAvailable = context.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
