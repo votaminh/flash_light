@@ -174,4 +174,20 @@ class SpManager(private val preferences: SharedPreferences) {
     fun getOffTimeFlashSMSMS() : Long{
         return preferences.getLong("off_time_SMS", 100)
     }
+
+    fun setOnTimeFlashLight(onTime : Long){
+        preferences.edit().putLong("on_time_Light", onTime).apply()
+    }
+
+    fun getOnTimeFlashLightMS() : Long{
+        return preferences.getLong("on_time_Light", 100)
+    }
+
+    fun setOffTimeFlashLight(onTime : Long){
+        preferences.edit().putLong("off_time_Light", onTime).apply()
+    }
+
+    fun getOffTimeFlashLightMS() : Long{
+        return preferences.getLong("off_time_Light", 100)
+    }
 }

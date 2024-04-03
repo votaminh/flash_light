@@ -147,7 +147,10 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:visibility="gone" />
+                    android:layout_marginHorizontal="@dimen/size10"
+                    android:layout_marginBottom="@dimen/size10"
+                    android:visibility="gone"
+                    />
             </FrameLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
