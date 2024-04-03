@@ -37,6 +37,17 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
         super.initViews()
 //        checkPermission("")
 //
+
+        viewBinding.run {
+            btnTest.setOnClickListener {
+                if(viewModel.isTestingLive.value == true){
+                    viewModel.stopTest()
+                }else{
+                    viewModel.testFlash(type)
+                }
+            }
+        }
+
         getData()
         setViewByType()
         viewModel.getValuesSetting(type)
@@ -101,6 +112,13 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
             }
             progressSbOffTimeLive.observe(this@SettingsFlashAlertActivity){
                 viewBinding.sbAlertOffTime.progress = it
+            }
+            isTestingLive.observe(this@SettingsFlashAlertActivity){
+                if(it){
+                    viewBinding.btnTest.text = getString(R.string.txt_stop)
+                }else{
+                    viewBinding.btnTest.text = getString(R.string.txt_test)
+                }
             }
         }
     }
