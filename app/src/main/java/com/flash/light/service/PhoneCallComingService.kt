@@ -9,6 +9,10 @@ import android.os.IBinder
 import android.telephony.PhoneStateListener
 import android.telephony.TelephonyManager
 import android.util.Log
+import com.flash.light.utils.FlashHelper
+import com.flash.light.utils.SpManager
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 class PhoneCallComingService : Service() {
 
@@ -16,9 +20,7 @@ class PhoneCallComingService : Service() {
         const val TAG = "PhoneCallComingService"
     }
 
-    private val phoneStateListener: PhoneStateListener? = null
     private var receiver: BroadcastReceiver? = null
-    private val telephonyManager: TelephonyManager? = null
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
@@ -31,6 +33,10 @@ class PhoneCallComingService : Service() {
 
     private fun regis() {
         Log.i(TAG, "regis: ")
+        if(receiver != null){
+            unregisterReceiver(receiver)
+            receiver = null
+        }
         val intentFilter = IntentFilter()
         intentFilter.addAction("android.intent.action.PHONE_STATE")
         val myReceiver: BroadcastReceiver = MyReceiver()
@@ -45,9 +51,25 @@ class PhoneCallComingService : Service() {
         broadcastReceiver?.let { unregisterReceiver(it) }
     }
 
-    class MyReceiver() : BroadcastReceiver() {
+    @AndroidEntryPoint
+    class MyReceiver : BroadcastReceiver() {
+        private val flashHelper = FlashHelper()
+        @Inject
+        lateinit var spManager: SpManager
+
         override fun onReceive(context: Context, intent: Intent) {
-            Log.i(TAG, "onReceive: ${intent.extras?.getString("state")}")
+            val state = intent.extras?.getString("state")
+            Log.i(TAG, "onReceive: $state")
+            if(state == "RINGING"){
+                val state = spManager.getTurnOnCall()
+                if(state){
+                    val onTime = spManager.getOnTimeFlashCallMS()
+                    val offTime = spManager.getOffTimeFlashCallMS()
+                    flashHelper.start(context, onTime, offTime)
+                }
+            }else{
+                flashHelper.stop()
+            }
         }
     }
 }

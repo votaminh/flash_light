@@ -1,6 +1,8 @@
 package com.flash.light.utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
@@ -17,6 +19,7 @@ import com.google.gson.Gson
 import com.flash.light.domain.layer.LanguageModel
 import com.flash.light.domain.layer.SoundModel
 import com.flash.light.domain.layer.VibrationMode
+import com.flash.light.service.PhoneCallComingService
 import java.util.Locale
 
 fun SoundModel.toJson(): String {
@@ -122,4 +125,8 @@ fun ImageView.changeTint(resColor : Int){
 
 fun TextView.changeTextColor(resColor : Int){
     setTextColor(ContextCompat.getColor(this.context, resColor))
+}
+
+fun Activity.startNotificationFlashService(){
+    startService(Intent(this, PhoneCallComingService::class.java))
 }

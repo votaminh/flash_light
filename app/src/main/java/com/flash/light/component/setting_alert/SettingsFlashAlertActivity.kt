@@ -10,7 +10,9 @@ import com.flash.light.R
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivitySettingFlashAlertBinding
 import com.flash.light.dialog.DialogExt.showDialogPermissionNotificationRead
+import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
+import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -104,6 +106,7 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
         viewModel.run {
             stateLive.observe(this@SettingsFlashAlertActivity){
                 viewBinding.swStatus.isChecked = it
+                startNotificationFlashService()
             }
 
             onTimeLive.observe(this@SettingsFlashAlertActivity){

@@ -12,6 +12,7 @@ import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.changeTextColor
 import com.flash.light.utils.changeTint
+import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.jvm.internal.Intrinsics
 
@@ -60,11 +61,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         }
 
-//        if(!PermissionUtils.isNotificationListenerPermission(this)){
-//            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
-//        }else{
-//            playCallPhoneService()
-//        }
+        startNotificationFlashService()
     }
 
     private fun resetAllMenu() {
