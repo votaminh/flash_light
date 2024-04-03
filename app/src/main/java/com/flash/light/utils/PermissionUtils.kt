@@ -2,6 +2,7 @@ package com.flash.light.utils
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
@@ -24,6 +25,11 @@ class PermissionUtils {
                 "enabled_notification_listeners"
             )
             return flat?.contains(packageName) ?: false
+        }
+
+        fun requestNotificationListenerPermission(activity: Activity, requestCode: Int) {
+            val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+            activity.startActivityForResult(intent, requestCode)
         }
     }
 }

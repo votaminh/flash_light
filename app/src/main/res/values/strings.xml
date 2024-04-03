@@ -67,4 +67,6 @@
     <string name="txt_share">Share</string>
     <string name="txt_language">Language</string>
     <string name="txt_stop">Stop</string>
+    <string name="txt_allow_notification_access">Allow notification access</string>
+    <string name="txt_notification_permisison_mess">You need to grant Notification Access to Enable this features</string>
 </resources>

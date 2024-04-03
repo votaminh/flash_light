@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import com.flash.light.R
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivitySettingFlashAlertBinding
+import com.flash.light.dialog.DialogExt.showDialogPermissionNotificationRead
 import com.flash.light.utils.PermissionUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,6 +62,10 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
                     viewModel.saveState(type, p1)
                 }
             })
+
+            swStatus.setOnClickListener {
+                checkPermissionNotificationRead()
+            }
 
             sbAlertOnTime.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
@@ -150,9 +155,22 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
         return ActivitySettingFlashAlertBinding.inflate(layoutInflater)
     }
 
-    private fun checkPermission(permissionType: String) {
-        if(!PermissionUtils.isPhoneStatePermissionGranted(this)){
-            PermissionUtils.requestPhoneStatePermission(this, 123)
+
+    private fun checkPermissionNotificationRead() {
+        if(!PermissionUtils.isNotificationListenerPermission(this)){
+            viewBinding.swStatus.isChecked = false
+            showDialogPermissionNotificationRead{
+                PermissionUtils.requestNotificationListenerPermission(this, 122)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 122){
+            if(PermissionUtils.isNotificationListenerPermission(this)){
+                viewBinding.swStatus.isChecked = true
+            }
         }
     }
 }
