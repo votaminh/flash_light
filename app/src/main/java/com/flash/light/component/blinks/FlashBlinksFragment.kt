@@ -50,7 +50,7 @@ class FlashBlinksFragment : BaseFragment<FragmentFlashBlinksBinding>() {
                 btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light)
                 layoutLock.root.visibility = View.VISIBLE
             }else{
-                btnTurnOnFlash.animate().alpha(0.3f).start()
+                btnTurnOnFlash.animate().alpha(0.2f).start()
                 btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light)
                 layoutLock.root.visibility = View.INVISIBLE
             }

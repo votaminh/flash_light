@@ -15,10 +15,12 @@
     <string name="portuguese">Portuguese</string>
     <string name="txt_get_start">Get start</string>
 
-    <string name="onboarding_title1">Don\'t touch my phone</string>
-    <string name="onboarding_intro1">This alarm keeps your device safe from strangers and theft</string>
-    <string name="onboarding_intro2">Easily detect lost phone by sound or flash mode</string>
-    <string name="onboarding_intro3">Customize alarm sound</string>
+    <string name="onboarding_title1">Flash notifications</string>
+    <string name="onboarding_intro1">When there is an incoming call or message</string>
+    <string name="onboarding_title2">Phone flashlight</string>
+    <string name="onboarding_intro2">Find things in the dark</string>
+    <string name="onboarding_title3">Flashing lights follow the music</string>
+    <string name="onboarding_intro3">Join the music party</string>
     <string name="loading_cmp">Loading Consent Management Platform</string>
     <string name="txt_flash_alert">Flash Alert</string>
     <string name="txt_off">Off</string>

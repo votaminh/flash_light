@@ -40,7 +40,7 @@
                 android:layout_height="@dimen/size120"
                 android:src="@drawable/ic_turn_off_flash_light"
                 android:layout_marginVertical="@dimen/size32"
-                android:alpha="0.3"
+                android:alpha="0.2"
                 />
 
             <FrameLayout
