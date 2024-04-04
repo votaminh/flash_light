@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.nativead.NativeAd
 import com.flash.light.R
 import com.flash.light.admob.NameRemoteAdmob
@@ -29,6 +30,10 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     }
 
     override fun initViews() {
+
+        setStatusBarColor(ContextCompat.getColor(this, R.color.white), true)
+
+
         viewBinding.rclLanguage.adapter = languageAdapter
         languageAdapter.onClick = {
             languageAdapter.selectLanguage(it.languageCode)

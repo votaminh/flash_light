@@ -1,6 +1,7 @@
 package com.flash.light.base.activity
 
-import android.content.Context
+import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -14,6 +15,7 @@ import androidx.fragment.app.commit
 import androidx.viewbinding.ViewBinding
 import com.flash.light.R
 
+
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     lateinit var viewBinding: V
 
@@ -23,7 +25,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStatusBarColor(ContextCompat.getColor(this, R.color.bg_dark_app))
+        setStatusBarColor(ContextCompat.getColor(this, R.color.bg_dark_app), false)
         hideSystemUI()
         viewBinding = provideViewBinding()
         setContentView(viewBinding.root)
@@ -86,11 +88,11 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     }
 
-    fun setStatusBarColor(color: Int) {
+    fun setStatusBarColor(color: Int, lightStatus : Boolean) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = color
         WindowCompat.getInsetsController(window, window.decorView).apply {
-            isAppearanceLightStatusBars = false
+            isAppearanceLightStatusBars = lightStatus
         }
     }
 }
