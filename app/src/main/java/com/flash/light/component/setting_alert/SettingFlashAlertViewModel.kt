@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.flash.light.utils.AppUtils
 import com.flash.light.utils.Constant
-import com.flash.light.utils.FlashHelper
+import com.flash.light.utils.flash.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -123,7 +123,7 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         }
 
         isTestingLive.postValue(true)
-        flashHelper.start(context, onTime, offTime)
+        flashHelper.startNormal(context, onTime, offTime)
     }
 
     fun stopTest(){

@@ -3,7 +3,7 @@ package com.flash.light.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import com.flash.light.utils.FlashHelper
+import com.flash.light.utils.flash.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.Module
 import dagger.Provides

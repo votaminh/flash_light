@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.flash.light.component.alert.FlashAlertFragment;
+import com.flash.light.component.blinks.FlashBlinksFragment;
 import com.flash.light.component.light.FlashLightFragment;
 import com.flash.light.component.setting.SettingFragment;
 
@@ -28,7 +29,7 @@ public final class ViewPagerAdapter extends FragmentStateAdapter {
             return new FlashLightFragment();
         }
         if (i == 2) {
-            return new FlashAlertFragment();
+            return new FlashBlinksFragment();
         }
         if (i == 3) {
             return new SettingFragment();

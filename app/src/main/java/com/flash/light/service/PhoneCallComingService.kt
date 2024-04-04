@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.IBinder
-import android.telephony.PhoneStateListener
-import android.telephony.TelephonyManager
 import android.util.Log
-import com.flash.light.utils.FlashHelper
+import com.flash.light.utils.flash.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -70,7 +68,7 @@ class PhoneCallComingService : Service() {
                 if(state){
                     val onTime = spManager.getOnTimeFlashCallMS()
                     val offTime = spManager.getOffTimeFlashCallMS()
-                    flashHelper.start(context, onTime, offTime)
+                    flashHelper.startNormal(context, onTime, offTime)
                 }
             }else{
                 flashHelper.stop()

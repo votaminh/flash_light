@@ -5,7 +5,7 @@ import android.os.Looper
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
-import com.flash.light.utils.FlashHelper
+import com.flash.light.utils.flash.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -41,7 +41,7 @@ class NotificationListener : NotificationListenerService() {
             if(state){
                 val onTime = spManager.getOnTimeFlashNotificationMS()
                 val offTime = spManager.getOffTimeFlashNotificationMS()
-                flashHelper.start(this, onTime, offTime)
+                flashHelper.startNormal(this, onTime, offTime)
                 Handler(Looper.getMainLooper()).postDelayed({
                     flashHelper.stop()
                 }, 5000)
@@ -52,7 +52,7 @@ class NotificationListener : NotificationListenerService() {
             if(state){
                 val onTime = spManager.getOnTimeFlashSMSMS()
                 val offTime = spManager.getOffTimeFlashSMSMS()
-                flashHelper.start(this, onTime, offTime)
+                flashHelper.startNormal(this, onTime, offTime)
                 Handler(Looper.getMainLooper()).postDelayed({
                     flashHelper.stop()
                 }, 5000)
