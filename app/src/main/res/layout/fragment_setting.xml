@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_advanced"
                 style="@style/tv_header_1"
+                android:layout_marginTop="@dimen/size10"
                 />
 
             <LinearLayout
@@ -67,6 +68,7 @@
                         android:layout_marginHorizontal="@dimen/size10"
                         />
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swNotFlashWhenScreenOn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/layout_switch_thumb"
@@ -105,6 +107,7 @@
                             />
                     </LinearLayout>
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swNotFlashWhenLowBattery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/layout_switch_thumb"
@@ -126,7 +129,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_flash"
+                android:text="@string/txt_flash_when_phone"
                 style="@style/tv_header_1"
                 />
 
@@ -157,6 +160,7 @@
                         android:layout_marginHorizontal="@dimen/size10"
                         />
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swFlashInNormal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/layout_switch_thumb"
@@ -182,6 +186,7 @@
                         android:layout_marginHorizontal="@dimen/size10"
                         />
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swFlashInVibrate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/layout_switch_thumb"
@@ -209,6 +214,7 @@
                         android:textSize="@dimen/size14" />
 
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swFlashInSilent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/layout_switch_thumb"
@@ -227,6 +233,7 @@
                 android:orientation="vertical"
                 >
                 <LinearLayout
+                    android:id="@+id/policy"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size52"
                     android:orientation="horizontal"
@@ -251,6 +258,7 @@
                         />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/share"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size52"
                     android:orientation="horizontal"
@@ -278,6 +286,7 @@
                         />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/language"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size52"
                     android:orientation="horizontal"

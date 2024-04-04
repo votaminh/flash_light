@@ -10,14 +10,19 @@ import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
 import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
+import com.flash.light.utils.SpManager
 import com.flash.light.utils.changeTextColor
 import com.flash.light.utils.changeTint
 import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    @Inject
+    lateinit var spManager: SpManager
 
     companion object {
         fun start(activity : Activity){
@@ -31,6 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initViews() {
+        spManager.saveOnBoarding()
         buildPagerHome()
 
         viewBinding.run {

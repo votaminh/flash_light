@@ -73,4 +73,5 @@
     <string name="txt_allow_notification_access">Allow notification access</string>
     <string name="txt_notification_permisison_mess">You need to grant Notification Access to Enable this features</string>
     <string name="txt_mode_sos">MODE SOS</string>
+    <string name="txt_flash_when_phone">Flash when phone is set to...</string>
 </resources>
