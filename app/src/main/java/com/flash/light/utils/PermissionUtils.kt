@@ -18,6 +18,14 @@ class PermissionUtils {
             ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.READ_PHONE_STATE), requestCode)
         }
 
+        fun isRecordAudioPermissionGranted(context: Context): Boolean {
+            return ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
+        }
+
+        fun requestRecordAudioPermission(activity: Activity, requestCode: Int) {
+            ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.RECORD_AUDIO), requestCode)
+        }
+
         fun isNotificationListenerPermission(context : Context): Boolean {
             val packageName: String = context.packageName
             val flat = Settings.Secure.getString(

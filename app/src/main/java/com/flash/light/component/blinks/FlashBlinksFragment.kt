@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.flash.light.R
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.databinding.FragmentFlashBlinksBinding
+import com.flash.light.utils.PermissionUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,13 @@ class FlashBlinksFragment : BaseFragment<FragmentFlashBlinksBinding>() {
                 viewModel.startSos()
             }
             dj.setOnClickListener {
-                viewModel.startDJ()
+                activity?.let {
+                    if(PermissionUtils.isRecordAudioPermissionGranted(it)){
+                        viewModel.startDJ()
+                    }else{
+                        PermissionUtils.requestRecordAudioPermission(it, 422)
+                    }
+                }
             }
             btnTurnOnFlash.setOnClickListener {
                 if(viewModel.stateLive.value == true){
