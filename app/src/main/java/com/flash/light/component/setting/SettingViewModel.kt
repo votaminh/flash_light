@@ -19,7 +19,7 @@ class SettingViewModel @Inject constructor(): ViewModel() {
 
     fun checkSettingValues(){
         flashWhenScreenOnStateLive.postValue(spManager.getFlashWhenScreenOn())
-        flashWhenBatteryLowLive.postValue(spManager.getFlashWhenBatteryLow())
+        flashWhenBatteryLowLive.postValue(spManager.getNotFlashWhenBatteryLow())
         flashWhenNormalModeLive.postValue(spManager.getFlashInNormalMode())
         flashWhenVibrateModeLive.postValue(spManager.getFlashInVibrateMode())
         flashWhenSilentModeLive.postValue(spManager.getFlashInSilentMode())
@@ -30,7 +30,7 @@ class SettingViewModel @Inject constructor(): ViewModel() {
     }
 
     fun settingFlashWhenLowBattery(state : Boolean){
-        spManager.setFlashWhenBatteryLow(state)
+        spManager.setNotFlashWhenBatteryLow(state)
     }
 
     fun settingFlashInNormalMode(state: Boolean){

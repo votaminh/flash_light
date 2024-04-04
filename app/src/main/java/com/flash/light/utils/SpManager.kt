@@ -192,15 +192,15 @@ class SpManager(private val preferences: SharedPreferences) {
     }
 
     fun getFlashWhenScreenOn() : Boolean{
-        return preferences.getBoolean("FlashWhenScreenOn", false)
+        return preferences.getBoolean("FlashWhenScreenOn", true)
     }
 
-    fun setFlashWhenBatteryLow(state: Boolean){
+    fun setNotFlashWhenBatteryLow(state: Boolean){
         preferences.edit().putBoolean("FlashWhenBatteryLow", state).apply()
     }
 
-    fun getFlashWhenBatteryLow() : Boolean{
-        return preferences.getBoolean("FlashWhenBatteryLow", false)
+    fun getNotFlashWhenBatteryLow() : Boolean{
+        return preferences.getBoolean("FlashWhenBatteryLow", true)
     }
 
     fun setFlashInNormalMode(state: Boolean){
@@ -208,7 +208,7 @@ class SpManager(private val preferences: SharedPreferences) {
     }
 
     fun getFlashInNormalMode() : Boolean{
-        return preferences.getBoolean("FlashInNormalMode", false)
+        return preferences.getBoolean("FlashInNormalMode", true)
     }
 
     fun setFlashInVibrateMode(state: Boolean){
@@ -216,7 +216,7 @@ class SpManager(private val preferences: SharedPreferences) {
     }
 
     fun getFlashInVibrateMode() : Boolean{
-        return preferences.getBoolean("FlashInVibrateMode", false)
+        return preferences.getBoolean("FlashInVibrateMode", true)
     }
 
     fun setFlashInSilentMode(state: Boolean){
@@ -224,6 +224,6 @@ class SpManager(private val preferences: SharedPreferences) {
     }
 
     fun getFlashInSilentMode() : Boolean{
-        return preferences.getBoolean("FlashInSilentMode", false)
+        return preferences.getBoolean("FlashInSilentMode", true)
     }
 }

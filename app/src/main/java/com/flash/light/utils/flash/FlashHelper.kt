@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
-import android.util.Log
+import android.media.AudioManager
 import com.flash.light.utils.AppUtils
 import com.flash.light.utils.SpManager
 
@@ -32,8 +32,29 @@ class FlashHelper {
             return
         }
 
-        val flashWhenBatteryLow = spManager.getFlashWhenBatteryLow()
-        if(!flashWhenBatteryLow && AppUtils.isLowBattery(context)){
+        val notFlashWhenBatteryLow = spManager.getNotFlashWhenBatteryLow()
+        if(notFlashWhenBatteryLow && AppUtils.isLowBattery(context)){
+            return
+        }
+
+        val am = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager?
+        var canShow = true
+        am?.let {
+            when (it.ringerMode) {
+                AudioManager.RINGER_MODE_SILENT -> {
+                    canShow = spManager.getFlashInSilentMode()
+                }
+                AudioManager.RINGER_MODE_VIBRATE -> {
+                    canShow = spManager.getFlashInVibrateMode()
+                }
+                AudioManager.RINGER_MODE_NORMAL -> {
+                    canShow = spManager.getFlashInNormalMode()
+                }
+                else -> {}
+            }
+        }
+
+        if(!canShow){
             return
         }
 
