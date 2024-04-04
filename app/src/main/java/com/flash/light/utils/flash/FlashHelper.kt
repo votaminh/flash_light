@@ -13,6 +13,7 @@ class FlashHelper {
     private var cameraManager : CameraManager? = null
     private var idCamera = ""
     private var endFlash = true
+    private var currentTorchMode = false
 
     companion object {
         private var instance: FlashHelper? = null
@@ -134,6 +135,20 @@ class FlashHelper {
         endFlash = true
         cameraManager?.run {
             setTorchMode(idCamera, false)
+        }
+    }
+
+    fun toggleFlash(context: Context) {
+        if(!endFlash){
+            return
+        }
+        cameraManager = context.getSystemService(Context.CAMERA_SERVICE) as? CameraManager
+        cameraManager?.run {
+            getCameraIdSupportFlash(this)?.let {
+                idCamera = it
+                setTorchMode(it, currentTorchMode)
+                currentTorchMode = !currentTorchMode
+            }
         }
     }
 }

@@ -13,7 +13,13 @@ class FlashBlinksViewModel @Inject constructor(@ApplicationContext private val c
     @Inject
     lateinit var flashHelper: FlashHelper
 
+    private var detectorSoundThread : DetectorSoundThread? = null
+
     val stateLive = MutableLiveData(false)
+
+    init {
+        detectorSoundThread = DetectorSoundThread(context)
+    }
 
     fun startSos(){
         flashHelper.startSos(context)
@@ -21,12 +27,29 @@ class FlashBlinksViewModel @Inject constructor(@ApplicationContext private val c
     }
 
     fun startDJ(){
-//        flashHelper.startSos(context)
         stateLive.postValue(true)
+        detectorSoundThread?.run {
+            setOnSoundListener(object : DetectorSoundThread.OnSoundListener{
+                override fun onDetectLowAmplitudeSound() {
+                    flashHelper.stop()
+                }
+
+                override fun onDetectSuccessSound() {
+                    flashHelper.toggleFlash(context)
+                }
+            })
+            start()
+        }
     }
 
     fun stop(){
         flashHelper.stop()
+
+        detectorSoundThread?.run {
+            setOnSoundListener(null)
+            stopDetection()
+        }
+
         stateLive.postValue(false)
     }
 }
