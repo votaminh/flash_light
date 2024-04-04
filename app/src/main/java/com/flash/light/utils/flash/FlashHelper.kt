@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
+import android.util.Log
 
 
 class FlashHelper {
@@ -52,6 +53,8 @@ class FlashHelper {
         }
         endFlash = false
         Thread{
+            val dataset = "1,0,1,0,1,0,,,1,,,0,,,1,,,0,,,1,,,0,,,1,0,1,0,1,0"
+
             val isFlashAvailable = context.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
             if (isFlashAvailable == true) {
                 cameraManager = context.getSystemService(Context.CAMERA_SERVICE) as? CameraManager
@@ -59,44 +62,24 @@ class FlashHelper {
                     getCameraIdSupportFlash(this)?.let {
                         idCamera = it
                         while (!endFlash){
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(100)
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(100)
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(300)
 
-                            setTorchMode(it, true)
-                            Thread.sleep(300)
-                            setTorchMode(it, false)
-                            Thread.sleep(300)
-                            setTorchMode(it, true)
-                            Thread.sleep(300)
-                            setTorchMode(it, false)
-                            Thread.sleep(300)
-                            setTorchMode(it, true)
-                            Thread.sleep(300)
-                            setTorchMode(it, false)
-                            Thread.sleep(300)
-
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(100)
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(100)
-                            setTorchMode(it, true)
-                            Thread.sleep(100)
-                            setTorchMode(it, false)
-                            Thread.sleep(2000)
+                            for(i in dataset.indices){
+                                if(endFlash){
+                                    break
+                                }
+                                val data = dataset[i]
+                                if(data == '1'){
+                                    setTorchMode(it, true)
+                                }else if(data == '0'){
+                                    setTorchMode(it, false)
+                                }else if(data == ','){
+                                    Thread.sleep(100)
+                                }
+                            }
+                            if(endFlash){
+                                break
+                            }
+                            Thread.sleep(1000)
                         }
                     }
                 }
