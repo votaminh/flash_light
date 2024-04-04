@@ -5,6 +5,8 @@ import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
 import android.util.Log
+import com.flash.light.utils.AppUtils
+import com.flash.light.utils.SpManager
 
 
 class FlashHelper {
@@ -24,6 +26,17 @@ class FlashHelper {
     }
 
     fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long){
+        val spManager = SpManager.getInstance(context)
+        val flashWhenScreenOn = spManager.getFlashWhenScreenOn()
+        if(!flashWhenScreenOn && AppUtils.isScreenOn(context)){
+            return
+        }
+
+        val flashWhenBatteryLow = spManager.getFlashWhenBatteryLow()
+        if(!flashWhenBatteryLow && AppUtils.isLowBattery(context)){
+            return
+        }
+
         if(!endFlash){
             return
         }
