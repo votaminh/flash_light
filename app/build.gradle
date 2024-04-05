@@ -26,7 +26,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         def formattedDate = new Date().format("MM.dd.yyyy")
-        archivesBaseName = "DontTouchMyPhone_v${versionName}(${versionCode})_${formattedDate}"
+        archivesBaseName = "flash_light${versionName}(${versionCode})_${formattedDate}"
     }
 
     signingConfigs {
