@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
 import android.media.AudioManager
+import android.util.Log
 import com.flash.light.utils.AppUtils
 import com.flash.light.utils.SpManager
 
@@ -16,9 +17,11 @@ class FlashHelper {
     private var currentTorchMode = false
 
     companion object {
+        private val TAG = "FlashHelper"
         private var instance: FlashHelper? = null
 
         fun getInstance(): FlashHelper {
+            Log.i(TAG, "getInstance: ")
             if (instance == null) {
                 instance = FlashHelper()
             }
@@ -27,7 +30,7 @@ class FlashHelper {
     }
 
     fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long, showRequest : Boolean = false){
-
+        Log.i(TAG, "startNormal: ")
         val spManager = SpManager.getInstance(context)
 
         if(!showRequest){
@@ -91,6 +94,7 @@ class FlashHelper {
     }
 
     fun startSos(context: Context){
+        Log.i(TAG, "startSos: ")
         if(!endFlash){
             return
         }
@@ -147,6 +151,7 @@ class FlashHelper {
     }
 
     fun toggleFlash(context: Context) {
+        Log.i(TAG, "toggleFlash: ")
         if(!endFlash){
             return
         }

@@ -20,17 +20,24 @@ public class DetectorSoundThread extends Thread {
 
     public DetectorSoundThread(Context context2) {
         this.context = context2;
+        init();
+    }
+
+    private void init() {
         MediaRecorder mediaRecorder = new MediaRecorder();
         this.recorder = mediaRecorder;
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         this.recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         MediaRecorder mediaRecorder2 = this.recorder;
-        mediaRecorder2.setOutputFile("/data/data/" + context2.getPackageName() + "/detect.3gp");
+        mediaRecorder2.setOutputFile("/data/data/" + context.getPackageName() + "/detect.3gp");
     }
 
     public void start() {
         try {
+            if(this.recorder == null){
+                init();
+            }
             this.recorder.prepare();
             this.recorder.start();
         } catch (IOException e) {
