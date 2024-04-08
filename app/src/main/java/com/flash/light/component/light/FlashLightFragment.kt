@@ -1,5 +1,6 @@
 package com.flash.light.component.light
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,5 +89,10 @@ class FlashLightFragment : BaseFragment<FragmentFlashLightBinding>() {
                 viewBinding.sbAlertOffTime.progress = it
             }
         }
+    }
+
+    override fun onPause() {
+        viewModel.stopFlash()
+        super.onPause()
     }
 }

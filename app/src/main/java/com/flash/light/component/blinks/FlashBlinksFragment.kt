@@ -1,5 +1,6 @@
 package com.flash.light.component.blinks
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -62,5 +63,10 @@ class FlashBlinksFragment : BaseFragment<FragmentFlashBlinksBinding>() {
                 layoutLock.root.visibility = View.INVISIBLE
             }
         }
+    }
+
+    override fun onPause() {
+        viewModel.stop()
+        super.onPause()
     }
 }
