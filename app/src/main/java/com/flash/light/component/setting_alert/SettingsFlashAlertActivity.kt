@@ -183,4 +183,9 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
             }
         }
     }
+
+    override fun onDestroy() {
+        viewModel.stopTest()
+        super.onDestroy()
+    }
 }
