@@ -26,16 +26,24 @@ class FlashHelper {
         }
     }
 
-    fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long){
-        val spManager = SpManager.getInstance(context)
-        val flashWhenScreenOn = spManager.getFlashWhenScreenOn()
-        if(!flashWhenScreenOn && AppUtils.isScreenOn(context)){
-            return
-        }
+    fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long, showRequest : Boolean = false){
 
-        val notFlashWhenBatteryLow = spManager.getNotFlashWhenBatteryLow()
-        if(notFlashWhenBatteryLow && AppUtils.isLowBattery(context)){
-            return
+        val spManager = SpManager.getInstance(context)
+
+        if(!showRequest){
+            val notFlashWhenScreenOn = spManager.getNotFlashWhenScreenOn()
+            if(notFlashWhenScreenOn){
+                if(AppUtils.isScreenOn(context)){
+                    return
+                }
+            }
+
+            val notFlashWhenBatteryLow = spManager.getNotFlashWhenBatteryLow()
+            if(notFlashWhenBatteryLow){
+                if(AppUtils.isLowBattery(context)){
+                    return
+                }
+            }
         }
 
         val am = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager?

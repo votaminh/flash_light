@@ -123,7 +123,7 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         }
 
         isTestingLive.postValue(true)
-        flashHelper.startNormal(context, onTime, offTime)
+        flashHelper.startNormal(context, onTime, offTime, true)
     }
 
     fun stopTest(){

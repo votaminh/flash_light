@@ -187,11 +187,11 @@ class SpManager(private val preferences: SharedPreferences) {
         return preferences.getBoolean("sate_flash_notification", false)
     }
 
-    fun setFlashWhenScreenOn(state: Boolean){
+    fun setNotFlashWhenScreenOn(state: Boolean){
         preferences.edit().putBoolean("FlashWhenScreenOn", state).apply()
     }
 
-    fun getFlashWhenScreenOn() : Boolean{
+    fun getNotFlashWhenScreenOn() : Boolean{
         return preferences.getBoolean("FlashWhenScreenOn", true)
     }
 

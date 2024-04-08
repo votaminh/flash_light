@@ -18,7 +18,7 @@ class SettingViewModel @Inject constructor(): ViewModel() {
     val flashWhenSilentModeLive = MutableLiveData(false)
 
     fun checkSettingValues(){
-        flashWhenScreenOnStateLive.postValue(spManager.getFlashWhenScreenOn())
+        flashWhenScreenOnStateLive.postValue(spManager.getNotFlashWhenScreenOn())
         flashWhenBatteryLowLive.postValue(spManager.getNotFlashWhenBatteryLow())
         flashWhenNormalModeLive.postValue(spManager.getFlashInNormalMode())
         flashWhenVibrateModeLive.postValue(spManager.getFlashInVibrateMode())
@@ -26,7 +26,7 @@ class SettingViewModel @Inject constructor(): ViewModel() {
     }
 
     fun settingFlashWhenScreenOn(state : Boolean){
-        spManager.setFlashWhenScreenOn(state)
+        spManager.setNotFlashWhenScreenOn(state)
     }
 
     fun settingFlashWhenLowBattery(state : Boolean){
