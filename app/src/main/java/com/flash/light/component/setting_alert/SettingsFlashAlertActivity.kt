@@ -49,6 +49,10 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
                     viewModel.testFlash(type)
                 }
             }
+
+            head.imvBack.setOnClickListener {
+                finish()
+            }
         }
 
         getData()
