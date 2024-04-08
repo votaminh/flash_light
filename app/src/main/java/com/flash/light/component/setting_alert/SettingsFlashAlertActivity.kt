@@ -3,6 +3,7 @@ package com.flash.light.component.setting_alert
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.activity.viewModels
@@ -128,8 +129,10 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
             isTestingLive.observe(this@SettingsFlashAlertActivity){
                 if(it){
                     viewBinding.btnTest.text = getString(R.string.txt_stop)
+                    viewBinding.disableSetting.visibility = View.VISIBLE
                 }else{
                     viewBinding.btnTest.text = getString(R.string.txt_test)
+                    viewBinding.disableSetting.visibility = View.INVISIBLE
                 }
             }
         }

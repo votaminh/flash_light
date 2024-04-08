@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/head"
+        android:layout_above="@+id/btnTest"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,8 +79,6 @@
                         />
                 </RelativeLayout>
             </LinearLayout>
-
-
 
             <LinearLayout
                 style="@style/LayoutContainFeature"
@@ -180,6 +179,20 @@
                         />
                 </RelativeLayout>
             </LinearLayout>
+
+            <View
+                android:id="@+id/disableSetting"
+                android:visibility="invisible"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/bg_light_app"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:alpha="0.7"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
