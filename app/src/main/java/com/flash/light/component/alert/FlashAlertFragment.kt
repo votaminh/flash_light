@@ -50,8 +50,8 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
     }
 
     private fun listenerView() {
-        viewBinding.swTapHome.setOnCheckedChangeListener { p0, p1 ->
-            viewModel.saveStateFlash(p1)
+        viewBinding.swTapHome.setOnClickListener {
+            viewModel.saveStateFlash(viewBinding.swTapHome.isChecked)
         }
     }
 
