@@ -22,20 +22,19 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onNotificationPosted(statusBarNotification: StatusBarNotification) {
 
+        Log.i(TAG, "onNotificationPosted: ${statusBarNotification.packageName}")
         val state = spManager.getStateFlash()
         if(!state){
             return
         }
 
-        Log.i(TAG, "onNotificationPosted: ${statusBarNotification.packageName}")
-        if (!Intrinsics.areEqual(
-                statusBarNotification.packageName as Any,
-                "sms_default_application" as Any
-            ) && !Intrinsics.areEqual(
-                statusBarNotification.packageName as Any,
-                "com.google.android.apps.messaging" as Any
-            )
-        ) {
+        val packageName = statusBarNotification.packageName
+
+        if (!packageName.equals("sms_default_application") &&
+            !packageName.equals("com.google.android.apps.messaging") &&
+            !packageName.contains("mms") &&
+            !packageName.contains("sms")
+            ) {
             Log.i(TAG, "onNotificationPosted: notification")
             val state = spManager.getTurnOnNotification()
             if(state){
