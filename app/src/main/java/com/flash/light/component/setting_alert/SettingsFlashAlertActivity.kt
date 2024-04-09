@@ -148,14 +148,18 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
                 ALERT_CALL_PHONE -> {
                     head.tvTitle.text = getString(R.string.txt_incoming_calls)
                     tvContentType.text = getString(R.string.txt_turn_on_for_incoming_calls)
+                    ivType.setImageResource(R.drawable.ic_phone)
+
                 }
                 ALERT_NOTIFICATION -> {
                     head.tvTitle.text = getString(R.string.txt_notification)
                     tvContentType.text = getString(R.string.txt_turn_on_for_amp_notification)
+                    ivType.setImageResource(R.drawable.ic_noti)
                 }
                 ALERT_SMS -> {
                     head.tvTitle.text = getString(R.string.txt_SMS)
                     tvContentType.text = getString(R.string.txt_turn_on_for_sms)
+                    ivType.setImageResource(R.drawable.ic_sms)
                 }
             }
         }
