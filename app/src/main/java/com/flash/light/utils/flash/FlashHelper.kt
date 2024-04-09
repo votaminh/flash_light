@@ -13,8 +13,9 @@ import com.flash.light.utils.SpManager
 class FlashHelper {
     private var cameraManager : CameraManager? = null
     private var idCamera = ""
-    private var endFlash = true
     private var currentTorchMode = false
+    private var flashRunnable : FlashRunnable? = null
+    private var endFlash = false
 
     companion object {
         private val TAG = "FlashHelper"
@@ -70,10 +71,12 @@ class FlashHelper {
             return
         }
 
-        if(!endFlash){
-            return
+        flashRunnable?.let {
+            if(it.endFlash){
+                return
+            }
         }
-        endFlash = false
+
         Thread{
             val isFlashAvailable = context.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
             if (isFlashAvailable == true) {
@@ -81,12 +84,12 @@ class FlashHelper {
                 cameraManager?.run {
                     getCameraIdSupportFlash(this)?.let {
                         idCamera = it
-                        while (!endFlash){
+                        flashRunnable = FlashRunnable(turnOnTime, turnOffTime, {
                             setTorchMode(it, true)
-                            Thread.sleep(turnOnTime)
+                        },{
                             setTorchMode(it, false)
-                            Thread.sleep(turnOffTime)
-                        }
+                        })
+                        flashRunnable?.run()
                     }
                 }
             }
@@ -145,6 +148,10 @@ class FlashHelper {
 
     fun stop() {
         endFlash = true
+        flashRunnable?.let {
+            it.endFlash = true
+        }
+        flashRunnable = null
         cameraManager?.run {
             setTorchMode(idCamera, false)
         }
