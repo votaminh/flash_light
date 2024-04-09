@@ -57,4 +57,17 @@
     <string name="txt_mode_sos">MODO SOS</string>
     <string name="txt_flash_when_phone">Flash cuando el teléfono está configurado en...</string>
     <string name="txt_share_app">Compartir Aplicación</string>
+
+    <string name="english">Inglés</string>
+    <string name="vietnamese">Vietnamita</string>
+    <string name="hindi">Hindi</string>
+    <string name="spanish">Español</string>
+    <string name="french">Francés</string>
+    <string name="portuguese">Portugués</string>
+    <string name="txt_get_start">Empezar</string>
+    <string name="language">Idioma</string>
+    <string name="txt_next">Siguiente</string>
+    <string name="this_action_contain_ads">Esta acción contiene anuncios</string>
+    <string name="txt_setting">Ajustes</string>
+
 </resources>

@@ -1,9 +1,6 @@
 package com.flash.light.base.activity
 
-import android.app.Activity
-import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -14,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewbinding.ViewBinding
 import com.flash.light.R
+import com.flash.light.utils.SpManager
+import java.util.Locale
 
 
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
@@ -25,6 +24,16 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val language: String = SpManager.getInstance(this).getLanguage().languageCode
+        if (language.isNotEmpty()) {
+            val res = resources
+            val dm = res.displayMetrics
+            val conf = res.configuration
+            conf.setLocale(Locale(language.lowercase(Locale.getDefault())))
+            res.updateConfiguration(conf, dm)
+        }
+
         setStatusBarColor(ContextCompat.getColor(this, R.color.bg_dark_app), false)
         hideSystemUI()
         viewBinding = provideViewBinding()
@@ -95,4 +104,5 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
             isAppearanceLightStatusBars = lightStatus
         }
     }
+
 }

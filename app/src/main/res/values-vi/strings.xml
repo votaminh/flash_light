@@ -57,5 +57,16 @@
     <string name="txt_mode_sos">CHẾ ĐỘ SOS</string>
     <string name="txt_flash_when_phone">Flash khi điện thoại được thiết lập...</string>
     <string name="txt_share_app">Chia sẻ ứng dụng</string>
+    <string name="english">Tiếng Anh</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="hindi">Tiếng Hin-ddi</string>
+    <string name="spanish">Tiếng Tây Ban Nha</string>
+    <string name="french">Tiếng Pháp</string>
+    <string name="portuguese">Tiếng Bồ Đào Nha</string>
+    <string name="txt_get_start">Bắt đầu</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="txt_next">Tiếp</string>
+    <string name="this_action_contain_ads">Hành động này chứa quảng cáo</string>
+    <string name="txt_setting">Cài đặt</string>
 
 </resources>

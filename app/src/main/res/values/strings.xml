@@ -2,18 +2,18 @@
     <string name="app_name" translatable="false">FlashLight</string>
     <string name="facebook_app_id" translatable="false">251056887922505</string>
     <string name="facebook_client_token" translatable="false">cc17abe0daf194936ff07030b918f78f</string>
-    <string name="language">Language</string>
-    <string name="txt_next">Next</string>
-    <string name="this_action_contain_ads">This action contain Ads</string>
 
     <string name="english">English</string>
-    <string name="txt_setting">Setting</string>
     <string name="vietnamese">Vietnamese</string>
     <string name="hindi">Hindi</string>
     <string name="spanish">Spanish</string>
     <string name="french">French</string>
     <string name="portuguese">Portuguese</string>
     <string name="txt_get_start">Get start</string>
+    <string name="language">Language</string>
+    <string name="txt_next">Next</string>
+    <string name="this_action_contain_ads">This action contain Ads</string>
+    <string name="txt_setting">Setting</string>
 
     <string name="onboarding_title1">Flash notifications</string>
     <string name="onboarding_intro1">When there is an incoming call or message</string>

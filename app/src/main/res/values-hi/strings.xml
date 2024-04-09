@@ -57,5 +57,16 @@
     <string name="txt_mode_sos">SOS मोड</string>
     <string name="txt_flash_when_phone">फोन को इस सेट करें जब...</string>
     <string name="txt_share_app">ऐप शेयर करें</string>
+    <string name="english">अंग्रेज़ी</string>
+    <string name="vietnamese">वियतनामी</string>
+    <string name="hindi">हिंदी</string>
+    <string name="spanish">स्पेनिश</string>
+    <string name="french">फ्रेंच</string>
+    <string name="portuguese">पुर्तगाली</string>
+    <string name="txt_get_start">शुरू करें</string>
+    <string name="language">भाषा</string>
+    <string name="txt_next">अगला</string>
+    <string name="this_action_contain_ads">यह कार्रवाई विज्ञापन शामिल है</string>
+    <string name="txt_setting">सेटिंग्स</string>
 
 </resources>
