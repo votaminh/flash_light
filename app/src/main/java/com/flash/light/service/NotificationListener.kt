@@ -40,10 +40,7 @@ class NotificationListener : NotificationListenerService() {
             if(state){
                 val onTime = spManager.getOnTimeFlashNotificationMS()
                 val offTime = spManager.getOffTimeFlashNotificationMS()
-                flashHelper.startNormal(this, onTime, offTime)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    flashHelper.stop()
-                }, 5000)
+                flashHelper.startNormal(this, onTime, offTime, timeEnd = 5000)
             }
         } else{
             Log.i(TAG, "onNotificationPosted: SMS")
@@ -51,10 +48,7 @@ class NotificationListener : NotificationListenerService() {
             if(state){
                 val onTime = spManager.getOnTimeFlashSMSMS()
                 val offTime = spManager.getOffTimeFlashSMSMS()
-                flashHelper.startNormal(this, onTime, offTime)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    flashHelper.stop()
-                }, 5000)
+                flashHelper.startNormal(this, onTime, offTime, timeEnd = 5000)
             }
         }
     }

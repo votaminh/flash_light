@@ -30,7 +30,7 @@ class FlashHelper {
         }
     }
 
-    fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long, showRequest : Boolean = false){
+    fun startNormal(context : Context, turnOnTime : Long, turnOffTime : Long, showRequest : Boolean = false, timeEnd : Long? = null){
         Log.i(TAG, "startNormal: ")
         val spManager = SpManager.getInstance(context)
 
@@ -84,10 +84,13 @@ class FlashHelper {
                 cameraManager?.run {
                     getCameraIdSupportFlash(this)?.let {
                         idCamera = it
-                        flashRunnable = FlashRunnable(turnOnTime, turnOffTime, {
+                        flashRunnable = FlashRunnable(turnOnTime, turnOffTime, timeEnd,
+                            turnOnAction = {
                             setTorchMode(it, true)
-                        },{
+                        }, turnOffAction = {
                             setTorchMode(it, false)
+                        }, endAction = {
+                            stop()
                         })
                         flashRunnable?.run()
                     }
