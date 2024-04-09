@@ -74,7 +74,7 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
 
     private fun checkPermissionToOpenSetting(type: String) {
         activity?.let {
-            if(PermissionUtils.isPhoneStatePermissionGranted(it)){
+            if(PermissionUtils.isPhoneStatePermissionGranted(it) && PermissionUtils.isBatteryDisable(it)){
                 SettingsFlashAlertActivity.start(it, type)
             }else{
                 PermissionActivity.start(it)

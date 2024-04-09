@@ -119,7 +119,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layoutAllowPermissionCamera"
+                    android:id="@+id/layoutAllowPermissionBatter"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size50"
                     android:layout_marginHorizontal="@dimen/size10"
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@string/txt_camera"
+                        android:text="@string/txt_save_battery"
                         android:textColor="@color/white"
                         android:textSize="@dimen/size13"
                         app:layout_constraintBottom_toBottomOf="parent"
