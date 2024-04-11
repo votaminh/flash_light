@@ -31,10 +31,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("key/key_find_phone.jks")
-            storePassword "android"
-            keyAlias "keyfindphone"
-            keyPassword "android"
+            storeFile file("key/flash_light.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
         }
     }
 
