@@ -5,6 +5,7 @@ import android.app.ActivityManager
 import android.content.Intent
 import android.provider.Settings
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.flash.light.App
 import com.flash.light.BuildConfig
@@ -16,7 +17,9 @@ import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
+import com.flash.light.dialog.DialogExt.showDialogExit
 import com.flash.light.service.PhoneCallComingService
+import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
 import com.flash.light.utils.changeTextColor
@@ -86,6 +89,31 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         interAdmob = InterAdmob(this@MainActivity, BuildConfig.inter_home)
         loadInter()
+        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+            NativeAdmobUtils.loadNativeExit()
+        }
+        
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+                    showDialogExit(this@MainActivity){
+                        finish()
+                    }
+                }else{
+                    finish()
+                }
+            }
+        })
+    }
+
+    override fun onBackPressed() {
+        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+            showDialogExit(this@MainActivity){
+                finish()
+            }
+        }else{
+            finish()
+        }
     }
 
     private fun checkShowInter() {

@@ -14,7 +14,7 @@ class NativeAdmobUtils {
         var onboardNativeAdmob: NativeAdmob? = null
 
         @SuppressLint("StaticFieldLeak")
-        var homeNativeAdmob: NativeAdmob? = null
+        var nativeExitLiveData: NativeAdmob? = null
 
         fun loadNativeLanguage() {
             App.instance?.applicationContext?.let {context ->
@@ -36,14 +36,14 @@ class NativeAdmobUtils {
             }
         }
 
-//        fun loadNativeHome(){
-//            App.instance?.applicationContext?.let {context ->
-//                homeNativeAdmob = NativeAdmob(
-//                    context,
-//                    BuildConfig.native_home
-//                )
-//                homeNativeAdmob?.load(null)
-//            }
-//        }
+        fun loadNativeExit(){
+            App.instance?.applicationContext?.let {context ->
+                nativeExitLiveData = NativeAdmob(
+                    context,
+                    BuildConfig.native_exit
+                )
+                nativeExitLiveData?.load(null)
+            }
+        }
     }
 }
