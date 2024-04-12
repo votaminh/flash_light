@@ -7,5 +7,6 @@ class NameRemoteAdmob {
         const val NATIVE_ONBOARD = "native_onboard"
         const val APP_RESUME = "app_resume"
         const val BANNER_SPLASH = "banner_splash"
+        const val BANNER_ALL = "banner_all"
     }
 }

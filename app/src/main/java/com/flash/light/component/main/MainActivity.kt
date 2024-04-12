@@ -4,8 +4,13 @@ import android.app.Activity
 import android.app.ActivityManager
 import android.content.Intent
 import android.provider.Settings
+import android.view.View
 import androidx.core.content.ContextCompat
+import com.flash.light.BuildConfig
 import com.flash.light.R
+import com.flash.light.admob.BannerAdmob
+import com.flash.light.admob.CollapsiblePositionType
+import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
 import com.flash.light.service.PhoneCallComingService
@@ -68,6 +73,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         startNotificationFlashService()
+        showBanner()
+    }
+
+    private fun showBanner() {
+        if(spManager.getBoolean(NameRemoteAdmob.BANNER_ALL, true)){
+            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
+            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_splash, viewBinding.banner)
+        }else{
+            viewBinding.banner.visibility = View.GONE
+        }
     }
 
     private fun resetAllMenu() {

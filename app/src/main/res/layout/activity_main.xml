@@ -156,5 +156,19 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-    
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size2"
+        android:background="@color/gray1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="4353" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>
