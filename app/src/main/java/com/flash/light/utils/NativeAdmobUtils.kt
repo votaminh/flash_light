@@ -36,14 +36,14 @@ class NativeAdmobUtils {
             }
         }
 
-        fun loadNativeHome(){
-            App.instance?.applicationContext?.let {context ->
-                homeNativeAdmob = NativeAdmob(
-                    context,
-                    BuildConfig.native_home
-                )
-                homeNativeAdmob?.load(null)
-            }
-        }
+//        fun loadNativeHome(){
+//            App.instance?.applicationContext?.let {context ->
+//                homeNativeAdmob = NativeAdmob(
+//                    context,
+//                    BuildConfig.native_home
+//                )
+//                homeNativeAdmob?.load(null)
+//            }
+//        }
     }
 }

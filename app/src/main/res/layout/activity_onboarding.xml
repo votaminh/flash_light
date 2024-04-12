@@ -62,7 +62,7 @@
         >
         <include
             android:id="@+id/native_ad_view"
-            layout="@layout/ad_unified"/>
+            layout="@layout/ad_unified_onboard"/>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

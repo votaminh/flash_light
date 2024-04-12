@@ -48,8 +48,6 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         RemoteConfig.instance().fetch()
         registerActivityLifecycleCallbacks(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-
-        initAds();
     }
 
     fun initAds() {

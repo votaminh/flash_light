@@ -12,7 +12,7 @@ class SpManager(private val preferences: SharedPreferences) {
 
         fun getInstance(context: Context): SpManager {
             if (instance == null) {
-                instance = SpManager(PreferenceManager.getDefaultSharedPreferences(context))
+                instance = SpManager(context.getSharedPreferences("flashlight",Context.MODE_PRIVATE))
             }
             return instance!!
         }
