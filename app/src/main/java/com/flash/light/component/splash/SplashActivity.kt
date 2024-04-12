@@ -64,9 +64,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 NativeAdmobUtils.loadNativeOnboard()
             }
         }
-        if (spManager.getBoolean(NameRemoteAdmob.NATIVE_HOME, true)) {
-            NativeAdmobUtils.loadNativeHome()
-        }
 
         runProgress()
     }

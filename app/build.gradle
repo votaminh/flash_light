@@ -49,17 +49,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            manifestPlaceholders = [ad_app_id: "ca-app-pub-7121787699260095~2083361919"]
+            manifestPlaceholders = [ad_app_id: "ca-app-pub-7121787699260095~9662101476"]
 
-            buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/3355192938\""
-            buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/1842800710\""
-            buildConfigField "String", "inter_click", "\"ca-app-pub-7121787699260095/9338147352\""
-            buildConfigField "String", "inter_apply", "\"ca-app-pub-7121787699260095/4644401489\""
-            buildConfigField "String", "native_language", "\"ca-app-pub-7121787699260095/3558372915\""
-            buildConfigField "String", "native_onboarding", "\"ca-app-pub-7121787699260095/7462136519\""
-            buildConfigField "String", "native_tutorial", "\"ca-app-pub-7121787699260095/5981356275\""
-            buildConfigField "String", "native_sound", "\"ca-app-pub-7121787699260095/9381722846\""
-            buildConfigField "String", "native_home", "\"ca-app-pub-7121787699260095/2042111266\""
+            buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/9527521489\""
+
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/2986163864\""
+
+            buildConfigField "String", "native_language", "\"ca-app-pub-7121787699260095/2534220802\""
+            buildConfigField "String", "native_onboarding", "\"ca-app-pub-7121787699260095/3668690142\""
         }
 
         debug {
@@ -67,13 +64,9 @@ android {
 
             buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
             buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "inter_click", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "inter_apply", "\"ca-app-pub-3940256099942544/1033173712\""
+
             buildConfigField "String", "native_language", "\"ca-app-pub-3940256099942544/2247696110\""
             buildConfigField "String", "native_onboarding", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_tutorial", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_sound", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_home", "\"ca-app-pub-3940256099942544/2247696110\""
         }
     }
     compileOptions {
