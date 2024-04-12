@@ -57,6 +57,8 @@ android {
 
             buildConfigField "String", "native_language", "\"ca-app-pub-7121787699260095/2534220802\""
             buildConfigField "String", "native_onboarding", "\"ca-app-pub-7121787699260095/3668690142\""
+
+            buildConfigField "String", "banner_splash", "\"ca-app-pub-7121787699260095/5588276474\""
         }
 
         debug {
@@ -67,6 +69,8 @@ android {
 
             buildConfigField "String", "native_language", "\"ca-app-pub-3940256099942544/2247696110\""
             buildConfigField "String", "native_onboarding", "\"ca-app-pub-3940256099942544/2247696110\""
+
+            buildConfigField "String", "banner_splash", "\"ca-app-pub-3940256099942544/2014213617\""
         }
     }
     compileOptions {
