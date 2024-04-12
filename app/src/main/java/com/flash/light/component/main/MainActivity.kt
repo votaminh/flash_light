@@ -6,10 +6,13 @@ import android.content.Intent
 import android.provider.Settings
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.R
 import com.flash.light.admob.BannerAdmob
+import com.flash.light.admob.BaseAdmob
 import com.flash.light.admob.CollapsiblePositionType
+import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivityMainBinding
@@ -28,6 +31,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     @Inject
     lateinit var spManager: SpManager
+
+    private var interAdmob : InterAdmob? = null
 
     companion object {
         fun start(activity : Activity){
@@ -50,30 +55,59 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 resetAllMenu()
                 imvAlert.changeTint(R.color.main)
                 tvAlert.changeTextColor(R.color.main)
+                checkShowInter()
             }
             light.setOnClickListener {
                 viewPager2.currentItem = 1
                 resetAllMenu()
                 imvLight.changeTint(R.color.main)
                 tvLight.changeTextColor(R.color.main)
+                checkShowInter()
             }
             blinks.setOnClickListener {
                 viewPager2.currentItem = 2
                 resetAllMenu()
                 imvBlinks.changeTint(R.color.main)
                 tvBlinks.changeTextColor(R.color.main)
+                checkShowInter()
             }
             settings.setOnClickListener {
                 viewPager2.currentItem = 3
                 resetAllMenu()
                 imvSetting.changeTint(R.color.main)
                 tvSetting.changeTextColor(R.color.main)
+                checkShowInter()
             }
 
         }
 
         startNotificationFlashService()
         showBanner()
+
+        interAdmob = InterAdmob(this@MainActivity, BuildConfig.inter_home)
+        loadInter()
+    }
+
+    private fun checkShowInter() {
+        interAdmob?.run {
+            if(available() && spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
+                showInterstitial(this@MainActivity, object : BaseAdmob.OnAdmobShowListener{
+                    override fun onShow() {
+                        loadInter()
+                    }
+
+                    override fun onError(e: String?) {
+                        loadInter()
+                    }
+                })
+            }
+        }
+    }
+
+    private fun loadInter() {
+        if(spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
+            interAdmob?.load(null)
+        }
     }
 
     private fun showBanner() {

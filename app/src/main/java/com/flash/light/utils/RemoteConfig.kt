@@ -63,6 +63,7 @@ class RemoteConfig {
         kotlin.runCatching {
             val remoteConfig = Firebase.remoteConfig
             putBooleanToSP(remoteConfig, NameRemoteAdmob.INTER_SPLASH)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.INTER_HOME)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.NATIVE_LANGUAGE)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.NATIVE_ONBOARD)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.APP_RESUME)
