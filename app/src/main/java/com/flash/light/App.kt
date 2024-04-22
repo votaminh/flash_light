@@ -17,6 +17,7 @@ import com.mbridge.msdk.MBridgeConstans
 import com.mbridge.msdk.out.MBridgeSDKFactory
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.OpenAdmob
+import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.RemoteConfig
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.HiltAndroidApp
@@ -48,6 +49,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         RemoteConfig.instance().fetch()
         registerActivityLifecycleCallbacks(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
+        NetworkUtil.initNetwork(this)
     }
 
     fun initAds() {

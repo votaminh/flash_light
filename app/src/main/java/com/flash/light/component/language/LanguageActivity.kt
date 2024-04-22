@@ -13,6 +13,7 @@ import com.flash.light.component.main.MainActivity
 import com.flash.light.component.onboarding.OnBoardingActivity
 import com.flash.light.databinding.ActivityLanguageBinding
 import com.flash.light.utils.NativeAdmobUtils
+import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -60,6 +61,12 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
 
         if (isTempNativeAd != null) {
             isTempNativeAd = null
+        }
+
+        if (spManager.getShowOnBoarding() && NetworkUtil.isOnline) {
+            if (spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)) {
+                NativeAdmobUtils.loadNativeOnboard()
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.utils.NativeAdmobUtils
+import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.RemoteConfig
 
 @AndroidEntryPoint
@@ -60,12 +61,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun initViews() {
-        if (spManager.getShowOnBoarding()) {
+        if (spManager.getShowOnBoarding() && NetworkUtil.isOnline) {
             if (spManager.getBoolean(NameRemoteAdmob.NATIVE_LANGUAGE, true)) {
                 NativeAdmobUtils.loadNativeLanguage()
-            }
-            if (spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)) {
-                NativeAdmobUtils.loadNativeOnboard()
             }
         }
 
