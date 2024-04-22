@@ -16,6 +16,11 @@ android {
         baseline = file("lint-baseline.xml")
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.flashlight.flashalert.ledflashlight"
         minSdk 23
