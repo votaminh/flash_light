@@ -136,6 +136,7 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-messaging")
 
     // Tensorflow
     // Import the Audio Task Library dependency (NNAPI is included)

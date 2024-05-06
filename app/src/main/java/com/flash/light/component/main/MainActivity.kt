@@ -104,6 +104,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
         })
+
+        checkNotificationPermisison()
+    }
+
+    private fun checkNotificationPermisison() {
+        if(!PermissionUtils.permissionNotification(this)){
+            PermissionUtils.requestNotificationPermission(this, 322)
+        }
     }
 
     override fun onBackPressed() {

@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 
 class PermissionUtils {
@@ -58,6 +59,20 @@ class PermissionUtils {
             intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
             intent.data = Uri.parse("package:" + activity.packageName)
             activity.startActivityForResult(intent, requestCode)
+        }
+
+        fun permissionNotification(activity: Activity?): Boolean {
+            val notificationManagerCompat = NotificationManagerCompat.from(activity!!)
+            return notificationManagerCompat.areNotificationsEnabled()
+        }
+
+        fun requestNotificationPermission(activity: Activity, requestCode: Int) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                activity.requestPermissions(
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    requestCode
+                )
+            }
         }
     }
 }
