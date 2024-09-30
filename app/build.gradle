@@ -75,6 +75,7 @@ android {
 
             manifestPlaceholders = [ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
 
+            buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
             buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
             buildConfigField "String", "native_language_1", "\"ca-app-pub-3940256099942544/2247696110\""
             buildConfigField "String", "native_language_2", "\"ca-app-pub-3940256099942544/2247696110\""

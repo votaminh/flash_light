@@ -13,6 +13,7 @@ class InterNativeUtils {
     companion object {
         var interBack : InterAdmob? = null
         private var latestInterShow: Long = 0
+        private var firstRequest = true
 
         fun loadInterBack(){
             App.instance?.applicationContext?.let { context ->
@@ -29,13 +30,19 @@ class InterNativeUtils {
         fun showInterAction(activity : Activity, nextAction : (() -> Unit)? = null){
             if(latestInterShow == 0L){
                 latestInterShow = System.currentTimeMillis()
-                nextAction?.invoke()
-                return
             }else if(System.currentTimeMillis() - latestInterShow < 30000){
                 nextAction?.invoke()
                 return
             }
+
             latestInterShow = System.currentTimeMillis()
+
+            if(firstRequest){
+                firstRequest = false
+                nextAction?.invoke()
+                return
+            }
+
             if(interBack == null || !SpManager.getInstance(activity).getBoolean(NameRemoteAdmob.inter_back, true)){
                 nextAction?.invoke()
             }else{

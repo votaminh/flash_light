@@ -71,6 +71,7 @@ class RemoteConfig {
             putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_home)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.native_function)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_back)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.open_resume)
         }
     }
 

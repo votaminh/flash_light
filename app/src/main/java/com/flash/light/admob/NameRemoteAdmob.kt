@@ -12,5 +12,6 @@ class NameRemoteAdmob {
         const val inter_home = "inter_home"
         const val inter_back = "inter_back"
         const val native_function = "native_function"
+        const val open_resume = "open_resume"
     }
 }

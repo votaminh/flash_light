@@ -37,6 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val viewPagerAdapter = ViewPagerAdapter(this@MainActivity)
 
     private var latestInterShow: Long = 0
+    private var firstRequest = true
     @Inject
     lateinit var spManager: SpManager
 
@@ -118,13 +119,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     fun showInterAction(nextAction : (() -> Unit)? = null){
         if(latestInterShow == 0L){
             latestInterShow = System.currentTimeMillis()
-            nextAction?.invoke()
-            return
         }else if(System.currentTimeMillis() - latestInterShow < 30000){
             nextAction?.invoke()
             return
         }
+
         latestInterShow = System.currentTimeMillis()
+
+        if(firstRequest){
+            firstRequest = false
+            nextAction?.invoke()
+            return
+        }
+
         if(interAdmob == null || !spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
             nextAction?.invoke()
         }else{
