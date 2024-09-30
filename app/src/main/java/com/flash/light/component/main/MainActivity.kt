@@ -96,7 +96,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         startNotificationFlashService()
-        showBanner()
+//        showBanner()
         loadInter()
         InterNativeUtils.loadInterBack()
         checkNotificationPermisison()
@@ -117,6 +117,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun showInterAction(nextAction : (() -> Unit)? = null){
+        if(firstRequest){
+            firstRequest = false
+            nextAction?.invoke()
+            return
+        }
+
         if(latestInterShow == 0L){
             latestInterShow = System.currentTimeMillis()
         }else if(System.currentTimeMillis() - latestInterShow < 30000){
@@ -125,12 +131,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         latestInterShow = System.currentTimeMillis()
-
-        if(firstRequest){
-            firstRequest = false
-            nextAction?.invoke()
-            return
-        }
 
         if(interAdmob == null || !spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
             nextAction?.invoke()

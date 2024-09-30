@@ -20,7 +20,7 @@ class InterNativeUtils {
                 if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.inter_back, true)){
                     interBack = InterAdmob(
                         context,
-                        BuildConfig.native_permission
+                        BuildConfig.inter_back
                     )
                     interBack?.load(null)
                 }
@@ -28,6 +28,12 @@ class InterNativeUtils {
         }
 
         fun showInterAction(activity : Activity, nextAction : (() -> Unit)? = null){
+            if(firstRequest){
+                firstRequest = false
+                nextAction?.invoke()
+                return
+            }
+
             if(latestInterShow == 0L){
                 latestInterShow = System.currentTimeMillis()
             }else if(System.currentTimeMillis() - latestInterShow < 30000){
@@ -36,12 +42,6 @@ class InterNativeUtils {
             }
 
             latestInterShow = System.currentTimeMillis()
-
-            if(firstRequest){
-                firstRequest = false
-                nextAction?.invoke()
-                return
-            }
 
             if(interBack == null || !SpManager.getInstance(activity).getBoolean(NameRemoteAdmob.inter_back, true)){
                 nextAction?.invoke()
