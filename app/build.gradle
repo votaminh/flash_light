@@ -54,19 +54,23 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-//            manifestPlaceholders = [ad_app_id: "ca-app-pub-7121787699260095~9662101476"]
-//
-//            buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/9527521489\""
-//
-//            buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/2986163864\""
-//            buildConfigField "String", "inter_home", "\"ca-app-pub-7121787699260095/1042526800\""
-//
-//            buildConfigField "String", "native_language", "\"ca-app-pub-7121787699260095/2534220802\""
-//            buildConfigField "String", "native_onboarding", "\"ca-app-pub-7121787699260095/3668690142\""
-//            buildConfigField "String", "native_exit", "\"ca-app-pub-7121787699260095/9819682445\""
-//
-//            buildConfigField "String", "banner_splash", "\"ca-app-pub-7121787699260095/5588276474\""
-//            buildConfigField "String", "banner_all", "\"ca-app-pub-7121787699260095/1221139132\""
+            manifestPlaceholders = [ad_app_id:"ca-app-pub-7121787699260095~9662101476"]
+
+            buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/9527521489\""
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/2986163864\""
+            buildConfigField "String", "native_language_1", "\"ca-app-pub-7121787699260095/2534220802\""
+            buildConfigField "String", "native_language_2", "\"ca-app-pub-7121787699260095/2752450217\""
+
+            buildConfigField "String", "native_onboarding_1", "\"ca-app-pub-7121787699260095/3668690142\""
+            buildConfigField "String", "native_onboarding_2", "\"ca-app-pub-7121787699260095/7485902140\""
+
+            buildConfigField "String", "native_permission", "\"ca-app-pub-7121787699260095/1777683429\""
+            buildConfigField "String", "native_function", "\"ca-app-pub-7121787699260095/9018513658\""
+
+            buildConfigField "String", "native_home", "\"ca-app-pub-7121787699260095/3952420626\""
+            buildConfigField "String", "banner_home", "\"ca-app-pub-7121787699260095/8678133690\""
+            buildConfigField "String", "inter_home", "\"ca-app-pub-7121787699260095/1042526800\""
+            buildConfigField "String", "inter_back", "\"ca-app-pub-7121787699260095/4859738809\""
         }
 
         debug {
