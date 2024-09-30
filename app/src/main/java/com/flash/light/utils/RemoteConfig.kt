@@ -70,6 +70,7 @@ class RemoteConfig {
             putBooleanToSP(remoteConfig, NameRemoteAdmob.banner_home)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_home)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.native_function)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_back)
         }
     }
 

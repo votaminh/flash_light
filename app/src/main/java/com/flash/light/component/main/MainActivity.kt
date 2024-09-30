@@ -20,6 +20,7 @@ import com.flash.light.component.alert.FlashAlertFragment
 import com.flash.light.databinding.ActivityMainBinding
 import com.flash.light.dialog.DialogExt.showDialogExit
 import com.flash.light.service.PhoneCallComingService
+import com.flash.light.utils.InterNativeUtils
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
@@ -96,6 +97,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         startNotificationFlashService()
         showBanner()
         loadInter()
+        InterNativeUtils.loadInterBack()
         checkNotificationPermisison()
     }
 
@@ -116,6 +118,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     fun showInterAction(nextAction : (() -> Unit)? = null){
         if(latestInterShow == 0L){
             latestInterShow = System.currentTimeMillis()
+            nextAction?.invoke()
+            return
         }else if(System.currentTimeMillis() - latestInterShow < 30000){
             nextAction?.invoke()
             return

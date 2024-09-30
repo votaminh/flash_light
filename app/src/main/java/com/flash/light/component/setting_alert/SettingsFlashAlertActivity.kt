@@ -15,6 +15,7 @@ import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivitySettingFlashAlertBinding
 import com.flash.light.dialog.DialogExt.showDialogPermissionNotificationRead
 import com.flash.light.service.PhoneCallComingService
+import com.flash.light.utils.InterNativeUtils
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
 import com.flash.light.utils.startNotificationFlashService
@@ -56,7 +57,9 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
             }
 
             head.imvBack.setOnClickListener {
-                finish()
+                InterNativeUtils.showInterAction(this@SettingsFlashAlertActivity){
+                    finish()
+                }
             }
         }
 
