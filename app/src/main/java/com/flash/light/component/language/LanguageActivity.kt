@@ -79,7 +79,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     override fun initObserver() {
         viewModel.listLanguage.observe(this) {
             languageAdapter.setData(ArrayList(it))
-            languageAdapter.selectLanguage(spManager.getLanguage().languageCode)
+//            languageAdapter.selectLanguage(spManager.getLanguage().languageCode)
         }
 
         NativeAdmobUtils.languageNative1?.run {
