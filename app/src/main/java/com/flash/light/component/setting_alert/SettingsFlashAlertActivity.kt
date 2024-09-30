@@ -7,12 +7,16 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.activity.viewModels
+import com.flash.light.BuildConfig
 import com.flash.light.R
+import com.flash.light.admob.NameRemoteAdmob
+import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivitySettingFlashAlertBinding
 import com.flash.light.dialog.DialogExt.showDialogPermissionNotificationRead
 import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
+import com.flash.light.utils.SpManager
 import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -60,6 +64,19 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
         setViewByType()
         viewModel.getValuesSetting(type)
         listenerView()
+        showNative()
+    }
+
+    private fun showNative() {
+        if(SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_function, true)){
+            val nativeHome = NativeAdmob(this, BuildConfig.native_function)
+            nativeHome.load(null)
+            nativeHome.nativeAdLive.observe(this){
+                if(nativeHome.available()){
+                    nativeHome.showNative(viewBinding.flAdplaceholder, null)
+                }
+            }
+        }
     }
 
     private fun listenerView() {

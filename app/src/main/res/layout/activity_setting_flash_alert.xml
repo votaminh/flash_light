@@ -80,13 +80,25 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/fl_adplaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/layoutStatus"
+                android:layout_marginTop="@dimen/size20"
+                >
+                <include
+                    android:id="@+id/native_ad_view"
+                    layout="@layout/ad_unified2"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <LinearLayout
                 style="@style/LayoutContainFeature"
-                android:layout_marginTop="@dimen/size20"
+                android:layout_marginTop="@dimen/size10"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutStatus">
+                app:layout_constraintTop_toBottomOf="@+id/fl_adplaceholder">
 
                 <LinearLayout
                     android:layout_width="match_parent"

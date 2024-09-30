@@ -10,5 +10,6 @@ class NameRemoteAdmob {
 
         const val banner_home = "banner_home"
         const val inter_home = "inter_home"
+        const val native_function = "native_function"
     }
 }
