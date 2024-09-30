@@ -62,7 +62,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     override fun initViews() {
         if (spManager.getShowOnBoarding() && NetworkUtil.isOnline) {
-            if (spManager.getBoolean(NameRemoteAdmob.NATIVE_LANGUAGE, true)) {
+            if (spManager.getBoolean(NameRemoteAdmob.native_language, true)) {
                 NativeAdmobUtils.loadNativeLanguage()
             }
         }
@@ -74,11 +74,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
         showBanner()
 
-        if (spManager.getBoolean(NameRemoteAdmob.INTER_SPLASH, true)) {
+        if (spManager.getBoolean(NameRemoteAdmob.inter_splash, true)) {
             val interAdmob = InterAdmob(this@SplashActivity, BuildConfig.inter_splash)
             interAdmob.load(object : BaseAdmob.OnAdmobLoadListener {
                 override fun onLoad() {
-                    if (spManager.getBoolean(NameRemoteAdmob.INTER_SPLASH, true)) {
+                    if (spManager.getBoolean(NameRemoteAdmob.inter_splash, true)) {
                         interAdmob.showInterstitial(
                             this@SplashActivity,
                             object : BaseAdmob.OnAdmobShowListener {
@@ -105,12 +105,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun showBanner() {
-        if(spManager.getBoolean(NameRemoteAdmob.BANNER_SPLASH, true)){
-            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
-            bannerAdmob.showBanner(this@SplashActivity, BuildConfig.banner_splash, viewBinding.banner)
-        }else{
-            viewBinding.banner.visibility = View.GONE
-        }
+//        if(spManager.getBoolean(NameRemoteAdmob.BANNER_SPLASH, true)){
+//            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
+//            bannerAdmob.showBanner(this@SplashActivity, BuildConfig.banner_splash, viewBinding.banner)
+//        }else{
+//            viewBinding.banner.visibility = View.GONE
+//        }
     }
 
     private fun gotoMainScreen() {

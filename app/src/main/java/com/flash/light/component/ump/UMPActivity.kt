@@ -17,14 +17,17 @@ class UMPActivity : BaseActivity<ActivityUmpBinding>() {
     override fun initData() {
         super.initData()
 
-        if(SpManager.getInstance(this).isUMPShowed()){
-            RemoteConfig.instance().fetch()
-            openSplash();
-        }else{
-            RemoteConfig.instance().fetch{
-                initUmp()
-            }
-        }
+        RemoteConfig.instance().fetch()
+        openSplash();
+//
+//        if(SpManager.getInstance(this).isUMPShowed()){
+//            RemoteConfig.instance().fetch()
+//            openSplash();
+//        }else{
+//            RemoteConfig.instance().fetch{
+//                initUmp()
+//            }
+//        }
     }
 
     private fun openSplash() {

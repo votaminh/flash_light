@@ -87,23 +87,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         startNotificationFlashService()
         showBanner()
 
-        interAdmob = InterAdmob(this@MainActivity, BuildConfig.inter_home)
-        loadInter()
-        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-            NativeAdmobUtils.loadNativeExit()
-        }
+//        interAdmob = InterAdmob(this@MainActivity, BuildConfig.inter_home)
+//        loadInter()
+//        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+//            NativeAdmobUtils.loadNativeExit()
+//        }
         
-        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-                    showDialogExit(this@MainActivity){
-                        finish()
-                    }
-                }else{
-                    finish()
-                }
-            }
-        })
+//        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+//                    showDialogExit(this@MainActivity){
+//                        finish()
+//                    }
+//                }else{
+//                    finish()
+//                }
+//            }
+//        })
 
         checkNotificationPermisison()
     }
@@ -115,44 +115,44 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun onBackPressed() {
-        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-            showDialogExit(this@MainActivity){
-                finish()
-            }
-        }else{
-            finish()
-        }
+//        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
+//            showDialogExit(this@MainActivity){
+//                finish()
+//            }
+//        }else{
+//            finish()
+//        }
     }
 
     private fun checkShowInter() {
-        interAdmob?.run {
-            if(available() && spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
-                showInterstitial(this@MainActivity, object : BaseAdmob.OnAdmobShowListener{
-                    override fun onShow() {
-                        loadInter()
-                    }
-
-                    override fun onError(e: String?) {
-                        loadInter()
-                    }
-                })
-            }
-        }
+//        interAdmob?.run {
+//            if(available() && spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
+//                showInterstitial(this@MainActivity, object : BaseAdmob.OnAdmobShowListener{
+//                    override fun onShow() {
+//                        loadInter()
+//                    }
+//
+//                    override fun onError(e: String?) {
+//                        loadInter()
+//                    }
+//                })
+//            }
+//        }
     }
 
     private fun loadInter() {
-        if(spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
-            interAdmob?.load(null)
-        }
+//        if(spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
+//            interAdmob?.load(null)
+//        }
     }
 
     private fun showBanner() {
-        if(spManager.getBoolean(NameRemoteAdmob.BANNER_ALL, true)){
-            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
-            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_all, viewBinding.banner)
-        }else{
-            viewBinding.banner.visibility = View.GONE
-        }
+//        if(spManager.getBoolean(NameRemoteAdmob.BANNER_ALL, true)){
+//            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
+//            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_all, viewBinding.banner)
+//        }else{
+//            viewBinding.banner.visibility = View.GONE
+//        }
     }
 
     private fun resetAllMenu() {

@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
@@ -129,4 +130,17 @@ fun TextView.changeTextColor(resColor : Int){
 
 fun Activity.startNotificationFlashService(){
     startService(Intent(this, PhoneCallComingService::class.java))
+}
+
+
+fun View.gone(){
+    visibility = View.GONE
+}
+
+fun View.invisible(){
+    visibility = View.INVISIBLE
+}
+
+fun View.visible(){
+    visibility = View.VISIBLE
 }

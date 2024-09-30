@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
 
     <RelativeLayout
         android:id="@+id/toolbar_language"
@@ -37,6 +39,7 @@
         android:id="@+id/rcl_language"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginHorizontal="@dimen/size10"
         android:orientation="vertical"
         android:paddingTop="10dp"
@@ -44,16 +47,23 @@
         app:layout_constraintBottom_toTopOf="@+id/fl_adplaceholder"
         app:layout_constraintTop_toBottomOf="@id/toolbar_language" />
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/fl_adplaceholder"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         >
         <include
-            android:id="@+id/native_ad_view"
-            layout="@layout/ad_unified"/>
+            android:id="@+id/fl_adplaceholder1"
+            layout="@layout/fl_native1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/fl_adplaceholder2"
+            layout="@layout/fl_native2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+</LinearLayout>

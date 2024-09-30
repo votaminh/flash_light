@@ -72,12 +72,12 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
         super.initObserver()
         viewBinding.flAdplaceholder.visibility = View.GONE
         NativeAdmobUtils.onboardNativeAdmob?.run {
-            nativeAdLive?.observe(this@OnBoardingActivity){
-                if(available() && spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)){
-                    viewBinding.flAdplaceholder.visibility = View.VISIBLE
-                    showNative(viewBinding.flAdplaceholder, null)
-                }
-            }
+//            nativeAdLive?.observe(this@OnBoardingActivity){
+//                if(available() && spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)){
+//                    viewBinding.flAdplaceholder.visibility = View.VISIBLE
+//                    showNative(viewBinding.flAdplaceholder, null)
+//                }
+//            }
         }
     }
 }

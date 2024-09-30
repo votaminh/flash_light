@@ -2,6 +2,7 @@ package com.flash.light.utils
 
 object Constant {
 
+    val KEY_INTENT_FROM_SPLASH = "KEY_INTENT_FROM_SPLASH"
     const val MIN_TIME_FLASH = 100f
     const val MAX_TIME_FLASH = 2000f
 

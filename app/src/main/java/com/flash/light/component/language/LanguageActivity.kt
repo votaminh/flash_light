@@ -1,25 +1,29 @@
 package com.flash.light.component.language
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
-import android.view.View
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
-import com.google.android.gms.ads.nativead.NativeAd
-import com.flash.light.R
+import androidx.core.view.isVisible
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.flash.light.admob.NameRemoteAdmob
+import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.main.MainActivity
 import com.flash.light.component.onboarding.OnBoardingActivity
 import com.flash.light.databinding.ActivityLanguageBinding
+import com.flash.light.domain.layer.LanguageModel
+import com.flash.light.utils.Constant
+import com.flash.light.utils.LocaleHelper
 import com.flash.light.utils.NativeAdmobUtils
-import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.SpManager
+import com.flash.light.utils.gone
+import com.flash.light.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
+    private var selectLanguageModel: LanguageModel? = null
     private val viewModel: LanguageViewModel by viewModels()
     private val languageAdapter = LanguageAdapter()
 
@@ -31,41 +35,43 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     }
 
     override fun initViews() {
+        val isFromSplash = intent.getBooleanExtra(Constant.KEY_INTENT_FROM_SPLASH, false)
 
-        setStatusBarColor(ContextCompat.getColor(this, R.color.white), true)
-
-
+        viewBinding.ivDone.gone()
         viewBinding.rclLanguage.adapter = languageAdapter
-        languageAdapter.onClick = {
-            languageAdapter.selectLanguage(it.languageCode)
+        languageAdapter.onClick = {languageModel ->
+            viewBinding.ivDone.visible()
+            selectLanguageModel = languageModel
+            languageAdapter.selectLanguage(languageModel.languageCode)
+            showNative2()
         }
         viewBinding.ivDone.setOnClickListener {
-            languageAdapter.selectedLanguage()?.let { languageModel ->
-                spManager.saveLanguage(languageModel)
-//                setAppLanguage(languageModel.languageCode)
-                val fromSplash = intent.getBooleanExtra(KEY_FROM_SPLASH, false)
-                if (fromSplash) {
-                    OnBoardingActivity.start(this)
-                    finish()
-                } else {
-                    startActivity(Intent(this, MainActivity::class.java).also {
-                        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    })
-                }
+            if (selectLanguageModel == null) {
+                selectLanguageModel = languageAdapter.dataSet.find { it.selected }
+            }
+            selectLanguageModel?.let { it1 -> spManager.saveLanguage(it1) }
+            LocaleHelper.setLocale(this@LanguageActivity, language = selectLanguageModel?.languageCode ?: "en")
+            if (isFromSplash) {
+                OnBoardingActivity.start(this)
+                finish()
+            } else {
+                MainActivity.start(this@LanguageActivity)
+                finish()
             }
         }
 
-        if(spManager.getShowOnBoarding()){
-            viewBinding.ivDone.setText(R.string.txt_next)
-        }
+        NativeAdmobUtils.loadNativeOnboard()
+    }
 
-        if (isTempNativeAd != null) {
-            isTempNativeAd = null
-        }
+    private fun showNative2() {
+        viewBinding.flAdplaceholder1.root.gone()
+        viewBinding.flAdplaceholder2.root.visible()
 
-        if (spManager.getShowOnBoarding() && NetworkUtil.isOnline) {
-            if (spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)) {
-                NativeAdmobUtils.loadNativeOnboard()
+        NativeAdmobUtils.languageNative2?.run {
+            nativeAdLive?.observe(this@LanguageActivity){
+                if(available()){
+                    showNativeAd(this, viewBinding.flAdplaceholder2.root)
+                }
             }
         }
     }
@@ -76,14 +82,21 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
             languageAdapter.selectLanguage(spManager.getLanguage().languageCode)
         }
 
-        viewBinding.flAdplaceholder.visibility = View.GONE
-        NativeAdmobUtils.languageNativeAdmob?.run {
+        NativeAdmobUtils.languageNative1?.run {
             nativeAdLive?.observe(this@LanguageActivity){
-                if(available() && spManager.getBoolean(NameRemoteAdmob.NATIVE_LANGUAGE, true)){
-                    viewBinding.flAdplaceholder.visibility = View.VISIBLE
-                    showNative(viewBinding.flAdplaceholder, null)
+                if(available()){
+                    showNativeAd(this, viewBinding.flAdplaceholder1.root)
                 }
             }
+        }
+    }
+
+    private fun showNativeAd(nativeAdmob: NativeAdmob, parent : ShimmerFrameLayout) {
+        if(spManager.getBoolean(NameRemoteAdmob.native_language, true)){
+            nativeAdmob.showNative(parent, null)
+            parent.visible()
+        }else{
+            parent.gone()
         }
     }
 
@@ -91,19 +104,11 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         viewModel.loadListLanguage()
     }
 
-    override fun onDestroy() {
-        isTempNativeAd = null
-        super.onDestroy()
-    }
-
     companion object {
-        var isTempNativeAd: NativeAd? = null
-        const val KEY_FROM_SPLASH = "key_splash"
-        fun start(context: Context, fromSplash: Boolean = false) {
-            Intent(context, LanguageActivity::class.java).also {
-                it.putExtra(KEY_FROM_SPLASH, fromSplash)
-                context.startActivity(it)
-            }
+        fun start(activity: Activity, fromSplash : Boolean) {
+            val intent = Intent(activity, LanguageActivity::class.java)
+            intent.putExtra(Constant.KEY_INTENT_FROM_SPLASH, true)
+            activity.startActivity(intent)
         }
     }
 }
