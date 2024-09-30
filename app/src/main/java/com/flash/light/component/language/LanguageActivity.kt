@@ -107,7 +107,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     companion object {
         fun start(activity: Activity, fromSplash : Boolean) {
             val intent = Intent(activity, LanguageActivity::class.java)
-            intent.putExtra(Constant.KEY_INTENT_FROM_SPLASH, true)
+            intent.putExtra(Constant.KEY_INTENT_FROM_SPLASH, fromSplash)
             activity.startActivity(intent)
         }
     }
