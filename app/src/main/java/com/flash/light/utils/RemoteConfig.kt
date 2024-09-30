@@ -68,6 +68,7 @@ class RemoteConfig {
             putBooleanToSP(remoteConfig, NameRemoteAdmob.native_permission)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.native_home)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.banner_home)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_home)
         }
     }
 

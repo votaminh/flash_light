@@ -35,6 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewPagerAdapter = ViewPagerAdapter(this@MainActivity)
 
+    private var latestInterShow: Long = 0
     @Inject
     lateinit var spManager: SpManager
 
@@ -57,60 +58,44 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         viewBinding.run {
             alert.setOnClickListener {
-                viewPager2.currentItem = 0
-                resetAllMenu()
-                imvAlert.changeTint(R.color.main)
-                tvAlert.changeTextColor(R.color.main)
-                checkShowInter()
-                if(viewPagerAdapter.fragments.get(0) is FlashAlertFragment){
-                    (viewPagerAdapter.fragments.get(0) as FlashAlertFragment).showNativeHome()
+                showInterAction {
+                    viewPager2.currentItem = 0
+                    resetAllMenu()
+                    imvAlert.changeTint(R.color.main)
+                    tvAlert.changeTextColor(R.color.main)
+                    if(viewPagerAdapter.fragments.get(0) is FlashAlertFragment){
+                        (viewPagerAdapter.fragments.get(0) as FlashAlertFragment).showNativeHome()
+                    }
                 }
             }
             light.setOnClickListener {
-                viewPager2.currentItem = 1
-                resetAllMenu()
-                imvLight.changeTint(R.color.main)
-                tvLight.changeTextColor(R.color.main)
-                checkShowInter()
+                showInterAction {
+                    viewPager2.currentItem = 1
+                    resetAllMenu()
+                    imvLight.changeTint(R.color.main)
+                    tvLight.changeTextColor(R.color.main)
+                }
             }
             blinks.setOnClickListener {
-                viewPager2.currentItem = 2
-                resetAllMenu()
-                imvBlinks.changeTint(R.color.main)
-                tvBlinks.changeTextColor(R.color.main)
-                checkShowInter()
+                showInterAction {
+                    viewPager2.currentItem = 2
+                    resetAllMenu()
+                    imvBlinks.changeTint(R.color.main)
+                    tvBlinks.changeTextColor(R.color.main)
+                }
             }
             settings.setOnClickListener {
                 viewPager2.currentItem = 3
                 resetAllMenu()
                 imvSetting.changeTint(R.color.main)
                 tvSetting.changeTextColor(R.color.main)
-                checkShowInter()
             }
 
         }
 
         startNotificationFlashService()
         showBanner()
-
-//        interAdmob = InterAdmob(this@MainActivity, BuildConfig.inter_home)
-//        loadInter()
-//        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-//            NativeAdmobUtils.loadNativeExit()
-//        }
-        
-//        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-//                    showDialogExit(this@MainActivity){
-//                        finish()
-//                    }
-//                }else{
-//                    finish()
-//                }
-//            }
-//        })
-
+        loadInter()
         checkNotificationPermisison()
     }
 
@@ -120,36 +105,38 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun onBackPressed() {
-//        if(spManager.getBoolean(NameRemoteAdmob.NATIVE_EXIT, true)){
-//            showDialogExit(this@MainActivity){
-//                finish()
-//            }
-//        }else{
-//            finish()
-//        }
-    }
-
-    private fun checkShowInter() {
-//        interAdmob?.run {
-//            if(available() && spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
-//                showInterstitial(this@MainActivity, object : BaseAdmob.OnAdmobShowListener{
-//                    override fun onShow() {
-//                        loadInter()
-//                    }
-//
-//                    override fun onError(e: String?) {
-//                        loadInter()
-//                    }
-//                })
-//            }
-//        }
-    }
 
     private fun loadInter() {
-//        if(spManager.getBoolean(NameRemoteAdmob.INTER_HOME, true)){
-//            interAdmob?.load(null)
-//        }
+        if(spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
+            interAdmob = InterAdmob(this, BuildConfig.inter_home)
+            interAdmob?.load(null)
+        }
+    }
+
+    fun showInterAction(nextAction : (() -> Unit)? = null){
+        if(latestInterShow == 0L){
+            latestInterShow = System.currentTimeMillis()
+        }else if(System.currentTimeMillis() - latestInterShow < 30000){
+            nextAction?.invoke()
+            return
+        }
+        latestInterShow = System.currentTimeMillis()
+        if(interAdmob == null || !spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
+            nextAction?.invoke()
+        }else{
+            interAdmob?.showInterstitial(this, object : BaseAdmob.OnAdmobShowListener{
+                override fun onShow() {
+                    nextAction?.invoke()
+                    interAdmob?.load(null)
+                }
+
+                override fun onError(e: String?) {
+                    nextAction?.invoke()
+                    interAdmob?.load(null)
+                }
+
+            })
+        }
     }
 
     private fun showBanner() {

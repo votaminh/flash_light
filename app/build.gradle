@@ -86,6 +86,7 @@ android {
 
             buildConfigField "String", "native_home", "\"ca-app-pub-3940256099942544/2247696110\""
             buildConfigField "String", "banner_home", "\"ca-app-pub-3940256099942544/2014213617\""
+            buildConfigField "String", "inter_home", "\"ca-app-pub-3940256099942544/1033173712\""
         }
     }
     compileOptions {

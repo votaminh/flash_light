@@ -13,6 +13,7 @@ import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.component.PermissionActivity
+import com.flash.light.component.main.MainActivity
 import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
 import com.flash.light.databinding.FragmentFlashAlertBinding
 import com.flash.light.service.PhoneCallComingService
@@ -99,7 +100,13 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
     private fun checkPermissionToOpenSetting(type: String) {
         activity?.let {
             if(PermissionUtils.isPhoneStatePermissionGranted(it) && PermissionUtils.isBatteryDisable(it)){
-                SettingsFlashAlertActivity.start(it, type)
+                activity?.let {
+                    if(it is MainActivity){
+                        it.showInterAction {
+                            SettingsFlashAlertActivity.start(it, type)
+                        }
+                    }
+                }
             }else{
                 PermissionActivity.start(it)
             }
