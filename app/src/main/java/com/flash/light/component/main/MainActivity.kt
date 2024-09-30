@@ -96,7 +96,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         startNotificationFlashService()
-//        showBanner()
+        showBanner()
         loadInter()
         InterNativeUtils.loadInterBack()
         checkNotificationPermisison()
