@@ -16,6 +16,7 @@ import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
+import com.flash.light.component.alert.FlashAlertFragment
 import com.flash.light.databinding.ActivityMainBinding
 import com.flash.light.dialog.DialogExt.showDialogExit
 import com.flash.light.service.PhoneCallComingService
@@ -31,6 +32,8 @@ import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    private val viewPagerAdapter = ViewPagerAdapter(this@MainActivity)
 
     @Inject
     lateinit var spManager: SpManager
@@ -59,6 +62,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 imvAlert.changeTint(R.color.main)
                 tvAlert.changeTextColor(R.color.main)
                 checkShowInter()
+                if(viewPagerAdapter.fragments.get(0) is FlashAlertFragment){
+                    (viewPagerAdapter.fragments.get(0) as FlashAlertFragment).showNativeHome()
+                }
             }
             light.setOnClickListener {
                 viewPager2.currentItem = 1
@@ -172,7 +178,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewBinding.viewPager2.run {
             offscreenPageLimit = 4
             isUserInputEnabled = false
-            adapter = ViewPagerAdapter(this@MainActivity)
+            adapter = viewPagerAdapter
         }
     }
 }

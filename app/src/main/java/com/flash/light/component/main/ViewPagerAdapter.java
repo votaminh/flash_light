@@ -11,9 +11,12 @@ import com.flash.light.component.blinks.FlashBlinksFragment;
 import com.flash.light.component.light.FlashLightFragment;
 import com.flash.light.component.setting.SettingFragment;
 
+import java.util.List;
+
 public final class ViewPagerAdapter extends FragmentStateAdapter {
+    List<Fragment> fragments = List.of(new FlashAlertFragment(), new FlashLightFragment(), new FlashBlinksFragment(), new SettingFragment());
     public int getItemCount() {
-        return 4;
+        return fragments.size();
     }
 
     public ViewPagerAdapter(AppCompatActivity appCompatActivity) {
@@ -22,18 +25,6 @@ public final class ViewPagerAdapter extends FragmentStateAdapter {
 
     @NonNull
     public Fragment createFragment(int i) {
-        if (i == 0) {
-            return new FlashAlertFragment();
-        }
-        if (i == 1) {
-            return new FlashLightFragment();
-        }
-        if (i == 2) {
-            return new FlashBlinksFragment();
-        }
-        if (i == 3) {
-            return new SettingFragment();
-        }
-        return new FlashAlertFragment();
+        return fragments.get(i);
     }
 }

@@ -64,6 +64,9 @@ class RemoteConfig {
             val remoteConfig = Firebase.remoteConfig
             putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_splash)
             putBooleanToSP(remoteConfig, NameRemoteAdmob.native_language)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_onboarding)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_permission)
+            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_home)
         }
     }
 

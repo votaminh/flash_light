@@ -5,7 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.viewModels
+import com.facebook.ads.NativeAd
+import com.flash.light.BuildConfig
 import com.flash.light.R
+import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.NameRemoteAdmob
+import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.component.PermissionActivity
 import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
@@ -13,7 +18,9 @@ import com.flash.light.databinding.FragmentFlashAlertBinding
 import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
+import com.flash.light.utils.gone
 import com.flash.light.utils.startNotificationFlashService
+import com.flash.light.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -47,6 +54,23 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
         }
         listenerView()
         activity?.startNotificationFlashService()
+
+        showNative()
+        viewBinding.flAdplaceholder.gone()
+    }
+
+    private fun showNative() {
+        context?.let {
+            if(SpManager.getInstance(it).getBoolean(NameRemoteAdmob.native_home, true)){
+                val nativeHome = NativeAdmob(it, BuildConfig.native_home)
+                nativeHome.load(null)
+                nativeHome.nativeAdLive.observe(this){
+                    if(nativeHome.available()){
+                        nativeHome.showNative(viewBinding.flAdplaceholder, null)
+                    }
+                }
+            }
+        }
     }
 
     private fun listenerView() {
@@ -80,5 +104,9 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
                 PermissionActivity.start(it)
             }
         }
+    }
+
+    fun showNativeHome() {
+        viewBinding.flAdplaceholder.visible()
     }
 }
