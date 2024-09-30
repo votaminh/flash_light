@@ -19,6 +19,8 @@ class NativeAdmobUtils {
         @SuppressLint("StaticFieldLeak")
         var onboardNativeAdmob2: NativeAdmob? = null
 
+        var permissionNative : NativeAdmob? = null
+
         @SuppressLint("StaticFieldLeak")
         var nativeExitLiveData: NativeAdmob? = null
 
@@ -54,6 +56,16 @@ class NativeAdmobUtils {
                     onboardNativeAdmob2?.load(null)
 
                 }
+            }
+        }
+
+        fun loadNativePermission(){
+            App.instance?.applicationContext?.let {context ->
+                permissionNative = NativeAdmob(
+                    context,
+                    BuildConfig.native_permission
+                )
+                permissionNative?.load(null)
             }
         }
 

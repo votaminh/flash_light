@@ -57,6 +57,10 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
             dotIndicator.attachTo(vpOnBoarding)
             onBoardingAdapter.setData(ArrayList(viewModel.listOnBoarding))
         }
+
+        if(SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+            NativeAdmobUtils.loadNativePermission()
+        }
     }
 
     private fun showNative(currentPosition: Int) {

@@ -6,6 +6,7 @@ import android.util.Log
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
 import com.flash.light.databinding.ActivityPermisionBinding
+import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.PermissionUtils
 
 class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
@@ -39,6 +40,14 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
 
             layoutContinue.setOnClickListener {
                 finish()
+            }
+        }
+
+        NativeAdmobUtils.permissionNative?.run {
+            nativeAdLive.observe(this@PermissionActivity){
+                if(available()){
+                    showNative(viewBinding.flAdplaceholder, null)
+                }
             }
         }
     }
