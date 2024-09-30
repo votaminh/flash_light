@@ -2,24 +2,21 @@ package com.flash.light.component.onboarding
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.flash.light.R
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
-import com.flash.light.component.main.MainActivity
+import com.flash.light.component.PermissionActivity
 import com.flash.light.databinding.ActivityOnboardingBinding
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.SpManager
+import com.flash.light.utils.gone
+import com.flash.light.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
-
-    @Inject
-    lateinit var spManager: SpManager
 
     companion object {
         fun start(context: Context) {
@@ -35,8 +32,6 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
     private val onBoardingAdapter = OnBoardingAdapter()
     private var currentPosition = 0
 
-    override var isReloadInter: Boolean = false
-
     override fun initViews() {
         viewBinding.apply {
             vpOnBoarding.adapter = onBoardingAdapter
@@ -46,11 +41,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                     super.onPageSelected(position)
                     currentPosition = position
 
-                    if(currentPosition == 2){
-                        viewBinding.buttonNext.setText(R.string.txt_get_start)
-                    }else{
-                        viewBinding.buttonNext.setText(R.string.txt_next)
-                    }
+                    showNative(currentPosition)
                 }
             })
 
@@ -58,7 +49,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                 if (currentPosition < viewModel.listOnBoarding.size - 1) {
                     vpOnBoarding.setCurrentItem(currentPosition + 1, true)
                 } else {
-                    MainActivity.start(this@OnBoardingActivity)
+                    PermissionActivity.start(this@OnBoardingActivity)
                     finish()
                 }
             }
@@ -68,16 +59,43 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
         }
     }
 
-    override fun initObserver() {
-        super.initObserver()
-        viewBinding.flAdplaceholder.visibility = View.GONE
-        NativeAdmobUtils.onboardNativeAdmob?.run {
-//            nativeAdLive?.observe(this@OnBoardingActivity){
-//                if(available() && spManager.getBoolean(NameRemoteAdmob.NATIVE_ONBOARD, true)){
-//                    viewBinding.flAdplaceholder.visibility = View.VISIBLE
-//                    showNative(viewBinding.flAdplaceholder, null)
-//                }
-//            }
+    private fun showNative(currentPosition: Int) {
+
+        if(!SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+            viewBinding.flAdplaceholder.gone()
+            return
+        }
+
+        if(currentPosition == 1){
+            viewBinding.flAdplaceholder.gone()
+        }else{
+            viewBinding.flAdplaceholder.visible()
+        }
+
+        when(currentPosition){
+            0 -> {
+                NativeAdmobUtils.onboardNativeAdmob1?.run {
+                    nativeAdLive?.observe(this@OnBoardingActivity){
+                        if(available()){
+                            android.os.Handler(Looper.getMainLooper()).postDelayed({
+                                showNative(viewBinding.flAdplaceholder, null)
+                            }, 100)
+                        }
+                    }
+                }
+            }
+
+            2 -> {
+                NativeAdmobUtils.onboardNativeAdmob2?.run {
+                    nativeAdLive?.observe(this@OnBoardingActivity){
+                        if(available()){
+                            android.os.Handler(Looper.getMainLooper()).postDelayed({
+                                showNative(viewBinding.flAdplaceholder, null)
+                            }, 100)
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.flash.light.utils
 import android.annotation.SuppressLint
 import com.flash.light.App
 import com.flash.light.BuildConfig
+import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 
 class NativeAdmobUtils {
@@ -14,7 +15,9 @@ class NativeAdmobUtils {
         var languageNative2: NativeAdmob? = null
 
         @SuppressLint("StaticFieldLeak")
-        var onboardNativeAdmob: NativeAdmob? = null
+        var onboardNativeAdmob1: NativeAdmob? = null
+        @SuppressLint("StaticFieldLeak")
+        var onboardNativeAdmob2: NativeAdmob? = null
 
         @SuppressLint("StaticFieldLeak")
         var nativeExitLiveData: NativeAdmob? = null
@@ -36,13 +39,22 @@ class NativeAdmobUtils {
         }
 
         fun loadNativeOnboard() {
-//            App.instance?.applicationContext?.let {context ->
-//                onboardNativeAdmob = NativeAdmob(
-//                    context,
-//                    BuildConfig.native_onboarding
-//                )
-//                onboardNativeAdmob?.load(null)
-//            }
+            App.instance?.applicationContext?.let {context ->
+                if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+                    onboardNativeAdmob1 = NativeAdmob(
+                        context,
+                        BuildConfig.native_onboarding_1
+                    )
+                    onboardNativeAdmob1?.load(null)
+
+                    onboardNativeAdmob2 = NativeAdmob(
+                        context,
+                        BuildConfig.native_onboarding_2
+                    )
+                    onboardNativeAdmob2?.load(null)
+
+                }
+            }
         }
 
         fun loadNativeExit(){
