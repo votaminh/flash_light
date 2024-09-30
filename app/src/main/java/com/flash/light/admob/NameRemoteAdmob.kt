@@ -7,5 +7,7 @@ class NameRemoteAdmob {
         const val native_onboarding = "native_onboard"
         const val native_permission = "native_permisison"
         const val native_home = "native_home"
+
+        const val banner_home = "banner_home"
     }
 }

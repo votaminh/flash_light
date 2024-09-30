@@ -153,12 +153,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun showBanner() {
-//        if(spManager.getBoolean(NameRemoteAdmob.BANNER_ALL, true)){
-//            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.NONE)
-//            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_all, viewBinding.banner)
-//        }else{
-//            viewBinding.banner.visibility = View.GONE
-//        }
+        if(spManager.getBoolean(NameRemoteAdmob.banner_home, true)){
+            val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.BOTTOM)
+            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_home, viewBinding.banner)
+        }else{
+            viewBinding.banner.visibility = View.GONE
+        }
     }
 
     private fun resetAllMenu() {
