@@ -51,7 +51,7 @@
                             android:id="@+id/ad_headline"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/main"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             tools:text="App name here"
@@ -84,7 +84,7 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 tools:text="des here"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 />
 
                         </LinearLayout>
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     tools:text="Style up to date with your ads check how your ads are performing"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginTop="@dimen/size5"
                     />
             </LinearLayout>
