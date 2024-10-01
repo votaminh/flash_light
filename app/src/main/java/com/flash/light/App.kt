@@ -20,7 +20,10 @@ import com.flash.light.admob.OpenAdmob
 import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.RemoteConfig
 import com.flash.light.utils.SpManager
+import com.vungle.ads.VunglePrivacySettings
 import dagger.hilt.android.HiltAndroidApp
+import org.json.JSONException
+import org.json.JSONObject
 import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -53,9 +56,6 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
     }
 
     fun initAds() {
-
-        initMediation();
-
         MobileAds.initialize(this)
         val requestConfiguration = RequestConfiguration.Builder().build()
         MobileAds.setRequestConfiguration(requestConfiguration)
@@ -63,23 +63,57 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         if(spManager.getBoolean(NameRemoteAdmob.open_resume, true)){
             openAdmob = OpenAdmob(this, BuildConfig.open_resume)
         }
+
+        initMediation()
     }
 
     private fun initMediation() {
+        initPangle()
+        initVungle()
+        initApplovin()
+        initFAN()
         initMintegral()
-        initAppLovin()
+        initInMobi()
+        initIronSource()
     }
 
-    private fun initMintegral() {
+    private fun initFAN() {
+        // no request code
+    }
+
+    private fun initVungle() {
+        VunglePrivacySettings.setGDPRStatus(true, "v1.0.0");
+    }
+
+    private fun initPangle() {
+        // no request code
+    }
+
+    private fun initApplovin(){
+        AppLovinPrivacySettings.setDoNotSell(true, this);
+        VunglePrivacySettings.setCCPAStatus(true);
+    }
+
+    private fun initInMobi(){
+//        val consentObject = JSONObject()
+//        try {
+//            consentObject.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true)
+//            consentObject.put("gdpr", "1")
+//        } catch (exception: JSONException) {
+//            exception.printStackTrace()
+//        }
+//
+//        InMobiConsent.updateGDPRConsent(consentObject)
+    }
+
+    private fun initMintegral(){
         val sdk = MBridgeSDKFactory.getMBridgeSDK()
-        sdk.setConsentStatus(applicationContext, MBridgeConstans.IS_SWITCH_ON)
-        sdk.setDoNotTrackStatus(false)
+        sdk.setConsentStatus(this, MBridgeConstans.IS_SWITCH_ON)
     }
 
-    private fun initAppLovin() {
-        AppLovinPrivacySettings.setHasUserConsent(true, applicationContext)
-        AppLovinPrivacySettings.setIsAgeRestrictedUser(true, applicationContext)
-        AppLovinPrivacySettings.setDoNotSell(true, applicationContext)
+    private fun initIronSource(){
+//        IronSource.setConsent(true);
+//        IronSource.setMetaData("do_not_sell", "true")
     }
 
     override fun onStart(owner: LifecycleOwner) {

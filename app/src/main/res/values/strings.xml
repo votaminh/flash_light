@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">FlashLight</string>
-    <string name="facebook_app_id" translatable="false">251056887922505</string>
-    <string name="facebook_client_token" translatable="false">cc17abe0daf194936ff07030b918f78f</string>
+    <string name="facebook_app_id" translatable="false">1031860778486550</string>
+    <string name="facebook_client_token" translatable="false">4c4bb64c55757659d8662d507fb1ea12</string>
 
     <string name="english">English</string>
     <string name="vietnamese">Vietnamese</string>
