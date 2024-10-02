@@ -27,17 +27,36 @@ class NativeAdmobUtils {
         fun loadNativeLanguage() {
             if(NetworkUtil.isOnline){
                 App.instance?.applicationContext?.let { context ->
-                    languageNative1 = NativeAdmob(
-                        context,
-                        BuildConfig.native_language_1
-                    )
-                    languageNative1?.load(null)
 
-                    languageNative2 = NativeAdmob(
-                        context,
-                        BuildConfig.native_language_2
-                    )
-                    languageNative2?.load(null)
+                    val first = SpManager.getInstance(context).getBoolean("first_native_language", true)
+                    if(first){
+
+                        SpManager.getInstance(context).putBoolean("first_native_language", false)
+
+                        languageNative1 = NativeAdmob(
+                            context,
+                            BuildConfig.native_language_1_1
+                        )
+                        languageNative1?.load(null)
+
+                        languageNative2 = NativeAdmob(
+                            context,
+                            BuildConfig.native_language_1_2
+                        )
+                        languageNative2?.load(null)
+                    }else {
+                        languageNative1 = NativeAdmob(
+                            context,
+                            BuildConfig.native_language_2_1
+                        )
+                        languageNative1?.load(null)
+
+                        languageNative2 = NativeAdmob(
+                            context,
+                            BuildConfig.native_language_2_2
+                        )
+                        languageNative2?.load(null)
+                    }
                 }
             }
         }
@@ -46,17 +65,34 @@ class NativeAdmobUtils {
             if(NetworkUtil.isOnline){
                 App.instance?.applicationContext?.let {context ->
                     if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_onboarding, true)){
-                        onboardNativeAdmob1 = NativeAdmob(
-                            context,
-                            BuildConfig.native_onboarding_1
-                        )
-                        onboardNativeAdmob1?.load(null)
 
-                        onboardNativeAdmob2 = NativeAdmob(
-                            context,
-                            BuildConfig.native_onboarding_2
-                        )
-                        onboardNativeAdmob2?.load(null)
+                        val first = SpManager.getInstance(context).getBoolean("first_native_onboarding", true)
+                        if(first) {
+                            SpManager.getInstance(context).putBoolean("first_native_onboarding", false)
+                            onboardNativeAdmob1 = NativeAdmob(
+                                context,
+                                BuildConfig.native_onboarding_1_1
+                            )
+                            onboardNativeAdmob1?.load(null)
+
+                            onboardNativeAdmob2 = NativeAdmob(
+                                context,
+                                BuildConfig.native_onboarding_1_2
+                            )
+                            onboardNativeAdmob2?.load(null)
+                        }else{
+                            onboardNativeAdmob1 = NativeAdmob(
+                                context,
+                                BuildConfig.native_onboarding_2_1
+                            )
+                            onboardNativeAdmob1?.load(null)
+
+                            onboardNativeAdmob2 = NativeAdmob(
+                                context,
+                                BuildConfig.native_onboarding_2_1
+                            )
+                            onboardNativeAdmob2?.load(null)
+                        }
 
                     }
                 }

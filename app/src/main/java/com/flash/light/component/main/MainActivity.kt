@@ -55,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initViews() {
-        spManager.saveOnBoarding()
         buildPagerHome()
 
         viewBinding.run {
