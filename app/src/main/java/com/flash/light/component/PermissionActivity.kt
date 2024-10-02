@@ -46,12 +46,11 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
             }
 
             layoutContinue.setOnClickListener {
-                val from = intent.getIntExtra(KEY_NAME_FROM, KEY_FROM_ONBOARDING)
-                if(from == KEY_FROM_ONBOARDING){
-                    MainActivity.start(this@PermissionActivity)
-                }
-                finish()
+                actionNext()
             }
+
+
+
         }
 
         if(NativeAdmobUtils.permissionNative == null){
@@ -65,6 +64,21 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
                 }
             }
         }
+
+        val grant = PermissionUtils.isPhoneStatePermissionGranted(this@PermissionActivity)
+        val grantBattery = PermissionUtils.isBatteryDisable(this@PermissionActivity)
+
+        if(grant && grantBattery){
+            actionNext()
+        }
+    }
+
+    private fun actionNext() {
+        val from = intent.getIntExtra(KEY_NAME_FROM, KEY_FROM_ONBOARDING)
+        if(from == KEY_FROM_ONBOARDING){
+            MainActivity.start(this@PermissionActivity)
+        }
+        finish()
     }
 
     private fun updateSwManagerCall() {
