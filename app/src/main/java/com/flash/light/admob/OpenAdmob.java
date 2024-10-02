@@ -73,7 +73,7 @@ public class OpenAdmob extends BaseAdmob{
         return (dateDifference < (numMilliSecondsPerHour * numHours));
     }
 
-    public void showAdIfAvailable(@NonNull final Activity activity) {
+    public void showAdIfAvailable(@NonNull final Activity activity, BaseAdmob.OnAdmobShowListener onAdmobShowListener){
         Log.i(TAG, "showAdIfAvailable: " + activity.getClass().getSimpleName());
         if (isShowingOpenAd || !canShowOpenApp) {
             Log.i(TAG, "isShowingOpenAd || !CAN_SHOW_OPEN_APP: ");
@@ -93,30 +93,28 @@ public class OpenAdmob extends BaseAdmob{
                         latestTimeShowOpenAd = System.currentTimeMillis();
                         appOpenAd = null;
                         isShowingOpenAd = false;
-                        loadAd(activity);
+                        if(onAdmobShowListener != null) onAdmobShowListener.onShow();
                     }
 
-                    /** Called when fullscreen content failed to show. */
                     @Override
                     public void onAdFailedToShowFullScreenContent(AdError adError) {
                         Log.i(TAG, "onAdFailedToShowFullScreenContent: " + adError.getMessage());
                         appOpenAd = null;
                         isShowingOpenAd = false;
-                        loadAd(activity);
-
-                        Log.i("dsfdf", "onAdFailedToShowFullScreenContent: ");
+                        if(onAdmobShowListener != null) onAdmobShowListener.onError(adError.getMessage());
                     }
 
-                    /** Called when fullscreen content is shown. */
                     @Override
                     public void onAdShowedFullScreenContent() {
                         Log.i(TAG, "onAdShowedFullScreenContent: ");
-
                         isShowingOpenAd = true;
-                      
                     }
                 });
 
         appOpenAd.show(activity);
+    }
+
+    public void showAdIfAvailable(@NonNull final Activity activity) {
+        showAdIfAvailable(activity, null);
     }
 }

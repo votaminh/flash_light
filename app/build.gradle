@@ -57,6 +57,7 @@ android {
             manifestPlaceholders = [ad_app_id:"ca-app-pub-7121787699260095~9662101476"]
 
             buildConfigField "String", "open_resume", "\"ca-app-pub-7121787699260095/9527521489\""
+            buildConfigField "String", "open_splash", "\"ca-app-pub-7121787699260095/9315162597\""
             buildConfigField "String", "inter_splash", "\"ca-app-pub-7121787699260095/2986163864\""
             buildConfigField "String", "native_language_1", "\"ca-app-pub-7121787699260095/2534220802\""
             buildConfigField "String", "native_language_2", "\"ca-app-pub-7121787699260095/2752450217\""
@@ -80,6 +81,7 @@ android {
             manifestPlaceholders = [ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
 
             buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
+            buildConfigField "String", "open_splash", "\"ca-app-pub-3940256099942544/9257395921\""
             buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
             buildConfigField "String", "native_language_1", "\"ca-app-pub-3940256099942544/2247696110\""
             buildConfigField "String", "native_language_2", "\"ca-app-pub-3940256099942544/2247696110\""

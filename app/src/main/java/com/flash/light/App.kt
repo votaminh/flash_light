@@ -10,6 +10,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.applovin.sdk.AppLovinPrivacySettings
+import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.FirebaseApp
@@ -120,7 +121,15 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         super.onStart(owner)
         if(spManager.getBoolean(NameRemoteAdmob.open_resume, true)){
             openAdmob?.run {
-                currentActivity?.let { showAdIfAvailable(it) }
+                currentActivity?.let { showAdIfAvailable(it, object : OnAdmobShowListener{
+                    override fun onShow() {
+                        openAdmob?.loadAd(it)
+                    }
+
+                    override fun onError(e: String?) {
+                        openAdmob?.loadAd(it)
+                    }
+                }) }
             }
         }
     }

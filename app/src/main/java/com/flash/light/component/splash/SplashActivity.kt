@@ -14,9 +14,11 @@ import javax.inject.Inject
 import com.flash.light.BuildConfig
 import com.flash.light.admob.BannerAdmob
 import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
+import com.flash.light.admob.OpenAdmob
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.NetworkUtil
 import com.flash.light.utils.RemoteConfig
@@ -71,37 +73,64 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun runProgress() {
-
         showBanner()
-
         if (spManager.getBoolean(NameRemoteAdmob.inter_splash, true)) {
-            val interAdmob = InterAdmob(this@SplashActivity, BuildConfig.inter_splash)
-            interAdmob.load(object : BaseAdmob.OnAdmobLoadListener {
-                override fun onLoad() {
-                    if (spManager.getBoolean(NameRemoteAdmob.inter_splash, true)) {
-                        interAdmob.showInterstitial(
-                            this@SplashActivity,
-                            object : BaseAdmob.OnAdmobShowListener {
-                                override fun onShow() {
-                                    gotoMainScreen()
-                                }
-
-                                override fun onError(e: String?) {
-                                    gotoMainScreen()
-                                }
-                            })
-                    } else {
-                        gotoMainScreen()
-                    }
-                }
-
-                override fun onError(e: String?) {
+            loadShowOpenAds(successAction = {
+                gotoMainScreen()
+            }, failAction = {
+                loadShowInter(successAction = {
                     gotoMainScreen()
-                }
+                }, failAction = {
+                    gotoMainScreen()
+                })
             })
         } else {
             gotoMainScreen()
         }
+    }
+
+    private fun loadShowInter(successAction : (() -> Unit)? = null, failAction : (() -> Unit)? = null) {
+        val interAdmob = InterAdmob(this@SplashActivity, BuildConfig.inter_splash)
+        interAdmob.load(object : BaseAdmob.OnAdmobLoadListener {
+            override fun onLoad() {
+                interAdmob.showInterstitial(
+                    this@SplashActivity,
+                    object : BaseAdmob.OnAdmobShowListener {
+                        override fun onShow() {
+                           successAction?.invoke()
+                        }
+
+                        override fun onError(e: String?) {
+                            failAction?.invoke()
+                        }
+                    })
+            }
+
+            override fun onError(e: String?) {
+                failAction?.invoke()
+            }
+        })
+    }
+
+    private fun loadShowOpenAds(successAction : (() -> Unit)? = null, failAction : (() -> Unit)? = null) {
+        val openAdmob = OpenAdmob(this, BuildConfig.open_splash)
+        openAdmob.loadAd(this@SplashActivity, object : BaseAdmob.OnAdmobLoadListener {
+            override fun onLoad() {
+                openAdmob.showAdIfAvailable(this@SplashActivity, object : OnAdmobShowListener{
+                    override fun onShow() {
+                        successAction?.invoke()
+                    }
+
+                    override fun onError(e: String?) {
+                        failAction?.invoke()
+                    }
+                })
+            }
+
+            override fun onError(e: String?) {
+                failAction?.invoke()
+            }
+        })
     }
 
     private fun showBanner() {
