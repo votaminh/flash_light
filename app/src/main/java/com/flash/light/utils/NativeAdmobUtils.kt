@@ -25,47 +25,53 @@ class NativeAdmobUtils {
         var nativeExitLiveData: NativeAdmob? = null
 
         fun loadNativeLanguage() {
-            App.instance?.applicationContext?.let { context ->
-                languageNative1 = NativeAdmob(
-                    context,
-                    BuildConfig.native_language_1
-                )
-                languageNative1?.load(null)
+            if(NetworkUtil.isOnline){
+                App.instance?.applicationContext?.let { context ->
+                    languageNative1 = NativeAdmob(
+                        context,
+                        BuildConfig.native_language_1
+                    )
+                    languageNative1?.load(null)
 
-                languageNative2 = NativeAdmob(
-                    context,
-                    BuildConfig.native_language_2
-                )
-                languageNative2?.load(null)
+                    languageNative2 = NativeAdmob(
+                        context,
+                        BuildConfig.native_language_2
+                    )
+                    languageNative2?.load(null)
+                }
             }
         }
 
         fun loadNativeOnboard() {
-            App.instance?.applicationContext?.let {context ->
-                if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_onboarding, true)){
-                    onboardNativeAdmob1 = NativeAdmob(
-                        context,
-                        BuildConfig.native_onboarding_1
-                    )
-                    onboardNativeAdmob1?.load(null)
+            if(NetworkUtil.isOnline){
+                App.instance?.applicationContext?.let {context ->
+                    if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+                        onboardNativeAdmob1 = NativeAdmob(
+                            context,
+                            BuildConfig.native_onboarding_1
+                        )
+                        onboardNativeAdmob1?.load(null)
 
-                    onboardNativeAdmob2 = NativeAdmob(
-                        context,
-                        BuildConfig.native_onboarding_2
-                    )
-                    onboardNativeAdmob2?.load(null)
+                        onboardNativeAdmob2 = NativeAdmob(
+                            context,
+                            BuildConfig.native_onboarding_2
+                        )
+                        onboardNativeAdmob2?.load(null)
 
+                    }
                 }
             }
         }
 
         fun loadNativePermission(){
-            App.instance?.applicationContext?.let {context ->
-                permissionNative = NativeAdmob(
-                    context,
-                    BuildConfig.native_permission
-                )
-                permissionNative?.load(null)
+            if(NetworkUtil.isOnline){
+                App.instance?.applicationContext?.let {context ->
+                    permissionNative = NativeAdmob(
+                        context,
+                        BuildConfig.native_permission
+                    )
+                    permissionNative?.load(null)
+                }
             }
         }
 
