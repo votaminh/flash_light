@@ -108,7 +108,7 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
                     }
                 }
             }else{
-                PermissionActivity.start(it)
+                PermissionActivity.start(it, PermissionActivity.KEY_FROM_MAIN)
             }
         }
     }

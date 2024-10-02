@@ -42,7 +42,7 @@ public class NativeAdmob extends BaseAdmob {
     }
 
     public boolean available() {
-        if (nativeAdLive.getValue() != null && !canReload) {
+        if (nativeAdLive.getValue() != null) {
             return true;
         } else {
             return false;

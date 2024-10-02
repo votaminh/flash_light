@@ -3,6 +3,7 @@ package com.flash.light.component
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.main.MainActivity
 import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
@@ -13,8 +14,13 @@ import com.flash.light.utils.PermissionUtils
 class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
 
     companion object {
-        fun start(activity : Activity){
+        const val KEY_FROM_ONBOARDING = 1
+        const val KEY_FROM_MAIN = 2
+        const val KEY_NAME_FROM = "KEY_NAME_FROM"
+
+        fun start(activity : Activity, from : Int = KEY_FROM_ONBOARDING){
             val intent = Intent(activity, PermissionActivity::class.java)
+            intent.putExtra(KEY_NAME_FROM, from)
             activity.startActivity(intent)
         }
     }
@@ -40,9 +46,16 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
             }
 
             layoutContinue.setOnClickListener {
-                MainActivity.start(this@PermissionActivity)
+                val from = intent.getIntExtra(KEY_NAME_FROM, KEY_FROM_ONBOARDING)
+                if(from == KEY_FROM_ONBOARDING){
+                    MainActivity.start(this@PermissionActivity)
+                }
                 finish()
             }
+        }
+
+        if(NativeAdmobUtils.permissionNative == null){
+            NativeAdmobUtils.loadNativePermission()
         }
 
         NativeAdmobUtils.permissionNative?.run {

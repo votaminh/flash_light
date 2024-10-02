@@ -168,6 +168,32 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contentNative"
+        android:layout_marginLeft="@dimen/size10"
+        android:layout_marginRight="@dimen/size10"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/main"
+        app:cardCornerRadius="@dimen/size20"
+        >
+        <TextView
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/size14"
+            android:paddingTop="@dimen/size12"
+            android:paddingBottom="@dimen/size12"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="@string/txt_continue"
+            />
+    </androidx.cardview.widget.CardView>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/fl_adplaceholder"
         android:layout_width="match_parent"
@@ -176,33 +202,7 @@
         >
         <include
             android:id="@+id/native_ad_view"
-            layout="@layout/ad_unified2"/>
+            layout="@layout/ad_unified4"/>
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <LinearLayout
-        android:id="@+id/layoutContinue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size5"
-        android:layout_marginBottom="@dimen/size10"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:alpha="0.3"
-        >
-
-        <TextView
-            android:id="@+id/btnContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/size5"
-            android:text="@string/txt_continue"
-            android:textColor="@color/main"
-            android:textSize="@dimen/size15"
-            app:drawableEndCompat="@drawable/ic_arrow_next"
-            app:drawableTint="@color/main" />
-
-    </LinearLayout>
 </LinearLayout>
