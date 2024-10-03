@@ -112,8 +112,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun loadInter() {
         if(spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
+            AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load")
             interAdmob = InterAdmob(this, BuildConfig.inter_home)
-            interAdmob?.load(null)
+            interAdmob?.load(object : OnAdmobLoadListener{
+                override fun onLoad() {
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load_success")
+                }
+
+                override fun onError(e: String?) {
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load_fail")
+                }
+            })
         }
     }
 
@@ -138,13 +147,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }else{
             interAdmob?.showInterstitial(this, object : BaseAdmob.OnAdmobShowListener{
                 override fun onShow() {
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_show_success")
                     nextAction?.invoke()
-                    interAdmob?.load(null)
+                    loadInter()
                 }
 
                 override fun onError(e: String?) {
                     nextAction?.invoke()
-                    interAdmob?.load(null)
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_show_fail")
+                    loadInter()
                 }
 
             })
