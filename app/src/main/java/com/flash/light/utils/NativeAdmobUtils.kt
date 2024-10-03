@@ -189,7 +189,17 @@ class NativeAdmobUtils {
                         context,
                         BuildConfig.native_permission
                     )
-                    permissionNative?.load(null)
+                    AppEventsLogger.newLogger(context).logEvent("native_permission_load")
+                    permissionNative?.load(object : OnAdmobLoadListener {
+                        override fun onLoad() {
+                            AppEventsLogger.newLogger(context).logEvent("native_permission_load_success")
+                        }
+
+                        override fun onError(e: String?) {
+                            AppEventsLogger.newLogger(context).logEvent("native_permission_load_fail")
+                        }
+
+                    })
                 }
             }
         }
