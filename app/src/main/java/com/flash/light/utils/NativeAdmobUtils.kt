@@ -1,8 +1,10 @@
 package com.flash.light.utils
 
 import android.annotation.SuppressLint
+import com.facebook.appevents.AppEventsLogger
 import com.flash.light.App
 import com.flash.light.BuildConfig
+import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 
@@ -37,25 +39,64 @@ class NativeAdmobUtils {
                             context,
                             BuildConfig.native_language_1_1
                         )
-                        languageNative1?.load(null)
+                        AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load")
+                        languageNative1?.load(object : OnAdmobLoadListener{
+                            override fun onLoad() {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load_success")
+                            }
+
+                            override fun onError(e: String?) {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load_error")
+                            }
+
+                        })
 
                         languageNative2 = NativeAdmob(
                             context,
                             BuildConfig.native_language_1_2
                         )
-                        languageNative2?.load(null)
+                        AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load")
+                        languageNative2?.load(object : OnAdmobLoadListener{
+                            override fun onLoad() {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load_success")
+                            }
+
+                            override fun onError(e: String?) {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load_fail")
+                            }
+
+                        })
                     }else {
                         languageNative1 = NativeAdmob(
                             context,
                             BuildConfig.native_language_2_1
                         )
-                        languageNative1?.load(null)
+                        AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load")
+                        languageNative1?.load(object : OnAdmobLoadListener{
+                            override fun onLoad() {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load_success")
+                            }
+
+                            override fun onError(e: String?) {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load_fail")
+                            }
+
+                        })
 
                         languageNative2 = NativeAdmob(
                             context,
                             BuildConfig.native_language_2_2
                         )
-                        languageNative2?.load(null)
+                        AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load")
+                        languageNative2?.load(object : OnAdmobLoadListener{
+                            override fun onLoad() {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load_success")
+                            }
+
+                            override fun onError(e: String?) {
+                                AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load_fail")
+                            }
+                        })
                     }
                 }
             }

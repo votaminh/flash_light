@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import com.facebook.appevents.AppEventsLogger
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
@@ -92,8 +94,18 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     }
 
     private fun showNativeAd(nativeAdmob: NativeAdmob, parent : ShimmerFrameLayout) {
+        AppEventsLogger.newLogger(this@LanguageActivity).logEvent("native_language_show")
         if(spManager.getBoolean(NameRemoteAdmob.native_language, true)){
-            nativeAdmob.showNative(parent, null)
+            nativeAdmob.showNative(parent, object : OnAdmobShowListener{
+                override fun onShow() {
+                    AppEventsLogger.newLogger(this@LanguageActivity).logEvent("native_language_show_success")
+                }
+
+                override fun onError(e: String?) {
+                    AppEventsLogger.newLogger(this@LanguageActivity).logEvent("native_language_show_fail")
+                }
+
+            })
             parent.visible()
         }else{
             parent.gone()
