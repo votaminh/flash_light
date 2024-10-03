@@ -7,11 +7,13 @@ import android.provider.Settings
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import com.facebook.appevents.AppEventsLogger
 import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.R
 import com.flash.light.admob.BannerAdmob
 import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
@@ -152,7 +154,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun showBanner() {
         if(spManager.getBoolean(NameRemoteAdmob.banner_home, true)){
             val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.BOTTOM)
-            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_home, viewBinding.banner)
+            AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load")
+            bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_home, viewBinding.banner, object : OnAdmobLoadListener{
+                override fun onLoad() {
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load_success")
+                }
+
+                override fun onError(e: String?) {
+                    AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load_fail")
+                }
+            })
         }else{
             viewBinding.banner.visibility = View.GONE
         }

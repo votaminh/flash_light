@@ -26,10 +26,18 @@ public class BannerAdmob extends BaseAdmob {
         this.collapsiblePositionType = collapsiblePositionType;
     }
 
+    public void showBanner(Activity activity,
+                           String id,
+                           ShimmerFrameLayout parent){
+        showBanner(activity, id, parent, null);
+    }
+
     public void showBanner(
             Activity activity,
             String id,
-            ShimmerFrameLayout parent){
+            ShimmerFrameLayout parent,
+            OnAdmobLoadListener onAdmobLoadListener
+            ){
 
         Log.i(TAG, "showBanner: " + id);
 
@@ -43,6 +51,9 @@ public class BannerAdmob extends BaseAdmob {
                 Log.i(TAG, "onAdFailedToLoad: ");
                 super.onAdFailedToLoad(loadAdError);
                 parent.removeAllViews();
+                if(onAdmobLoadListener != null){
+                    onAdmobLoadListener.onError(loadAdError.getMessage());
+                }
             }
 
             @Override
@@ -52,6 +63,9 @@ public class BannerAdmob extends BaseAdmob {
                 parent.removeAllViews();
                 parent.addView(adView);
                 parent.hideShimmer();
+                if(onAdmobLoadListener != null){
+                    onAdmobLoadListener.onLoad();
+                }
             }
         });
 
