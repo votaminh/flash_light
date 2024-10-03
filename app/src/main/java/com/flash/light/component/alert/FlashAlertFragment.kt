@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.viewModels
 import com.facebook.ads.NativeAd
+import com.facebook.appevents.AppEventsLogger
 import com.flash.light.BuildConfig
 import com.flash.light.R
 import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
+import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.fragment.BaseFragment
@@ -61,13 +64,31 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
     }
 
     private fun showNative() {
-        context?.let {
-            if(SpManager.getInstance(it).getBoolean(NameRemoteAdmob.native_home, true)){
-                val nativeHome = NativeAdmob(it, BuildConfig.native_home)
-                nativeHome.load(null)
+        context?.let { context ->
+            if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_home, true)){
+                val nativeHome = NativeAdmob(context, BuildConfig.native_home)
+                AppEventsLogger.newLogger(context).logEvent("native_home_load")
+                nativeHome.load(object : OnAdmobLoadListener{
+                    override fun onLoad() {
+                        AppEventsLogger.newLogger(context).logEvent("native_home_load_success")
+                    }
+
+                    override fun onError(e: String?) {
+                        AppEventsLogger.newLogger(context).logEvent("native_home_load_fail")
+                    }
+                })
                 nativeHome.nativeAdLive.observe(this){
                     if(nativeHome.available()){
-                        nativeHome.showNative(viewBinding.flAdplaceholder, null)
+                        nativeHome.showNative(viewBinding.flAdplaceholder, object : OnAdmobShowListener{
+                            override fun onShow() {
+                                AppEventsLogger.newLogger(context).logEvent("native_home_show_success")
+                            }
+
+                            override fun onError(e: String?) {
+                                AppEventsLogger.newLogger(context).logEvent("native_home_show_fail")
+                            }
+
+                        })
                     }
                 }
             }
