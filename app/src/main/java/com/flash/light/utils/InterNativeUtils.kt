@@ -1,9 +1,11 @@
 package com.flash.light.utils
 
 import android.app.Activity
+import com.facebook.appevents.AppEventsLogger
 import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
@@ -18,11 +20,21 @@ class InterNativeUtils {
         fun loadInterBack(){
             App.instance?.applicationContext?.let { context ->
                 if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.inter_back, true)){
+                    AppEventsLogger.newLogger(context).logEvent("inter_back_load")
                     interBack = InterAdmob(
                         context,
                         BuildConfig.inter_back
                     )
-                    interBack?.load(null)
+                    interBack?.load(object : OnAdmobLoadListener{
+                        override fun onLoad() {
+                            AppEventsLogger.newLogger(context).logEvent("inter_back_load_success")
+                        }
+
+                        override fun onError(e: String?) {
+                            AppEventsLogger.newLogger(context).logEvent("inter_back_load_fail")
+                        }
+
+                    })
                 }
             }
         }
@@ -49,12 +61,14 @@ class InterNativeUtils {
                 interBack?.showInterstitial(activity, object : BaseAdmob.OnAdmobShowListener{
                     override fun onShow() {
                         nextAction?.invoke()
-                        interBack?.load(null)
+                        loadInterBack()
+                        AppEventsLogger.newLogger(activity).logEvent("inter_back_show_success")
                     }
 
                     override fun onError(e: String?) {
                         nextAction?.invoke()
-                        interBack?.load(null)
+                        loadInterBack()
+                        AppEventsLogger.newLogger(activity).logEvent("inter_back_show_fail")
                     }
 
                 })
