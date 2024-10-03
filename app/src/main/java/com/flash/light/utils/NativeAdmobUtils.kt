@@ -5,6 +5,7 @@ import com.facebook.appevents.AppEventsLogger
 import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
+import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 
@@ -114,25 +115,66 @@ class NativeAdmobUtils {
                                 context,
                                 BuildConfig.native_onboarding_1_1
                             )
-                            onboardNativeAdmob1?.load(null)
+
+                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load")
+                            onboardNativeAdmob1?.load(object : OnAdmobLoadListener{
+                                override fun onLoad() {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load_success")
+                                }
+
+                                override fun onError(e: String?) {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load_fail")
+                                }
+
+                            })
 
                             onboardNativeAdmob2 = NativeAdmob(
                                 context,
                                 BuildConfig.native_onboarding_1_2
                             )
-                            onboardNativeAdmob2?.load(null)
+                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load")
+                            onboardNativeAdmob2?.load(object : OnAdmobLoadListener{
+                                override fun onLoad() {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load_success")
+                                }
+
+                                override fun onError(e: String?) {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load_fail")
+                                }
+
+                            })
                         }else{
                             onboardNativeAdmob1 = NativeAdmob(
                                 context,
                                 BuildConfig.native_onboarding_2_1
                             )
-                            onboardNativeAdmob1?.load(null)
+                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load")
+                            onboardNativeAdmob1?.load(object : OnAdmobLoadListener{
+                                override fun onLoad() {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load_success")
+                                }
+
+                                override fun onError(e: String?) {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load_fail")
+                                }
+
+                            })
 
                             onboardNativeAdmob2 = NativeAdmob(
                                 context,
-                                BuildConfig.native_onboarding_2_1
+                                BuildConfig.native_onboarding_2_2
                             )
-                            onboardNativeAdmob2?.load(null)
+                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load")
+                            onboardNativeAdmob2?.load(object : OnAdmobLoadListener{
+                                override fun onLoad() {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load_success")
+                                }
+
+                                override fun onError(e: String?) {
+                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load_error")
+                                }
+
+                            })
                         }
 
                     }
