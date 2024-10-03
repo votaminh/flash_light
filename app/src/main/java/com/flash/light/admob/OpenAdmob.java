@@ -6,11 +6,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
 
+import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.Date;
 
 public class OpenAdmob extends BaseAdmob{
@@ -51,6 +54,11 @@ public class OpenAdmob extends BaseAdmob{
                         appOpenAd = ad;
                         isLoadingAd = false;
                         loadTime = (new Date()).getTime();
+
+                        ad.setOnPaidEventListener(adValue -> {
+                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                        });
+
                         if(onAdmobLoadListener != null) onAdmobLoadListener.onLoad();
                     }
 

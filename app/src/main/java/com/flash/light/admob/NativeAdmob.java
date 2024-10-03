@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -23,6 +24,9 @@ import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.gms.ads.nativead.NativeAdView;
 import com.flash.light.BuildConfig;
 import com.flash.light.R;
+
+import java.math.BigDecimal;
+import java.util.Currency;
 
 public class NativeAdmob extends BaseAdmob {
     private static final String TAG = "nativeAdmob";
@@ -112,6 +116,9 @@ public class NativeAdmob extends BaseAdmob {
                         nativeAdLive.getValue().destroy();
                     }
 
+                    a.setOnPaidEventListener(adValue -> {
+                        AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                    });
                     setNativeAd(a);
 
                     if (onAdmobLoadListener != null) {
