@@ -68,7 +68,7 @@ public class InterAdmob extends BaseAdmob {
                         interstitialAd = i;
 
                         interstitialAd.setOnPaidEventListener(adValue -> {
-                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
                         });
 
                         if(onAdmobLoadListener != null){

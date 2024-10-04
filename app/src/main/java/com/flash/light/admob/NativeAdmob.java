@@ -117,7 +117,7 @@ public class NativeAdmob extends BaseAdmob {
                     }
 
                     a.setOnPaidEventListener(adValue -> {
-                        AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                        AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
                     });
                     setNativeAd(a);
 

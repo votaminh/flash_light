@@ -71,7 +71,7 @@ public class BannerAdmob extends BaseAdmob {
                     onAdmobLoadListener.onLoad();
                 }
                 adView.setOnPaidEventListener(adValue -> {
-                    AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                    AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
                 });
             }
         });

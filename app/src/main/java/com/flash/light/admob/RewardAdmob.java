@@ -53,7 +53,7 @@ public class RewardAdmob extends BaseAdmob {
                         isLoading = false;
                         if(onAdmobLoadListener != null) onAdmobLoadListener.onLoad();
                         r.setOnPaidEventListener(adValue -> {
-                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()), Currency.getInstance("USD"));
+                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
                         });
                     }
                 });
