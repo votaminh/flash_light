@@ -14,6 +14,7 @@ import javax.inject.Inject
 import com.flash.light.BuildConfig
 import com.flash.light.admob.BannerAdmob
 import com.flash.light.admob.BaseAdmob
+import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
@@ -113,10 +114,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun loadShowOpenAds(successAction : (() -> Unit)? = null, failAction : (() -> Unit)? = null) {
-        val openAdmob = OpenAdmob(this, BuildConfig.open_splash)
-        openAdmob.loadAd(this@SplashActivity, object : BaseAdmob.OnAdmobLoadListener {
+        val interAdmob = InterAdmob(this, BuildConfig.inter_splash_high)
+        interAdmob.load(object : OnAdmobLoadListener{
             override fun onLoad() {
-                openAdmob.showAdIfAvailable(this@SplashActivity, object : OnAdmobShowListener{
+                interAdmob.showInterstitial(this@SplashActivity, object : OnAdmobShowListener{
                     override fun onShow() {
                         successAction?.invoke()
                     }
@@ -124,6 +125,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                     override fun onError(e: String?) {
                         failAction?.invoke()
                     }
+
                 })
             }
 
