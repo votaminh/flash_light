@@ -1,11 +1,9 @@
 package com.flash.light.utils
 
 import android.annotation.SuppressLint
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
-import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.admob.NativeAdmob
 
@@ -40,14 +38,11 @@ class NativeAdmobUtils {
                             context,
                             BuildConfig.native_language_1_1
                         )
-                        AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load")
                         languageNative1?.load(object : OnAdmobLoadListener{
                             override fun onLoad() {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load_success")
                             }
 
                             override fun onError(e: String?) {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_1_1_load_error")
                             }
 
                         })
@@ -56,14 +51,11 @@ class NativeAdmobUtils {
                             context,
                             BuildConfig.native_language_1_2
                         )
-                        AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load")
                         languageNative2?.load(object : OnAdmobLoadListener{
                             override fun onLoad() {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load_success")
                             }
 
                             override fun onError(e: String?) {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_1_2_load_fail")
                             }
 
                         })
@@ -72,14 +64,11 @@ class NativeAdmobUtils {
                             context,
                             BuildConfig.native_language_2_1
                         )
-                        AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load")
                         languageNative1?.load(object : OnAdmobLoadListener{
                             override fun onLoad() {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load_success")
                             }
 
                             override fun onError(e: String?) {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_2_1_load_fail")
                             }
 
                         })
@@ -88,14 +77,11 @@ class NativeAdmobUtils {
                             context,
                             BuildConfig.native_language_2_2
                         )
-                        AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load")
                         languageNative2?.load(object : OnAdmobLoadListener{
                             override fun onLoad() {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load_success")
                             }
 
                             override fun onError(e: String?) {
-                                AppEventsLogger.newLogger(context).logEvent("native_language_2_2_load_fail")
                             }
                         })
                     }
@@ -116,14 +102,11 @@ class NativeAdmobUtils {
                                 BuildConfig.native_onboarding_1_1
                             )
 
-                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load")
                             onboardNativeAdmob1?.load(object : OnAdmobLoadListener{
                                 override fun onLoad() {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load_success")
                                 }
 
                                 override fun onError(e: String?) {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_1_load_fail")
                                 }
 
                             })
@@ -132,14 +115,11 @@ class NativeAdmobUtils {
                                 context,
                                 BuildConfig.native_onboarding_1_2
                             )
-                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load")
                             onboardNativeAdmob2?.load(object : OnAdmobLoadListener{
                                 override fun onLoad() {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load_success")
                                 }
 
                                 override fun onError(e: String?) {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_1_2_load_fail")
                                 }
 
                             })
@@ -148,14 +128,11 @@ class NativeAdmobUtils {
                                 context,
                                 BuildConfig.native_onboarding_2_1
                             )
-                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load")
                             onboardNativeAdmob1?.load(object : OnAdmobLoadListener{
                                 override fun onLoad() {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load_success")
                                 }
 
                                 override fun onError(e: String?) {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_1_load_fail")
                                 }
 
                             })
@@ -164,14 +141,11 @@ class NativeAdmobUtils {
                                 context,
                                 BuildConfig.native_onboarding_2_2
                             )
-                            AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load")
                             onboardNativeAdmob2?.load(object : OnAdmobLoadListener{
                                 override fun onLoad() {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load_success")
                                 }
 
                                 override fun onError(e: String?) {
-                                    AppEventsLogger.newLogger(context).logEvent("native_onboarding_2_2_load_error")
                                 }
 
                             })
@@ -189,14 +163,11 @@ class NativeAdmobUtils {
                         context,
                         BuildConfig.native_permission
                     )
-                    AppEventsLogger.newLogger(context).logEvent("native_permission_load")
                     permissionNative?.load(object : OnAdmobLoadListener {
                         override fun onLoad() {
-                            AppEventsLogger.newLogger(context).logEvent("native_permission_load_success")
                         }
 
                         override fun onError(e: String?) {
-                            AppEventsLogger.newLogger(context).logEvent("native_permission_load_fail")
                         }
 
                     })

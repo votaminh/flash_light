@@ -3,7 +3,6 @@ package com.flash.light.component
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
@@ -64,11 +63,9 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
                 if(available()){
                     showNative(viewBinding.flAdplaceholder, object : OnAdmobShowListener{
                         override fun onShow() {
-                            AppEventsLogger.newLogger(context).logEvent("native_permission_show_success")
                         }
 
                         override fun onError(e: String?) {
-                            AppEventsLogger.newLogger(context).logEvent("native_permission_show_fail")
                         }
 
                     })

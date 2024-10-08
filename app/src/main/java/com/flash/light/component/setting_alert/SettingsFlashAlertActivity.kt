@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.activity.viewModels
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.BuildConfig
 import com.flash.light.R
 import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
@@ -17,7 +16,6 @@ import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.databinding.ActivitySettingFlashAlertBinding
 import com.flash.light.dialog.DialogExt.showDialogPermissionNotificationRead
-import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.InterNativeUtils
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
@@ -75,15 +73,12 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
 
     private fun showNative() {
         if(SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_function, true)){
-            AppEventsLogger.newLogger(this@SettingsFlashAlertActivity).logEvent("native_function_load")
             val nativeHome = NativeAdmob(this, BuildConfig.native_function)
             nativeHome.load(object : OnAdmobLoadListener{
                 override fun onLoad() {
-                    AppEventsLogger.newLogger(this@SettingsFlashAlertActivity).logEvent("native_function_load_success")
                 }
 
                 override fun onError(e: String?) {
-                    AppEventsLogger.newLogger(this@SettingsFlashAlertActivity).logEvent("native_function_load_fail")
                 }
 
             })
@@ -91,11 +86,9 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
                 if(nativeHome.available()){
                     nativeHome.showNative(viewBinding.flAdplaceholder, object : OnAdmobShowListener{
                         override fun onShow() {
-                            AppEventsLogger.newLogger(this@SettingsFlashAlertActivity).logEvent("native_function_show_success")
                         }
 
                         override fun onError(e: String?) {
-                            AppEventsLogger.newLogger(this@SettingsFlashAlertActivity).logEvent("native_function_show_fail")
                         }
                     })
                 }

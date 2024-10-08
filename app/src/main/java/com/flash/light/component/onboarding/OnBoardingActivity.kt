@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Looper
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.admob.BaseAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
@@ -86,11 +85,9 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                             android.os.Handler(Looper.getMainLooper()).postDelayed({
                                 showNative(viewBinding.flAdplaceholder, object : BaseAdmob.OnAdmobShowListener {
                                     override fun onShow() {
-                                        AppEventsLogger.newLogger(this@OnBoardingActivity).logEvent("native_onboarding_1_show_success")
                                     }
 
                                     override fun onError(e: String?) {
-                                        AppEventsLogger.newLogger(this@OnBoardingActivity).logEvent("native_onboarding_1_show_fail")
                                     }
 
                                 })
@@ -107,11 +104,9 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
                             android.os.Handler(Looper.getMainLooper()).postDelayed({
                                 showNative(viewBinding.flAdplaceholder, object : BaseAdmob.OnAdmobShowListener {
                                     override fun onShow() {
-                                        AppEventsLogger.newLogger(this@OnBoardingActivity).logEvent("native_onboarding_2_show_success")
                                     }
 
                                     override fun onError(e: String?) {
-                                        AppEventsLogger.newLogger(this@OnBoardingActivity).logEvent("native_onboarding_2_show_fail")
                                     }
 
                                 })

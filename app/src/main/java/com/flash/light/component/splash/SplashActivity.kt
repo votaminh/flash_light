@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Intent
 import android.view.View
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.language.LanguageActivity
 import com.flash.light.component.main.MainActivity
@@ -91,21 +90,17 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun loadShowInter(successAction : (() -> Unit)? = null, failAction : (() -> Unit)? = null) {
-        AppEventsLogger.newLogger(this@SplashActivity).logEvent("inter_splash_load")
         val interAdmob = InterAdmob(this@SplashActivity, BuildConfig.inter_splash)
         interAdmob.load(object : BaseAdmob.OnAdmobLoadListener {
             override fun onLoad() {
-                AppEventsLogger.newLogger(this@SplashActivity).logEvent("inter_splash_load_success")
                 interAdmob.showInterstitial(
                     this@SplashActivity,
                     object : BaseAdmob.OnAdmobShowListener {
                         override fun onShow() {
-                            AppEventsLogger.newLogger(this@SplashActivity).logEvent("inter_splash_show_success")
                            successAction?.invoke()
                         }
 
                         override fun onError(e: String?) {
-                            AppEventsLogger.newLogger(this@SplashActivity).logEvent("inter_splash_show_fail")
                             failAction?.invoke()
                         }
                     })
@@ -113,33 +108,27 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
             override fun onError(e: String?) {
                 failAction?.invoke()
-                AppEventsLogger.newLogger(this@SplashActivity).logEvent("inter_splash_load_fail")
             }
         })
     }
 
     private fun loadShowOpenAds(successAction : (() -> Unit)? = null, failAction : (() -> Unit)? = null) {
-        AppEventsLogger.newLogger(this).logEvent("open_splash_load")
         val openAdmob = OpenAdmob(this, BuildConfig.open_splash)
         openAdmob.loadAd(this@SplashActivity, object : BaseAdmob.OnAdmobLoadListener {
             override fun onLoad() {
-                AppEventsLogger.newLogger(this@SplashActivity).logEvent("open_splash_load_success")
                 openAdmob.showAdIfAvailable(this@SplashActivity, object : OnAdmobShowListener{
                     override fun onShow() {
-                        AppEventsLogger.newLogger(this@SplashActivity).logEvent("open_splash_show_success")
                         successAction?.invoke()
                     }
 
                     override fun onError(e: String?) {
                         failAction?.invoke()
-                        AppEventsLogger.newLogger(this@SplashActivity).logEvent("open_splash_show_fail")
                     }
                 })
             }
 
             override fun onError(e: String?) {
                 failAction?.invoke()
-                AppEventsLogger.newLogger(this@SplashActivity).logEvent("open_splash_load_fail")
             }
         })
     }

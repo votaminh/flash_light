@@ -10,7 +10,6 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.applovin.sdk.AppLovinPrivacySettings
-import com.facebook.appevents.AppEventsLogger
 import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.google.android.gms.ads.MobileAds
@@ -127,12 +126,10 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
                 currentActivity?.let { showAdIfAvailable(it, object : OnAdmobShowListener{
                     override fun onShow() {
                         loadOpenResume()
-                        AppEventsLogger.newLogger(applicationContext).logEvent("open_resume_show_success")
                     }
 
                     override fun onError(e: String?) {
                         loadOpenResume()
-                        AppEventsLogger.newLogger(applicationContext).logEvent("open_resume_show_fail")
                     }
                 }) }
             }
@@ -140,15 +137,12 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
     }
 
     private fun loadOpenResume() {
-        AppEventsLogger.newLogger(applicationContext).logEvent("open_resume_load")
         currentActivity?.let { currentActivity ->
             openAdmob?.loadAd(currentActivity, object : OnAdmobLoadListener{
                 override fun onLoad() {
-                    AppEventsLogger.newLogger(applicationContext).logEvent("open_resume_load_success")
                 }
 
                 override fun onError(e: String?) {
-                    AppEventsLogger.newLogger(applicationContext).logEvent("open_resume_load_fail")
                 }
 
             })

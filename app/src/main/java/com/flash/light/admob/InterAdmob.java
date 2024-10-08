@@ -12,7 +12,6 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -66,10 +65,6 @@ public class InterAdmob extends BaseAdmob {
                     public void onAdLoaded(@NonNull InterstitialAd i) {
                         Log.i(TAG, "onAdLoaded: ");
                         interstitialAd = i;
-
-                        interstitialAd.setOnPaidEventListener(adValue -> {
-                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
-                        });
 
                         if(onAdmobLoadListener != null){
                             onAdmobLoadListener.onLoad();

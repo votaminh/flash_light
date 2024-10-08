@@ -1,14 +1,8 @@
 package com.flash.light.component.main
 
 import android.app.Activity
-import android.app.ActivityManager
 import android.content.Intent
-import android.provider.Settings
 import android.view.View
-import androidx.activity.OnBackPressedCallback
-import androidx.core.content.ContextCompat
-import com.facebook.appevents.AppEventsLogger
-import com.flash.light.App
 import com.flash.light.BuildConfig
 import com.flash.light.R
 import com.flash.light.admob.BannerAdmob
@@ -20,10 +14,7 @@ import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.alert.FlashAlertFragment
 import com.flash.light.databinding.ActivityMainBinding
-import com.flash.light.dialog.DialogExt.showDialogExit
-import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.InterNativeUtils
-import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
 import com.flash.light.utils.changeTextColor
@@ -31,7 +22,6 @@ import com.flash.light.utils.changeTint
 import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -112,15 +102,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun loadInter() {
         if(spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
-            AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load")
             interAdmob = InterAdmob(this, BuildConfig.inter_home)
             interAdmob?.load(object : OnAdmobLoadListener{
                 override fun onLoad() {
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load_success")
                 }
 
                 override fun onError(e: String?) {
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_load_fail")
                 }
             })
         }
@@ -147,14 +134,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }else{
             interAdmob?.showInterstitial(this, object : BaseAdmob.OnAdmobShowListener{
                 override fun onShow() {
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_show_success")
                     nextAction?.invoke()
                     loadInter()
                 }
 
                 override fun onError(e: String?) {
                     nextAction?.invoke()
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("inter_home_show_fail")
                     loadInter()
                 }
 
@@ -165,14 +150,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun showBanner() {
         if(spManager.getBoolean(NameRemoteAdmob.banner_home, true)){
             val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.BOTTOM)
-            AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load")
             bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_home, viewBinding.banner, object : OnAdmobLoadListener{
                 override fun onLoad() {
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load_success")
                 }
 
                 override fun onError(e: String?) {
-                    AppEventsLogger.newLogger(this@MainActivity).logEvent("banner_home_load_fail")
                 }
             })
         }else{

@@ -6,7 +6,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -14,9 +13,6 @@ import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-
-import java.math.BigDecimal;
-import java.util.Currency;
 
 public class RewardAdmob extends BaseAdmob {
     private static final String TAG = "reward";
@@ -52,9 +48,6 @@ public class RewardAdmob extends BaseAdmob {
                         rewardedAd = r;
                         isLoading = false;
                         if(onAdmobLoadListener != null) onAdmobLoadListener.onLoad();
-                        r.setOnPaidEventListener(adValue -> {
-                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000), Currency.getInstance("USD"));
-                        });
                     }
                 });
     }
