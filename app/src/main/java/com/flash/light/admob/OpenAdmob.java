@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -53,6 +54,10 @@ public class OpenAdmob extends BaseAdmob{
                         appOpenAd = ad;
                         isLoadingAd = false;
                         loadTime = (new Date()).getTime();
+
+                        ad.setOnPaidEventListener(adValue -> {
+                            AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000.0f), Currency.getInstance("USD"));
+                        });
 
                         if(onAdmobLoadListener != null) onAdmobLoadListener.onLoad();
                     }

@@ -10,12 +10,16 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
+
+import java.math.BigDecimal;
+import java.util.Currency;
 
 public class BannerAdmob extends BaseAdmob {
     private static final String TAG = "bannerAdmob";
@@ -37,7 +41,7 @@ public class BannerAdmob extends BaseAdmob {
             String id,
             ShimmerFrameLayout parent,
             OnAdmobLoadListener onAdmobLoadListener
-            ){
+    ){
 
         Log.i(TAG, "showBanner: " + id);
 
@@ -66,6 +70,9 @@ public class BannerAdmob extends BaseAdmob {
                 if(onAdmobLoadListener != null){
                     onAdmobLoadListener.onLoad();
                 }
+                adView.setOnPaidEventListener(adValue -> {
+                    AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000.0f), Currency.getInstance("USD"));
+                });
             }
         });
 

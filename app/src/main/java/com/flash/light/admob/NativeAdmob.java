@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -114,6 +115,10 @@ public class NativeAdmob extends BaseAdmob {
                     if (nativeAdLive.getValue() != null) {
                         nativeAdLive.getValue().destroy();
                     }
+
+                    a.setOnPaidEventListener(adValue -> {
+                        AppEventsLogger.newLogger(context).logPurchase(BigDecimal.valueOf(adValue.getValueMicros()/1000000.0f), Currency.getInstance("USD"));
+                    });
                     setNativeAd(a);
 
                     if (onAdmobLoadListener != null) {
