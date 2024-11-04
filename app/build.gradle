@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace 'com.flash.light'
+    namespace 'com.flash.msc_light'
     compileSdk 34
 
     lint {
