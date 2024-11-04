@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_stroke1_gray1_round10"
+    android:background="@drawable/bg_stroke1_gray1_round10_clone_msc"
     >
 
     <LinearLayout
@@ -161,7 +161,7 @@
             android:gravity="center"
             android:textSize="@dimen/size13"
             tools:text="Install"
-            android:background="@drawable/bg_cta_language_round20"
+            android:background="@drawable/bg_cta_language_round20_clone_msc"
             android:paddingTop="@dimen/size10"
             android:paddingBottom="@dimen/size10"
             android:textStyle="bold"

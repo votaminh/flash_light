@@ -4,7 +4,7 @@ import android.telecom.Call
 import android.telecom.InCallService
 import android.util.Log
 
-class PhoneCallService : InCallService() {
+class PhoneCallCloneMscService : InCallService() {
     private val callBack = object : Call.Callback() {
         override fun onStateChanged(call: Call?, state: Int) {
             Log.i("gsdgdsg", "onStateChanged: ")

@@ -54,11 +54,11 @@ class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksBinding>() {
         viewBinding.run {
             if(it){
                 btnTurnOnFlash.animate().alpha(1f).start()
-                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light)
+                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
                 layoutLock.root.visibility = View.VISIBLE
             }else{
                 btnTurnOnFlash.animate().alpha(0.2f).start()
-                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light)
+                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
                 layoutLock.root.visibility = View.INVISIBLE
             }
         }

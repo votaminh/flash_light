@@ -2,7 +2,6 @@ package com.flash.light.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.flash.light.R
 import com.flash.light.domain.layer.LanguageModel
 
@@ -61,7 +60,7 @@ class SpManager(private val preferences: SharedPreferences) {
 
     fun getLanguage(): LanguageModel {
         return preferences.getString(Constant.KEY_SP_CURRENT_LANGUAGE, "")?.toLanguageModel()
-            ?: LanguageModel("en", R.drawable.ic_english, R.string.english)
+            ?: LanguageModel("en", R.drawable.ic_english_clone_msc, R.string.english)
     }
 
     fun saveOnBoarding() {

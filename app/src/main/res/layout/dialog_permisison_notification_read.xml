@@ -64,7 +64,7 @@
             <ImageView
                 android:layout_width="@dimen/size40"
                 android:layout_height="@dimen/size40"
-                android:src="@drawable/ic_finger_switch"
+                android:src="@drawable/ic_finger_switch_clone_msc"
                 android:layout_marginTop="@dimen/size15"
                 android:layout_marginLeft="@dimen/size10"
                 />
@@ -79,7 +79,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/size16"
         android:gravity="center"
-        android:background="@drawable/bg_stroke1_gray1_round10"
+        android:background="@drawable/bg_stroke1_gray1_round10_clone_msc"
         android:layout_marginHorizontal="@dimen/size30"
         android:paddingVertical="@dimen/size8"
         android:layout_marginTop="@dimen/size20"

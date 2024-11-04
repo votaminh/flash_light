@@ -1,7 +1,5 @@
 package com.flash.light.service
 
-import android.os.Handler
-import android.os.Looper
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
@@ -9,10 +7,9 @@ import com.flash.light.utils.flash.FlashHelper
 import com.flash.light.utils.SpManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.jvm.internal.Intrinsics
 
 @AndroidEntryPoint
-class NotificationListener : NotificationListenerService() {
+class NotificationCloneMscListener : NotificationListenerService() {
     private val TAG = "NotificationListener"
 
     @Inject

@@ -38,7 +38,7 @@
                 android:id="@+id/btnTurnOnFlash"
                 android:layout_width="@dimen/size120"
                 android:layout_height="@dimen/size120"
-                android:src="@drawable/ic_turn_off_flash_light"
+                android:src="@drawable/ic_turn_off_flash_light_clone_msc"
                 android:layout_marginVertical="@dimen/size32"
                 />
 
@@ -65,7 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size10"
-                        android:background="@drawable/corner_16_light_background"
+                        android:background="@drawable/corner_16_light_background_clone_msc"
                         >
 
                         <TextView
@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size10"
-                        android:background="@drawable/corner_16_light_background">
+                        android:background="@drawable/corner_16_light_background_clone_msc">
 
                         <TextView
                             style="@style/CustomTextViewFeature12sp"

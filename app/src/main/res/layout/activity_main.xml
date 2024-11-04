@@ -43,7 +43,7 @@
                     android:id="@+id/imvAlert"
                     android:layout_width="@dimen/size24"
                     android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_alert"
+                    android:src="@drawable/ic_alert_clone_msc"
                     app:tint="@color/main" />
 
                 <TextView
@@ -76,7 +76,7 @@
                     android:id="@+id/imvLight"
                     android:layout_width="@dimen/size24"
                     android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_light"
+                    android:src="@drawable/ic_light_clone_msc"
                     app:tint="@color/white" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:id="@+id/imvBlinks"
                     android:layout_width="@dimen/size24"
                     android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_blink"
+                    android:src="@drawable/ic_blink_clone_msc"
                     app:tint="@color/white" />
 
                 <TextView
@@ -142,7 +142,7 @@
                     android:id="@+id/imvSetting"
                     android:layout_width="@dimen/size24"
                     android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_setting"
+                    android:src="@drawable/ic_setting_clone_msc"
                     app:tint="@color/white" />
 
                 <TextView

@@ -18,9 +18,9 @@ class LanguageAdapter : BaseAdapter<LanguageModel, ItemLanguageBinding>() {
         viewBinding.swLanguage.isChecked = item.selected
 
         if(item.selected){
-            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_main_round10)
+            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_main_round10_clone_msc)
         }else{
-            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_gray1_round10)
+            viewBinding.container.setBackgroundResource(R.drawable.bg_stroke1_gray1_round10_clone_msc)
         }
 
         viewBinding.root.setOnClickListener {

@@ -10,11 +10,11 @@ class GetListLanguageUseCase @Inject constructor() :
     open class Param() : UseCase.Param()
 
     override suspend fun execute(param: Param): List<LanguageModel> = listOf(
-        LanguageModel("vi", R.drawable.ic_vietnamese, R.string.vietnamese),
-        LanguageModel("hi", R.drawable.ic_hindi, R.string.hindi),
-        LanguageModel("es", R.drawable.ic_spanish, R.string.spanish),
-        LanguageModel("en", R.drawable.ic_english, R.string.english),
-        LanguageModel("fr", R.drawable.ic_france, R.string.french),
-        LanguageModel("pt", R.drawable.ic_portugal, R.string.portuguese)
+        LanguageModel("vi", R.drawable.ic_vietnamese_clone_msc, R.string.vietnamese),
+        LanguageModel("hi", R.drawable.ic_hindi_clone_msc, R.string.hindi),
+        LanguageModel("es", R.drawable.ic_spanish_clone_msc, R.string.spanish),
+        LanguageModel("en", R.drawable.ic_english_clone_msc, R.string.english),
+        LanguageModel("fr", R.drawable.ic_france_clone_msc, R.string.french),
+        LanguageModel("pt", R.drawable.ic_portugal_clone_msc, R.string.portuguese)
     )
 }

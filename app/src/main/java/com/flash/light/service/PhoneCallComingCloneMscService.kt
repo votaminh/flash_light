@@ -12,7 +12,7 @@ import com.flash.light.utils.SpManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class PhoneCallComingService : Service() {
+class PhoneCallComingCloneMscService : Service() {
 
     companion object {
         const val TAG = "PhoneCallComingService"

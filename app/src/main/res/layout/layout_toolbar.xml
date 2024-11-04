@@ -9,7 +9,7 @@
         android:id="@+id/imvBack"
         android:layout_width="@dimen/size48"
         android:layout_height="@dimen/size48"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/ic_back_clone_msc"
         android:layout_centerVertical="true"
         />
 

@@ -12,7 +12,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size56"
-        android:background="@drawable/bg_stroke1_gray1_round10"
+        android:background="@drawable/bg_stroke1_gray1_round10_clone_msc"
         android:paddingVertical="8dp"
         android:paddingStart="15dp"
         android:paddingTop="8dp"
@@ -29,7 +29,7 @@
             android:layout_width="@dimen/size24"
             android:layout_height="@dimen/size24"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_vietnamese"
+            android:src="@drawable/ic_vietnamese_clone_msc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

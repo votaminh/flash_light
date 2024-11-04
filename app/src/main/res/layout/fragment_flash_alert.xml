@@ -74,11 +74,11 @@
                             android:id="@+id/swTapHome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:thumb="@drawable/thumb_custom_home"
+                            android:thumb="@drawable/thumb_custom_home_clone_msc"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:track="@drawable/layout_track_home" />
+                            app:track="@drawable/layout_track_home_clone_msc" />
 
                         <TextView
                             android:id="@+id/tvStatus"
@@ -98,7 +98,7 @@
                 <LinearLayout
                     android:id="@+id/layoutContainFeature"
                     android:layout_marginHorizontal="@dimen/size16"
-                    android:background="@drawable/corner_16_light_background"
+                    android:background="@drawable/corner_16_light_background_clone_msc"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +119,7 @@
                         <ImageView
                             android:id="@+id/iv1"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_call_coming"
+                            android:src="@drawable/ic_call_coming_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -138,7 +138,7 @@
                         <ImageView
                             android:id="@+id/ivTurnOnForComingPhone"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_go"
+                            android:src="@drawable/ic_go_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -163,7 +163,7 @@
                         <ImageView
                             android:id="@+id/iv2"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_sms"
+                            android:src="@drawable/ic_sms_clone_msc_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -181,7 +181,7 @@
                         <ImageView
                             android:id="@+id/ivTurnOnForSMS"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_go"
+                            android:src="@drawable/ic_go_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -205,7 +205,7 @@
                         <ImageView
                             android:id="@+id/iv3"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_noti"
+                            android:src="@drawable/ic_noti_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -223,7 +223,7 @@
                         <ImageView
                             android:id="@+id/ivTurnOnForNoti"
                             style="@style/IconColorPrimary24"
-                            android:src="@drawable/ic_go"
+                            android:src="@drawable/ic_go_clone_msc"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"

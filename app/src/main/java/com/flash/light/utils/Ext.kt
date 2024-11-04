@@ -3,7 +3,6 @@ package com.flash.light.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import android.os.Build
@@ -15,12 +14,11 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.flash.light.R
 import com.google.gson.Gson
 import com.flash.light.domain.layer.LanguageModel
 import com.flash.light.domain.layer.SoundModel
 import com.flash.light.domain.layer.VibrationMode
-import com.flash.light.service.PhoneCallComingService
+import com.flash.light.service.PhoneCallComingCloneMscService
 import java.util.Locale
 
 fun SoundModel.toJson(): String {
@@ -129,7 +127,7 @@ fun TextView.changeTextColor(resColor : Int){
 }
 
 fun Activity.startNotificationFlashService(){
-    startService(Intent(this, PhoneCallComingService::class.java))
+    startService(Intent(this, PhoneCallComingCloneMscService::class.java))
 }
 
 

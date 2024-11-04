@@ -29,7 +29,7 @@
                 android:id="@+id/imv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/ic_logo_permission"
+                android:src="@drawable/ic_logo_permission_clone_msc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_max="@dimen/size200"
                 app:layout_constraintHeight_percent="0.3"
@@ -86,7 +86,7 @@
                     android:layout_marginTop="@dimen/size5"
                     android:layout_marginRight="@dimen/size10"
                     android:layout_marginBottom="@dimen/size5"
-                    android:background="@drawable/bg_permission"
+                    android:background="@drawable/bg_permission_clone_msc"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/size10"
                     android:paddingVertical="@dimen/size14"
@@ -113,11 +113,11 @@
                         android:id="@+id/swPermissionManagerCall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:track="@drawable/layout_switch_track" />
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,7 +128,7 @@
                     android:layout_marginLeft="@dimen/size10"
                     android:layout_marginTop="@dimen/size10"
                     android:layout_marginRight="@dimen/size10"
-                    android:background="@drawable/bg_permission"
+                    android:background="@drawable/bg_permission_clone_msc"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/size10"
                     android:paddingVertical="@dimen/size14"
@@ -156,11 +156,11 @@
                         android:id="@+id/swPermissionCamera"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:track="@drawable/layout_switch_track" />
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

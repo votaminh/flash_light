@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size10"
-                android:background="@drawable/corner_16_light_background"
+                android:background="@drawable/corner_16_light_background_clone_msc"
                 android:paddingHorizontal="@dimen/size10"
                 android:paddingVertical="@dimen/size5"
                 android:orientation="vertical"
@@ -57,7 +57,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_light_mode"/>
+                        android:src="@drawable/ic_light_mode_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -71,8 +71,8 @@
                         android:id="@+id/swNotFlashWhenScreenOn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
-                        app:track="@drawable/layout_switch_track" />
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_battery"/>
+                        android:src="@drawable/ic_battery_clone_msc"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -110,8 +110,8 @@
                         android:id="@+id/swNotFlashWhenLowBattery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
-                        app:track="@drawable/layout_switch_track" />
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size10"
-                android:background="@drawable/corner_16_light_background"
+                android:background="@drawable/corner_16_light_background_clone_msc"
                 android:paddingHorizontal="@dimen/size10"
                 android:orientation="vertical"
                 >
@@ -149,7 +149,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_normal_setting"/>
+                        android:src="@drawable/ic_normal_setting_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -163,8 +163,8 @@
                         android:id="@+id/swFlashInNormal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
-                        app:track="@drawable/layout_switch_track" />
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -175,7 +175,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_vibration"/>
+                        android:src="@drawable/ic_vibration_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -189,8 +189,8 @@
                         android:id="@+id/swFlashInVibrate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
-                        app:track="@drawable/layout_switch_track" />
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -202,7 +202,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_volume_off" />
+                        android:src="@drawable/ic_volume_off_clone_msc" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -217,8 +217,8 @@
                         android:id="@+id/swFlashInSilent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/layout_switch_thumb"
-                        app:track="@drawable/layout_switch_track" />
+                        android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                        app:track="@drawable/layout_switch_track_clone_msc" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -227,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size10"
-                android:background="@drawable/corner_16_light_background"
+                android:background="@drawable/corner_16_light_background_clone_msc"
                 android:paddingHorizontal="@dimen/size10"
                 android:paddingVertical="@dimen/size5"
                 android:orientation="vertical"
@@ -241,7 +241,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_privacy"/>
+                        android:src="@drawable/ic_privacy_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -254,7 +254,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_arrow_right"
+                        android:src="@drawable/ic_arrow_right_clone_msc"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -268,7 +268,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_share" />
+                        android:src="@drawable/ic_share_clone_msc" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -282,7 +282,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_arrow_right"
+                        android:src="@drawable/ic_arrow_right_clone_msc"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -295,7 +295,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_language"/>
+                        android:src="@drawable/ic_language_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -309,7 +309,7 @@
                     <ImageView
                         android:layout_width="@dimen/size24"
                         android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_arrow_right"
+                        android:src="@drawable/ic_arrow_right_clone_msc"
                         />
                 </LinearLayout>
             </LinearLayout>

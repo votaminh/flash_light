@@ -87,8 +87,8 @@
     <style name="CustomSmallSwitch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:thumb">@drawable/layout_switch_thumb_setting</item>
-        <item name="track">@drawable/layout_switch_track_setting</item>
+        <item name="android:thumb">@drawable/layout_switch_thumb_setting_clone_msc</item>
+        <item name="track">@drawable/layout_switch_track_setting_clone_msc</item>
     </style>
 
     <style name="tv_header_1">

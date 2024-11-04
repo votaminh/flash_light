@@ -64,13 +64,13 @@ class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightBinding>() {
             isFlashTurnOn.observe(this@FlashLightCloneMscFragment){
                 if(it){
                     viewBinding.run {
-                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light)
+                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
                         layoutLock.root.visibility = View.VISIBLE
                     }
 
                 }else{
                     viewBinding.run {
-                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light)
+                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
                         layoutLock.root.visibility = View.INVISIBLE
                     }
                 }
