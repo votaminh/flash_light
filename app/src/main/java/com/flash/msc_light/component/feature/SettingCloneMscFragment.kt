@@ -17,11 +17,32 @@ class SettingCloneMscFragment : BaseFragment<FragmentSettingCloneMscBinding>() {
     override fun provideViewBinding(container: ViewGroup?): FragmentSettingCloneMscBinding {
         return FragmentSettingCloneMscBinding.inflate(LayoutInflater.from(context))
     }
-
+    override fun initObserver() {
+        viewModel.run {
+            flashWhenScreenOnStateLive.observe(this@SettingCloneMscFragment){
+                viewBinding.swNotFlashWhenScreenOn.isChecked = it
+            }
+            flashWhenBatteryLowLive.observe(this@SettingCloneMscFragment){
+                viewBinding.swNotFlashWhenLowBattery.isChecked = it
+            }
+            flashWhenNormalModeLive.observe(this@SettingCloneMscFragment){
+                viewBinding.swFlashInNormal.isChecked = it
+            }
+            flashWhenVibrateModeLive.observe(this@SettingCloneMscFragment){
+                viewBinding.swFlashInVibrate.isChecked = it
+            }
+            flashWhenSilentModeLive.observe(this@SettingCloneMscFragment){
+                viewBinding.swFlashInSilent.isChecked = it
+            }
+        }
+    }
     override fun initViews() {
         viewBinding.run {
             swNotFlashWhenScreenOn.setOnCheckedChangeListener { _, b ->
                 viewModel.settingFlashWhenScreenOn(b)
+            }
+            swFlashInSilent.setOnCheckedChangeListener { _, b ->
+                viewModel.settingFlashInSilent(b)
             }
             swNotFlashWhenLowBattery.setOnCheckedChangeListener { _, b ->
                 viewModel.settingFlashWhenLowBattery(b)
@@ -31,9 +52,6 @@ class SettingCloneMscFragment : BaseFragment<FragmentSettingCloneMscBinding>() {
             }
             swFlashInVibrate.setOnCheckedChangeListener { _, b ->
                 viewModel.settingFlashInVibrateMode(b)
-            }
-            swFlashInSilent.setOnCheckedChangeListener { _, b ->
-                viewModel.settingFlashInSilent(b)
             }
 
             policy.setOnClickListener {
@@ -54,23 +72,5 @@ class SettingCloneMscFragment : BaseFragment<FragmentSettingCloneMscBinding>() {
         viewModel.checkSettingValues()
     }
 
-    override fun initObserver() {
-        viewModel.run {
-            flashWhenScreenOnStateLive.observe(this@SettingCloneMscFragment){
-                viewBinding.swNotFlashWhenScreenOn.isChecked = it
-            }
-            flashWhenBatteryLowLive.observe(this@SettingCloneMscFragment){
-                viewBinding.swNotFlashWhenLowBattery.isChecked = it
-            }
-            flashWhenNormalModeLive.observe(this@SettingCloneMscFragment){
-                viewBinding.swFlashInNormal.isChecked = it
-            }
-            flashWhenVibrateModeLive.observe(this@SettingCloneMscFragment){
-                viewBinding.swFlashInVibrate.isChecked = it
-            }
-            flashWhenSilentModeLive.observe(this@SettingCloneMscFragment){
-                viewBinding.swFlashInSilent.isChecked = it
-            }
-        }
-    }
+
 }

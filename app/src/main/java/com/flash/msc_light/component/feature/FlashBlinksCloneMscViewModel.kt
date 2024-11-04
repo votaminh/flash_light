@@ -16,12 +16,6 @@ class FlashBlinksCloneMscViewModel @Inject constructor(@ApplicationContext priva
     private var detectorSoundCloneMscThread : DetectorSoundCloneMscThread? = null
 
     val stateLive = MutableLiveData(false)
-
-    fun startSos(){
-        flashHelper.startSos(context)
-        stateLive.postValue(true)
-    }
-
     fun startDJ(){
         stateLive.postValue(true)
         if(detectorSoundCloneMscThread == null){
@@ -44,6 +38,12 @@ class FlashBlinksCloneMscViewModel @Inject constructor(@ApplicationContext priva
             start()
         }
     }
+    fun startSos(){
+        flashHelper.startSos(context)
+        stateLive.postValue(true)
+    }
+
+
 
     fun stop(){
         flashHelper.stop()

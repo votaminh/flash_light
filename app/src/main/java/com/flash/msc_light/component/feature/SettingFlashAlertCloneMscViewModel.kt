@@ -58,19 +58,7 @@ class SettingFlashAlertCloneMscViewModel @Inject constructor(@ApplicationContext
         progressSbOffTimeLive.postValue(AppUtils.invertRange(offTime.toFloat(), Constant.MIN_TIME_FLASH, Constant.MAX_TIME_FLASH).toInt())
     }
 
-    fun saveState(type: String, state: Boolean) {
-        when(type){
-            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
-                spManager.setTurnOnCall(state)
-            }
-            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
-                spManager.setTurnOnNotification(state)
-            }
-            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
-                spManager.setTurnOnSMS(state)
-            }
-        }
-    }
+
 
     fun saveOnTimePercent(type: String, p1: Int) {
         val onTime = AppUtils.range(p1, Constant.MIN_TIME_FLASH.toFloat(), Constant.MAX_TIME_FLASH.toFloat())
@@ -84,6 +72,18 @@ class SettingFlashAlertCloneMscViewModel @Inject constructor(@ApplicationContext
             }
             SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 spManager.setOnTimeFlashSMS(onTime.toLong())
+            }
+        }
+    } fun saveState(type: String, state: Boolean) {
+        when(type){
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
+                spManager.setTurnOnCall(state)
+            }
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
+                spManager.setTurnOnNotification(state)
+            }
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
+                spManager.setTurnOnSMS(state)
             }
         }
     }

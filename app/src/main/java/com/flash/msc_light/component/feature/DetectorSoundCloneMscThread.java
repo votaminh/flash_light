@@ -27,29 +27,14 @@ public class DetectorSoundCloneMscThread extends Thread {
         try {
             MediaRecorder mediaRecorder = new MediaRecorder();
             this.recorder = mediaRecorder;
+            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             this.recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             MediaRecorder mediaRecorder2 = this.recorder;
             mediaRecorder2.setOutputFile("/data/data/" + context.getPackageName() + "/detect.3gp");
         }catch (Exception e){
 
         }
-    }
-
-    public void start() {
-        try {
-            if(this.recorder == null){
-                init();
-            }
-            this.recorder.prepare();
-            this.recorder.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Thread thread = new Thread(this);
-        this._thread = thread;
-        thread.start();
     }
 
     public void stopDetection() {
@@ -66,6 +51,25 @@ public class DetectorSoundCloneMscThread extends Thread {
         }
     }
 
+
+    public void start() {
+        try {
+            if(this.recorder == null){
+                init();
+            }
+            this.recorder.prepare();
+            this.recorder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Thread thread = new Thread(this);
+        this._thread = thread;
+        thread.start();
+    }
+
+    public void setOnSoundListener(OnSoundListener onSoundListener2) {
+        this.onSoundListener = onSoundListener2;
+    }
     public void run() {
         try {
             Thread currentThread = Thread.currentThread();
@@ -87,9 +91,5 @@ public class DetectorSoundCloneMscThread extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void setOnSoundListener(OnSoundListener onSoundListener2) {
-        this.onSoundListener = onSoundListener2;
     }
 }

@@ -19,6 +19,37 @@ class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightCloneMscBindin
         return FragmentFlashLightCloneMscBinding.inflate(LayoutInflater.from(context))
     }
 
+
+    override fun initObserver() {
+        viewModel.run {
+            isFlashTurnOn.observe(this@FlashLightCloneMscFragment){
+                if(it){
+                    viewBinding.run {
+                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
+                        layoutLock.root.visibility = View.VISIBLE
+                    }
+
+                }else{
+                    viewBinding.run {
+                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
+                        layoutLock.root.visibility = View.INVISIBLE
+                    }
+                }
+            }
+            onTimeLive.observe(this@FlashLightCloneMscFragment){
+                viewBinding.secondAlertOnTime.text = it.toString() + " " + getString(R.string.txt_seconds)
+            }
+            offTimeLive.observe(this@FlashLightCloneMscFragment){
+                viewBinding.secondAlertOffTime.text = it.toString() + " " + getString(R.string.txt_seconds)
+            }
+            progressSbOnTimeLive.observe(this@FlashLightCloneMscFragment){
+                viewBinding.sbAlertOnTime.progress = it
+            }
+            progressSbOffTimeLive.observe(this@FlashLightCloneMscFragment){
+                viewBinding.sbAlertOffTime.progress = it
+            }
+        }
+    }
     override fun initViews() {
         viewBinding.run {
             btnTurnOnFlash.setOnClickListener {
@@ -57,37 +88,6 @@ class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightCloneMscBindin
         }
 
         viewModel.getValuesSetting()
-    }
-
-    override fun initObserver() {
-        viewModel.run {
-            isFlashTurnOn.observe(this@FlashLightCloneMscFragment){
-                if(it){
-                    viewBinding.run {
-                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
-                        layoutLock.root.visibility = View.VISIBLE
-                    }
-
-                }else{
-                    viewBinding.run {
-                        btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
-                        layoutLock.root.visibility = View.INVISIBLE
-                    }
-                }
-            }
-            onTimeLive.observe(this@FlashLightCloneMscFragment){
-                viewBinding.secondAlertOnTime.text = it.toString() + " " + getString(R.string.txt_seconds)
-            }
-            offTimeLive.observe(this@FlashLightCloneMscFragment){
-                viewBinding.secondAlertOffTime.text = it.toString() + " " + getString(R.string.txt_seconds)
-            }
-            progressSbOnTimeLive.observe(this@FlashLightCloneMscFragment){
-                viewBinding.sbAlertOnTime.progress = it
-            }
-            progressSbOffTimeLive.observe(this@FlashLightCloneMscFragment){
-                viewBinding.sbAlertOffTime.progress = it
-            }
-        }
     }
 
     override fun onPause() {

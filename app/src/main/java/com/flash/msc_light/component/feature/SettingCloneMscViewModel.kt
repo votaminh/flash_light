@@ -25,9 +25,6 @@ class SettingCloneMscViewModel @Inject constructor(): ViewModel() {
         flashWhenSilentModeLive.postValue(spManager.getFlashInSilentMode())
     }
 
-    fun settingFlashWhenScreenOn(state : Boolean){
-        spManager.setNotFlashWhenScreenOn(state)
-    }
 
     fun settingFlashWhenLowBattery(state : Boolean){
         spManager.setNotFlashWhenBatteryLow(state)
@@ -37,6 +34,9 @@ class SettingCloneMscViewModel @Inject constructor(): ViewModel() {
         spManager.setFlashInNormalMode(state)
     }
 
+    fun settingFlashWhenScreenOn(state : Boolean){
+        spManager.setNotFlashWhenScreenOn(state)
+    }
     fun settingFlashInVibrateMode(state: Boolean){
         spManager.setFlashInVibrateMode(state)
     }

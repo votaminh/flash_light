@@ -18,6 +18,28 @@ class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksCloneMscBind
         return FragmentFlashBlinksCloneMscBinding.inflate(layoutInflater)
     }
 
+    override fun initObserver() {
+        viewModel.run {
+            stateLive.observe(this@FlashBlinksCloneMscFragment){
+                updateStateUI(it)
+            }
+        }
+    }
+
+    private fun updateStateUI(it: Boolean) {
+        viewBinding.run {
+            if(it){
+                btnTurnOnFlash.animate().alpha(1f).start()
+                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
+                layoutLock.root.visibility = View.VISIBLE
+            }else{
+                btnTurnOnFlash.animate().alpha(0.2f).start()
+                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
+                layoutLock.root.visibility = View.INVISIBLE
+            }
+        }
+    }
+
     override fun initViews() {
         super.initViews()
 
@@ -38,28 +60,6 @@ class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksCloneMscBind
                 if(viewModel.stateLive.value == true){
                     viewModel.stop()
                 }
-            }
-        }
-    }
-
-    override fun initObserver() {
-        viewModel.run {
-            stateLive.observe(this@FlashBlinksCloneMscFragment){
-                updateStateUI(it)
-            }
-        }
-    }
-
-    private fun updateStateUI(it: Boolean) {
-        viewBinding.run {
-            if(it){
-                btnTurnOnFlash.animate().alpha(1f).start()
-                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light_clone_msc)
-                layoutLock.root.visibility = View.VISIBLE
-            }else{
-                btnTurnOnFlash.animate().alpha(0.2f).start()
-                btnTurnOnFlash.setImageResource(R.drawable.ic_turn_off_flash_light_clone_msc)
-                layoutLock.root.visibility = View.INVISIBLE
             }
         }
     }

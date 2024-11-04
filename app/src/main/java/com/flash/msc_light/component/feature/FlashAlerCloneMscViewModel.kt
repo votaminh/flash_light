@@ -14,12 +14,12 @@ class FlashAlerCloneMscViewModel @Inject constructor() : ViewModel() {
 
     val stateLive = MutableLiveData(false)
 
-    fun checkState(){
-        stateLive.postValue(spManager.getStateFlash())
-    }
 
     fun saveStateFlash(state : Boolean) {
         spManager.setStateFlash(state)
         stateLive.postValue(state)
+    }
+    fun checkState(){
+        stateLive.postValue(spManager.getStateFlash())
     }
 }

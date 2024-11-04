@@ -29,6 +29,12 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
         return FragmentFlashAlertCloneMscBinding.inflate(LayoutInflater.from(context))
     }
 
+
+    private fun listenerView() {
+        viewBinding.swTapHome.setOnClickListener {
+            viewModel.saveStateFlash(viewBinding.swTapHome.isChecked)
+        }
+    }
     override fun initViews() {
         super.initViews()
         viewBinding.run {
@@ -55,38 +61,6 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
         viewBinding.flAdplaceholder.gone()
     }
 
-    private fun showNative() {
-        context?.let { context ->
-            if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_home, true)){
-                val nativeHome = NativeAdmob(context, BuildConfig.native_home)
-                nativeHome.load(object : OnAdmobLoadListener{
-                    override fun onLoad() {
-                    }
-
-                    override fun onError(e: String?) {
-                    }
-                })
-                nativeHome.nativeAdLive.observe(this){
-                    if(nativeHome.available()){
-                        nativeHome.showNative(viewBinding.flAdplaceholder, object : OnAdmobShowListener{
-                            override fun onShow() {
-                            }
-
-                            override fun onError(e: String?) {
-                            }
-
-                        })
-                    }
-                }
-            }
-        }
-    }
-
-    private fun listenerView() {
-        viewBinding.swTapHome.setOnClickListener {
-            viewModel.saveStateFlash(viewBinding.swTapHome.isChecked)
-        }
-    }
 
     override fun initObserver() {
         viewModel.run {
@@ -117,6 +91,32 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
                 }
             }else{
                 PermissionActivity.start(it, PermissionActivity.KEY_FROM_MAIN)
+            }
+        }
+    }
+    private fun showNative() {
+        context?.let { context ->
+            if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_home, true)){
+                val nativeHome = NativeAdmob(context, BuildConfig.native_home)
+                nativeHome.load(object : OnAdmobLoadListener{
+                    override fun onLoad() {
+                    }
+
+                    override fun onError(e: String?) {
+                    }
+                })
+                nativeHome.nativeAdLive.observe(this){
+                    if(nativeHome.available()){
+                        nativeHome.showNative(viewBinding.flAdplaceholder, object : OnAdmobShowListener{
+                            override fun onShow() {
+                            }
+
+                            override fun onError(e: String?) {
+                            }
+
+                        })
+                    }
+                }
             }
         }
     }

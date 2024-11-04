@@ -204,14 +204,7 @@ class SettingsFlashCloneMscAlertActivity : BaseActivity<ActivitySettingFlashAler
     }
 
 
-    private fun checkPermissionNotificationRead() {
-        if(!PermissionUtils.isNotificationListenerPermission(this)){
-            viewBinding.swStatus.isChecked = false
-            showDialogPermissionNotificationRead{
-                PermissionUtils.requestNotificationListenerPermission(this, 122)
-            }
-        }
-    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -221,7 +214,14 @@ class SettingsFlashCloneMscAlertActivity : BaseActivity<ActivitySettingFlashAler
             }
         }
     }
-
+    private fun checkPermissionNotificationRead() {
+        if(!PermissionUtils.isNotificationListenerPermission(this)){
+            viewBinding.swStatus.isChecked = false
+            showDialogPermissionNotificationRead{
+                PermissionUtils.requestNotificationListenerPermission(this, 122)
+            }
+        }
+    }
     override fun onDestroy() {
         viewModel.stopTest()
         super.onDestroy()
