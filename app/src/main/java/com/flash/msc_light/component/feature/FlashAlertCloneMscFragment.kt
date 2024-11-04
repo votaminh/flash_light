@@ -53,6 +53,16 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
                     checkPermissionToOpenSetting(SettingsFlashCloneMscAlertActivity.ALERT_SMS)
                 }
             }
+
+            swFlashInSilent.setOnCheckedChangeListener { _, b ->
+                viewModel.settingFlashInSilent(b)
+            }
+            swFlashInNormal.setOnCheckedChangeListener { _, b ->
+                viewModel.settingFlashInNormalMode(b)
+            }
+            swFlashInVibrate.setOnCheckedChangeListener { _, b ->
+                viewModel.settingFlashInVibrateMode(b)
+            }
         }
         listenerView()
         activity?.startNotificationFlashService()
@@ -73,6 +83,16 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
                     viewBinding.layoutContainFeature.animate().alpha(0.3f).start()
                     viewBinding.tvStatus.text = getString(R.string.txt_tap_to_turn_on)
                 }
+            }
+
+            flashWhenNormalModeLive.observe(this@FlashAlertCloneMscFragment){
+                viewBinding.swFlashInNormal.isChecked = it
+            }
+            flashWhenVibrateModeLive.observe(this@FlashAlertCloneMscFragment){
+                viewBinding.swFlashInVibrate.isChecked = it
+            }
+            flashWhenSilentModeLive.observe(this@FlashAlertCloneMscFragment){
+                viewBinding.swFlashInSilent.isChecked = it
             }
         }
 

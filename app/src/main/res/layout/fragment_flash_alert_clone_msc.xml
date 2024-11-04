@@ -44,7 +44,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -231,6 +233,115 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                style="@style/LayoutContainFeature"
+                android:layout_marginHorizontal="@dimen/size10"
+                android:layout_marginLeft="@dimen/size7"
+                android:layout_marginRight="@dimen/size7"
+                android:layout_marginBottom="@dimen/size20"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/size20"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_flash_when_phone"
+                    style="@style/tv_header_1"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size10"
+                    android:background="@drawable/corner_16_light_background_clone_msc"
+                    android:paddingHorizontal="@dimen/size10"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size52"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="@dimen/size24"
+                            android:layout_height="@dimen/size24"
+                            android:src="@drawable/ic_normal_setting_clone_msc"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/txt_normal"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size14"
+                            android:layout_marginHorizontal="@dimen/size10"
+                            />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swFlashInNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                            app:track="@drawable/layout_switch_track_clone_msc" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size52"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <ImageView
+                            android:layout_width="@dimen/size24"
+                            android:layout_height="@dimen/size24"
+                            android:src="@drawable/ic_vibration_clone_msc"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/txt_vibrate"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size14"
+                            android:layout_marginHorizontal="@dimen/size10"
+                            />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swFlashInVibrate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                            app:track="@drawable/layout_switch_track_clone_msc" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size52"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/size24"
+                            android:layout_height="@dimen/size24"
+                            android:src="@drawable/ic_volume_off_clone_msc" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/size10"
+                            android:layout_weight="1"
+                            android:text="@string/txt_silent"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size14" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swFlashInSilent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumb="@drawable/layout_switch_thumb_clone_msc"
+                            app:track="@drawable/layout_switch_track_clone_msc" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

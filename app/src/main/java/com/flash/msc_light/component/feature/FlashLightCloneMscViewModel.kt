@@ -26,7 +26,6 @@ class FlashLightCloneMscViewModel @Inject constructor(@ApplicationContext val co
     val progressSbOffTimeLive = MutableLiveData<Int>()
 
 
-
     fun startFlash(){
         val timeTurnOn = spManager.getOnTimeFlashLightMS()
         val timeTurnOff = spManager.getOffTimeFlashLightMS()

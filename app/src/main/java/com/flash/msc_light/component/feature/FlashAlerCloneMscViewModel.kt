@@ -14,6 +14,9 @@ class FlashAlerCloneMscViewModel @Inject constructor() : ViewModel() {
 
     val stateLive = MutableLiveData(false)
 
+    val flashWhenNormalModeLive = MutableLiveData(false)
+    val flashWhenVibrateModeLive = MutableLiveData(false)
+    val flashWhenSilentModeLive = MutableLiveData(false)
 
     fun saveStateFlash(state : Boolean) {
         spManager.setStateFlash(state)
@@ -21,5 +24,17 @@ class FlashAlerCloneMscViewModel @Inject constructor() : ViewModel() {
     }
     fun checkState(){
         stateLive.postValue(spManager.getStateFlash())
+    }
+
+    fun settingFlashInNormalMode(state: Boolean){
+        spManager.setFlashInNormalMode(state)
+    }
+
+    fun settingFlashInVibrateMode(state: Boolean){
+        spManager.setFlashInVibrateMode(state)
+    }
+
+    fun settingFlashInSilent(state: Boolean){
+        spManager.setFlashInSilentMode(state)
     }
 }

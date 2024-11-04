@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:state_checked="true">
         <shape android:shape="rectangle">
-            <size android:height="@dimen/size20" android:width="@dimen/size50"/>
-            <gradient android:startColor="#ffa914" android:endColor="#ff5c00" android:angle="0"/>
-            <corners android:radius="@dimen/size100"/>
+            <size android:width="@dimen/size50" android:height="@dimen/size20" />
+            <gradient android:angle="0"
+                android:endColor="#ff5c00"
+                android:startColor="#ffa914" />
+            <corners android:radius="@dimen/size100" />
         </shape>
     </item>
     <item android:state_checked="false">
         <shape android:shape="rectangle">
-            <size android:height="@dimen/size20" android:width="@dimen/size50"/>
-            <solid android:color="#aaaaaa"/>
-            <corners android:radius="@dimen/size100"/>
+            <size android:width="@dimen/size50" android:height="@dimen/size20" />
+            <solid android:color="#aaaaaa" />
+            <corners android:radius="@dimen/size100" />
         </shape>
     </item>
 </selector>
