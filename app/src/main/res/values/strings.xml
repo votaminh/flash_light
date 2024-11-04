@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name" translatable="false">FlashLight</string>
+    <string name="facebook_app_id" translatable="false">1031860778486550</string>
+    <string name="facebook_client_token" translatable="false">4c4bb64c55757659d8662d507fb1ea12</string>
+
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="hindi">Hindi</string>
+    <string name="spanish">Spanish</string>
+    <string name="french">French</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="txt_get_start">Get start</string>
+    <string name="language">Language</string>
+    <string name="txt_next">Next</string>
+    <string name="this_action_contain_ads">This action contain Ads</string>
+    <string name="txt_setting">Setting</string>
+
+    <string name="onboarding_title1">Flash notifications</string>
+    <string name="onboarding_intro1">When there is an incoming call or message</string>
+    <string name="onboarding_title2">Phone flashlight</string>
+    <string name="onboarding_intro2">Find things in the dark</string>
+    <string name="onboarding_title3">Flashing lights follow the music</string>
+    <string name="onboarding_intro3">Join the music party</string>
+    <string name="loading_cmp">Loading Consent Management Platform</string>
+    <string name="txt_flash_alert">Flash Alert</string>
+    <string name="txt_off">Off</string>
+    <string name="txt_on">On</string>
+    <string name="txt_tap_to_turn_on">Tap to turn on</string>
+    <string name="txt_tap_to_turn_off">Tap to turn off</string>
+    <string name="txt_turn_on_for_incoming_calls">Turn On For Incoming Calls</string>
+    <string name="txt_turn_on_for_sms">Turn On For SMS</string>
+    <string name="txt_turn_on_for_amp_notification">Turn On For Notification</string>
+    <string name="txt_flash_light">Flash Light</string>
+    <string name="txt_flashing">Flashing</string>
+    <string name="txt_on_time">On time</string>
+    <string name="txt_off_time">Off time</string>
+    <string name="txt_flash_is_on_press_the_off_button_to_stop">Flash is on.Press the \\\'\\\'OFF\\\'\\\' button to stop</string>
+    <string name="txt_flash_blinks">Flash Blinks</string>
+
+    <string name="txt_start">Start</string>
+    <string name="txt_status">STATUS</string>
+    <string name="txt_status_off">Status: Off</string>
+    <string name="txt_status_on">Status: On</string>
+    <string name="txt_speed">SPEED</string>
+    <string name="txt_test">Test</string>
+
+    <string name="tedpermission_close">Close</string>
+    <string name="tedpermission_confirm">Confirm</string>
+    <string name="tedpermission_setting">Setting</string>
+    <string name="txt_permission_required">Permission Required</string>
+    <string name="txt_content_permission_2">Please grant Flash Alert necessary permissions to protect your phone privacy</string>
+    <string name="txt_manager_call">Manager Call</string>
+    <string name="txt_camera">Camera</string>
+    <string name="txt_permission_is_not_allowed">Permission is not allowed</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_grant_permission_later">Grant permission later</string>
+    <string name="txt_incoming_calls">Incoming calls</string>
+    <string name="txt_SMS">SMS</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_seconds">seconds</string>
+    <string name="txt_advanced">Advanced</string>
+    <string name="txt_do_not_flash_when_screen">Do not flash the flash while the screen is on</string>
+    <string name="txt_save_battery">Save battery</string>
+    <string name="txt_turn_off_flash_battery">Turn off flash when battery is low</string>
+    <string name="txt_flash">Flash</string>
+    <string name="txt_normal">Normal</string>
+    <string name="txt_vibrate">Vibrate</string>
+    <string name="txt_silent">Silent</string>
+    <string name="txt_policy">Policy</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_language">Language</string>
+    <string name="txt_stop">Stop</string>
+    <string name="txt_allow_notification_access">Allow notification access</string>
+    <string name="txt_notification_permisison_mess">You need to grant Notification Access to Enable this features</string>
+    <string name="txt_mode_sos">MODE SOS</string>
+    <string name="txt_flash_when_phone">Flash when phone is set to...</string>
+    <string name="txt_share_app">Share App</string>
+    <string name="are_you_sure_you_want_to_exit">are you sure you want to exit?</string>
+    <string name="txt_exit">Exit</string>
+    <string name="txt_cancel">Cancel</string>
+</resources>

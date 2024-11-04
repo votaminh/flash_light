@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchTheme" parent="Theme.FindPhone">
+        <item name="colorControlActivated">@color/main</item>
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Appearance">
+
+    </style>
+
+    <style name="TextView" parent="Appearance"/>
+
+    <style name="TextView.Header" parent="TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextView.Header.Header1" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size20</item>
+    </style>
+
+    <style name="TextView.Header.Header2" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size16</item>
+    </style>
+
+    <style name="TextView.Header.Header3" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
+    <style name="TextView.Header.Button1" parent="TextView.Header">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
+    <style name="TextView.Body" parent="TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextView.Body.Body1">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
+    <style name="LayoutContainFeature">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="IconColorPrimary24">
+        <item name="android:padding">@dimen/size5</item>
+        <item name="android:layout_width">@dimen/size30</item>
+        <item name="android:layout_height">@dimen/size30</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="CustomTextViewFeature14sp">
+        <item name="android:textSize">@dimen/size14</item>
+        <item name="android:textColor">@color/gray2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:layout_marginLeft">@dimen/size5</item>
+    </style>
+
+    <style name="CustomTextViewFeature12sp">
+        <item name="android:textSize">@dimen/size14</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="CustomSeekbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/size10</item>
+        <item name="android:progressBackgroundTint">@color/gray4</item>
+        <item name="android:progressBackgroundTintMode">add</item>
+    </style>
+
+    <style name="CustomSmallSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:thumb">@drawable/layout_switch_thumb_setting</item>
+        <item name="track">@drawable/layout_switch_track_setting</item>
+    </style>
+
+    <style name="tv_header_1">
+        <item name="android:textColor">@color/main</item>
+        <item name="android:textSize">@dimen/size22</item>
+    </style>
+</resources>

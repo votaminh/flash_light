@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main">#F89A0D</color>
+    <color name="bg_light_app">#242424</color>
+    <color name="bg_dark_app">#151515</color>
+
+
+    <color name="gray1">#F5F5F5</color>
+    <color name="gray2">#D6D6D6</color>
+    <color name="gray3">#BAB9B9</color>
+    <color name="gray4">#9C9C9C</color>
+    <color name="gray5">#757474</color>
+</resources>
