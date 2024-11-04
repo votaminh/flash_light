@@ -12,7 +12,7 @@ import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.component.PermissionActivity
 import com.flash.light.component.main.MainActivity
-import com.flash.light.databinding.FragmentFlashAlertBinding
+import com.flash.light.databinding.FragmentFlashAlertCloneMscBinding
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
 import com.flash.light.utils.gone
@@ -21,12 +21,12 @@ import com.flash.light.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertBinding>() {
+class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBinding>() {
 
     val viewModel : FlashAlerCloneMscViewModel by viewModels()
 
-    override fun provideViewBinding(container: ViewGroup?): FragmentFlashAlertBinding {
-        return FragmentFlashAlertBinding.inflate(LayoutInflater.from(context))
+    override fun provideViewBinding(container: ViewGroup?): FragmentFlashAlertCloneMscBinding {
+        return FragmentFlashAlertCloneMscBinding.inflate(LayoutInflater.from(context))
     }
 
     override fun initViews() {

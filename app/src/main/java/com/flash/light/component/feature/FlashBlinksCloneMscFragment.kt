@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.flash.light.R
 import com.flash.light.base.fragment.BaseFragment
-import com.flash.light.databinding.FragmentFlashBlinksBinding
+import com.flash.light.databinding.FragmentFlashBlinksCloneMscBinding
 import com.flash.light.utils.PermissionUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksBinding>() {
+class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksCloneMscBinding>() {
 
     val viewModel: FlashBlinksCloneMscViewModel by viewModels()
 
-    override fun provideViewBinding(container: ViewGroup?): FragmentFlashBlinksBinding {
-        return FragmentFlashBlinksBinding.inflate(layoutInflater)
+    override fun provideViewBinding(container: ViewGroup?): FragmentFlashBlinksCloneMscBinding {
+        return FragmentFlashBlinksCloneMscBinding.inflate(layoutInflater)
     }
 
     override fun initViews() {

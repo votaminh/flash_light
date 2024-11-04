@@ -10,7 +10,7 @@ import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.main.MainActivity
 import com.flash.light.component.onboarding.OnBoardingActivity
-import com.flash.light.databinding.ActivityLanguageBinding
+import com.flash.light.databinding.ActivityLanguageCloneMscBinding
 import com.flash.light.domain.layer.LanguageModel
 import com.flash.light.utils.Constant
 import com.flash.light.utils.LocaleHelper
@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
+class LanguageActivity : BaseActivity<ActivityLanguageCloneMscBinding>() {
     private var selectLanguageModel: LanguageModel? = null
     private val viewModel: LanguageViewModel by viewModels()
     private val languageAdapter = LanguageAdapter()
@@ -30,8 +30,8 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     @Inject
     lateinit var spManager: SpManager
 
-    override fun provideViewBinding(): ActivityLanguageBinding {
-        return ActivityLanguageBinding.inflate(layoutInflater)
+    override fun provideViewBinding(): ActivityLanguageCloneMscBinding {
+        return ActivityLanguageCloneMscBinding.inflate(layoutInflater)
     }
 
     override fun initViews() {

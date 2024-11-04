@@ -7,16 +7,16 @@ import android.widget.SeekBar
 import androidx.fragment.app.viewModels
 import com.flash.light.R
 import com.flash.light.base.fragment.BaseFragment
-import com.flash.light.databinding.FragmentFlashLightBinding
+import com.flash.light.databinding.FragmentFlashLightCloneMscBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightBinding>() {
+class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightCloneMscBinding>() {
 
     private val viewModel : FlashLightCloneMscViewModel by viewModels()
 
-    override fun provideViewBinding(container: ViewGroup?): FragmentFlashLightBinding {
-        return FragmentFlashLightBinding.inflate(LayoutInflater.from(context))
+    override fun provideViewBinding(container: ViewGroup?): FragmentFlashLightCloneMscBinding {
+        return FragmentFlashLightCloneMscBinding.inflate(LayoutInflater.from(context))
     }
 
     override fun initViews() {

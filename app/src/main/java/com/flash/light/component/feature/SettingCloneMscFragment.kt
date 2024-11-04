@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.component.language.LanguageActivity
-import com.flash.light.databinding.FragmentSettingBinding
+import com.flash.light.databinding.FragmentSettingCloneMscBinding
 import com.flash.light.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingCloneMscFragment : BaseFragment<FragmentSettingBinding>() {
+class SettingCloneMscFragment : BaseFragment<FragmentSettingCloneMscBinding>() {
 
     private val viewModel : SettingCloneMscViewModel by viewModels()
 
-    override fun provideViewBinding(container: ViewGroup?): FragmentSettingBinding {
-        return FragmentSettingBinding.inflate(LayoutInflater.from(context))
+    override fun provideViewBinding(container: ViewGroup?): FragmentSettingCloneMscBinding {
+        return FragmentSettingCloneMscBinding.inflate(LayoutInflater.from(context))
     }
 
     override fun initViews() {
