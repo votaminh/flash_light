@@ -2,12 +2,9 @@ package com.flash.light.component
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
-import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.activity.BaseActivity
 import com.flash.light.component.main.MainActivity
-import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
 import com.flash.light.databinding.ActivityPermisionBinding
 import com.flash.light.utils.NativeAdmobUtils
 import com.flash.light.utils.PermissionUtils

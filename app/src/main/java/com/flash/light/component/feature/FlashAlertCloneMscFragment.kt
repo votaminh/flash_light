@@ -1,14 +1,10 @@
-package com.flash.light.component.alert
+package com.flash.light.component.feature
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.fragment.app.viewModels
-import com.facebook.ads.NativeAd
 import com.flash.light.BuildConfig
 import com.flash.light.R
-import com.flash.light.admob.BaseAdmob
 import com.flash.light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.light.admob.NameRemoteAdmob
@@ -16,21 +12,18 @@ import com.flash.light.admob.NativeAdmob
 import com.flash.light.base.fragment.BaseFragment
 import com.flash.light.component.PermissionActivity
 import com.flash.light.component.main.MainActivity
-import com.flash.light.component.setting_alert.SettingsFlashAlertActivity
 import com.flash.light.databinding.FragmentFlashAlertBinding
-import com.flash.light.service.PhoneCallComingService
 import com.flash.light.utils.PermissionUtils
 import com.flash.light.utils.SpManager
 import com.flash.light.utils.gone
 import com.flash.light.utils.startNotificationFlashService
 import com.flash.light.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
+class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertBinding>() {
 
-    val viewModel : FlashAlertViewModel by viewModels()
+    val viewModel : FlashAlerCloneMscViewModel by viewModels()
 
     override fun provideViewBinding(container: ViewGroup?): FragmentFlashAlertBinding {
         return FragmentFlashAlertBinding.inflate(LayoutInflater.from(context))
@@ -41,17 +34,17 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
         viewBinding.run {
             ftTurnOnComingCall.setOnClickListener {
                 if(viewModel.stateLive.value == true){
-                    checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_CALL_PHONE)
+                    checkPermissionToOpenSetting(SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE)
                 }
             }
             ftTurnOnNoti.setOnClickListener {
                 if(viewModel.stateLive.value == true){
-                    checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_NOTIFICATION)
+                    checkPermissionToOpenSetting(SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION)
                 }
             }
             ftTurnOnSms.setOnClickListener {
                 if(viewModel.stateLive.value == true){
-                    checkPermissionToOpenSetting(SettingsFlashAlertActivity.ALERT_SMS)
+                    checkPermissionToOpenSetting(SettingsFlashCloneMscAlertActivity.ALERT_SMS)
                 }
             }
         }
@@ -97,7 +90,7 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
 
     override fun initObserver() {
         viewModel.run {
-            stateLive.observe(this@FlashAlertFragment){
+            stateLive.observe(this@FlashAlertCloneMscFragment){
                 viewBinding.swTapHome.isChecked = it
                 if (it) {
                     viewBinding.layoutContainFeature.animate().alpha(1f).start()
@@ -118,7 +111,7 @@ class FlashAlertFragment : BaseFragment<FragmentFlashAlertBinding>() {
                 activity?.let {
                     if(it is MainActivity){
                         it.showInterAction {
-                            SettingsFlashAlertActivity.start(it, type)
+                            SettingsFlashCloneMscAlertActivity.start(it, type)
                         }
                     }
                 }

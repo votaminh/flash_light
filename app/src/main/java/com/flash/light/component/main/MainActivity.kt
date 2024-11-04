@@ -12,7 +12,7 @@ import com.flash.light.admob.CollapsiblePositionType
 import com.flash.light.admob.InterAdmob
 import com.flash.light.admob.NameRemoteAdmob
 import com.flash.light.base.activity.BaseActivity
-import com.flash.light.component.alert.FlashAlertFragment
+import com.flash.light.component.feature.FlashAlertCloneMscFragment
 import com.flash.light.databinding.ActivityMainBinding
 import com.flash.light.utils.InterNativeUtils
 import com.flash.light.utils.PermissionUtils
@@ -56,8 +56,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     resetAllMenu()
                     imvAlert.changeTint(R.color.main)
                     tvAlert.changeTextColor(R.color.main)
-                    if(viewPagerAdapter.fragments.get(0) is FlashAlertFragment){
-                        (viewPagerAdapter.fragments.get(0) as FlashAlertFragment).showNativeHome()
+                    if(viewPagerAdapter.fragments.get(0) is FlashAlertCloneMscFragment){
+                        (viewPagerAdapter.fragments.get(0) as FlashAlertCloneMscFragment).showNativeHome()
                     }
                 }
             }

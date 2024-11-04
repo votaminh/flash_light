@@ -1,4 +1,4 @@
-package com.flash.light.component.setting_alert
+package com.flash.light.component.feature
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -23,9 +23,9 @@ import com.flash.light.utils.startNotificationFlashService
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding>() {
+class SettingsFlashCloneMscAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding>() {
 
-    private val viewModel : SettingFlashAlertViewModel by viewModels()
+    private val viewModel : SettingFlashAlertCloneMscViewModel by viewModels()
 
     private var type = ALERT_NORMAL
 
@@ -37,7 +37,7 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
         const val ALERT_SMS = "ALERT_SMS"
 
         fun start(activity : Activity, type : String){
-            val intent = Intent(activity, SettingsFlashAlertActivity::class.java)
+            val intent = Intent(activity, SettingsFlashCloneMscAlertActivity::class.java)
             intent.putExtra(KEY_TYPE_ALERT, type)
             activity.startActivity(intent)
         }
@@ -58,7 +58,7 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
             }
 
             head.imvBack.setOnClickListener {
-                InterNativeUtils.showInterAction(this@SettingsFlashAlertActivity){
+                InterNativeUtils.showInterAction(this@SettingsFlashCloneMscAlertActivity){
                     finish()
                 }
             }
@@ -143,24 +143,24 @@ class SettingsFlashAlertActivity : BaseActivity<ActivitySettingFlashAlertBinding
     override fun initObserver() {
         super.initObserver()
         viewModel.run {
-            stateLive.observe(this@SettingsFlashAlertActivity){
+            stateLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 viewBinding.swStatus.isChecked = it
                 startNotificationFlashService()
             }
 
-            onTimeLive.observe(this@SettingsFlashAlertActivity){
+            onTimeLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 viewBinding.secondAlertOnTime.text = it.toString() + " " + getString(R.string.txt_seconds)
             }
-            offTimeLive.observe(this@SettingsFlashAlertActivity){
+            offTimeLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 viewBinding.secondAlertOffTime.text = it.toString() + " " + getString(R.string.txt_seconds)
             }
-            progressSbOnTimeLive.observe(this@SettingsFlashAlertActivity){
+            progressSbOnTimeLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 viewBinding.sbAlertOnTime.progress = it
             }
-            progressSbOffTimeLive.observe(this@SettingsFlashAlertActivity){
+            progressSbOffTimeLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 viewBinding.sbAlertOffTime.progress = it
             }
-            isTestingLive.observe(this@SettingsFlashAlertActivity){
+            isTestingLive.observe(this@SettingsFlashCloneMscAlertActivity){
                 if(it){
                     viewBinding.btnTest.text = getString(R.string.txt_stop)
                     viewBinding.disableSetting.visibility = View.VISIBLE

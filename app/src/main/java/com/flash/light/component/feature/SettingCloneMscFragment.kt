@@ -1,4 +1,4 @@
-package com.flash.light.component.setting
+package com.flash.light.component.feature
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +10,9 @@ import com.flash.light.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingFragment : BaseFragment<FragmentSettingBinding>() {
+class SettingCloneMscFragment : BaseFragment<FragmentSettingBinding>() {
 
-    private val viewModel : SettingViewModel by viewModels()
+    private val viewModel : SettingCloneMscViewModel by viewModels()
 
     override fun provideViewBinding(container: ViewGroup?): FragmentSettingBinding {
         return FragmentSettingBinding.inflate(LayoutInflater.from(context))
@@ -56,19 +56,19 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
     override fun initObserver() {
         viewModel.run {
-            flashWhenScreenOnStateLive.observe(this@SettingFragment){
+            flashWhenScreenOnStateLive.observe(this@SettingCloneMscFragment){
                 viewBinding.swNotFlashWhenScreenOn.isChecked = it
             }
-            flashWhenBatteryLowLive.observe(this@SettingFragment){
+            flashWhenBatteryLowLive.observe(this@SettingCloneMscFragment){
                 viewBinding.swNotFlashWhenLowBattery.isChecked = it
             }
-            flashWhenNormalModeLive.observe(this@SettingFragment){
+            flashWhenNormalModeLive.observe(this@SettingCloneMscFragment){
                 viewBinding.swFlashInNormal.isChecked = it
             }
-            flashWhenVibrateModeLive.observe(this@SettingFragment){
+            flashWhenVibrateModeLive.observe(this@SettingCloneMscFragment){
                 viewBinding.swFlashInVibrate.isChecked = it
             }
-            flashWhenSilentModeLive.observe(this@SettingFragment){
+            flashWhenSilentModeLive.observe(this@SettingCloneMscFragment){
                 viewBinding.swFlashInSilent.isChecked = it
             }
         }

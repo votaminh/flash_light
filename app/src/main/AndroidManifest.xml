@@ -72,7 +72,7 @@
             android:value="${ad_app_id}" />
 
         <activity
-            android:name=".component.setting_alert.SettingsFlashAlertActivity"
+            android:name=".component.feature.SettingsFlashCloneMscAlertActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".component.language.LanguageActivity"

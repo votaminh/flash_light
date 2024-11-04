@@ -1,10 +1,10 @@
-package com.flash.light.component.blinks;
+package com.flash.light.component.feature;
 
 import android.content.Context;
 import android.media.MediaRecorder;
 import java.io.IOException;
 
-public class DetectorSoundThread extends Thread {
+public class DetectorSoundCloneMscThread extends Thread {
     private Thread _thread;
     private int amplitudeThreshold = 6000;
     private Context context;
@@ -18,7 +18,7 @@ public class DetectorSoundThread extends Thread {
         void onDetectSuccessSound();
     }
 
-    public DetectorSoundThread(Context context2) {
+    public DetectorSoundCloneMscThread(Context context2) {
         this.context = context2;
         init();
     }

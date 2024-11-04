@@ -1,6 +1,5 @@
-package com.flash.light.component.light
+package com.flash.light.component.feature
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +11,9 @@ import com.flash.light.databinding.FragmentFlashLightBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlashLightFragment : BaseFragment<FragmentFlashLightBinding>() {
+class FlashLightCloneMscFragment : BaseFragment<FragmentFlashLightBinding>() {
 
-    private val viewModel : FlashLightViewModel by viewModels()
+    private val viewModel : FlashLightCloneMscViewModel by viewModels()
 
     override fun provideViewBinding(container: ViewGroup?): FragmentFlashLightBinding {
         return FragmentFlashLightBinding.inflate(LayoutInflater.from(context))
@@ -62,7 +61,7 @@ class FlashLightFragment : BaseFragment<FragmentFlashLightBinding>() {
 
     override fun initObserver() {
         viewModel.run {
-            isFlashTurnOn.observe(this@FlashLightFragment){
+            isFlashTurnOn.observe(this@FlashLightCloneMscFragment){
                 if(it){
                     viewBinding.run {
                         btnTurnOnFlash.setImageResource(R.drawable.ic_turn_on_flash_light)
@@ -76,16 +75,16 @@ class FlashLightFragment : BaseFragment<FragmentFlashLightBinding>() {
                     }
                 }
             }
-            onTimeLive.observe(this@FlashLightFragment){
+            onTimeLive.observe(this@FlashLightCloneMscFragment){
                 viewBinding.secondAlertOnTime.text = it.toString() + " " + getString(R.string.txt_seconds)
             }
-            offTimeLive.observe(this@FlashLightFragment){
+            offTimeLive.observe(this@FlashLightCloneMscFragment){
                 viewBinding.secondAlertOffTime.text = it.toString() + " " + getString(R.string.txt_seconds)
             }
-            progressSbOnTimeLive.observe(this@FlashLightFragment){
+            progressSbOnTimeLive.observe(this@FlashLightCloneMscFragment){
                 viewBinding.sbAlertOnTime.progress = it
             }
-            progressSbOffTimeLive.observe(this@FlashLightFragment){
+            progressSbOffTimeLive.observe(this@FlashLightCloneMscFragment){
                 viewBinding.sbAlertOffTime.progress = it
             }
         }

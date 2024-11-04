@@ -1,4 +1,4 @@
-package com.flash.light.component.setting_alert
+package com.flash.light.component.feature
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private val context: Context): ViewModel() {
+class SettingFlashAlertCloneMscViewModel @Inject constructor(@ApplicationContext private val context: Context): ViewModel() {
 
     @Inject
     lateinit var spManager: SpManager
@@ -32,19 +32,19 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         var offTime = 0L
         var state = false
         when(type){
-            SettingsFlashAlertActivity.ALERT_CALL_PHONE -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
                 state = spManager.getTurnOnCall()
                 onTime = spManager.getOnTimeFlashCallMS()
                 offTime = spManager.getOffTimeFlashCallMS()
             }
-            SettingsFlashAlertActivity.ALERT_NOTIFICATION -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
                 state = spManager.getTurnOnNotification()
                 onTime = spManager.getOnTimeFlashNotificationMS()
                 offTime = spManager.getOffTimeFlashNotificationMS()
                 onTimeLive.postValue(onTime/1000f)
                 offTimeLive.postValue(offTime/1000f)
             }
-            SettingsFlashAlertActivity.ALERT_SMS -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 state = spManager.getTurnOnSMS()
                 onTime = spManager.getOnTimeFlashSMSMS()
                 offTime = spManager.getOffTimeFlashSMSMS()
@@ -60,13 +60,13 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
 
     fun saveState(type: String, state: Boolean) {
         when(type){
-            SettingsFlashAlertActivity.ALERT_CALL_PHONE -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
                 spManager.setTurnOnCall(state)
             }
-            SettingsFlashAlertActivity.ALERT_NOTIFICATION -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
                 spManager.setTurnOnNotification(state)
             }
-            SettingsFlashAlertActivity.ALERT_SMS -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 spManager.setTurnOnSMS(state)
             }
         }
@@ -76,13 +76,13 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         val onTime = AppUtils.range(p1, Constant.MIN_TIME_FLASH.toFloat(), Constant.MAX_TIME_FLASH.toFloat())
         onTimeLive.postValue(onTime/1000f)
         when(type){
-            SettingsFlashAlertActivity.ALERT_CALL_PHONE -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
                 spManager.setOnTimeFlashCall(onTime.toLong())
             }
-            SettingsFlashAlertActivity.ALERT_NOTIFICATION -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
                 spManager.setOnTimeFlashNotification(onTime.toLong())
             }
-            SettingsFlashAlertActivity.ALERT_SMS -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 spManager.setOnTimeFlashSMS(onTime.toLong())
             }
         }
@@ -92,13 +92,13 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         val offTime = AppUtils.range(p1, Constant.MIN_TIME_FLASH.toFloat(), Constant.MAX_TIME_FLASH.toFloat())
         offTimeLive.postValue(offTime/1000f)
         when(type){
-            SettingsFlashAlertActivity.ALERT_CALL_PHONE -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
                 spManager.setOffTimeFlashCall(offTime.toLong())
             }
-            SettingsFlashAlertActivity.ALERT_NOTIFICATION -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
                 spManager.setOffTimeFlashNotification(offTime.toLong())
             }
-            SettingsFlashAlertActivity.ALERT_SMS -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 spManager.setOffTimeFlashSMS(offTime.toLong())
             }
         }
@@ -108,15 +108,15 @@ class SettingFlashAlertViewModel @Inject constructor(@ApplicationContext private
         var onTime = 0L
         var offTime = 0L
         when(type){
-            SettingsFlashAlertActivity.ALERT_CALL_PHONE -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_CALL_PHONE -> {
                 onTime = spManager.getOnTimeFlashCallMS()
                 offTime = spManager.getOffTimeFlashCallMS()
             }
-            SettingsFlashAlertActivity.ALERT_NOTIFICATION -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_NOTIFICATION -> {
                 onTime = spManager.getOnTimeFlashNotificationMS()
                 offTime = spManager.getOffTimeFlashNotificationMS()
             }
-            SettingsFlashAlertActivity.ALERT_SMS -> {
+            SettingsFlashCloneMscAlertActivity.ALERT_SMS -> {
                 onTime = spManager.getOnTimeFlashSMSMS()
                 offTime = spManager.getOffTimeFlashSMSMS()
             }

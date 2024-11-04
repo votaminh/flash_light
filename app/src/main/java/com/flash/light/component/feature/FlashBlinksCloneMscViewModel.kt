@@ -1,4 +1,4 @@
-package com.flash.light.component.blinks
+package com.flash.light.component.feature
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -9,11 +9,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class FlashBlinksViewModel @Inject constructor(@ApplicationContext private val context: Context) : ViewModel() {
+class FlashBlinksCloneMscViewModel @Inject constructor(@ApplicationContext private val context: Context) : ViewModel() {
     @Inject
     lateinit var flashHelper: FlashHelper
 
-    private var detectorSoundThread : DetectorSoundThread? = null
+    private var detectorSoundCloneMscThread : DetectorSoundCloneMscThread? = null
 
     val stateLive = MutableLiveData(false)
 
@@ -24,11 +24,15 @@ class FlashBlinksViewModel @Inject constructor(@ApplicationContext private val c
 
     fun startDJ(){
         stateLive.postValue(true)
-        if(detectorSoundThread == null){
-            detectorSoundThread = DetectorSoundThread(context)
+        if(detectorSoundCloneMscThread == null){
+            detectorSoundCloneMscThread =
+                DetectorSoundCloneMscThread(
+                    context
+                )
         }
-        detectorSoundThread?.run {
-            setOnSoundListener(object : DetectorSoundThread.OnSoundListener{
+        detectorSoundCloneMscThread?.run {
+            setOnSoundListener(object :
+                DetectorSoundCloneMscThread.OnSoundListener {
                 override fun onDetectLowAmplitudeSound() {
                     flashHelper.stop()
                 }
@@ -44,7 +48,7 @@ class FlashBlinksViewModel @Inject constructor(@ApplicationContext private val c
     fun stop(){
         flashHelper.stop()
 
-        detectorSoundThread?.run {
+        detectorSoundCloneMscThread?.run {
             setOnSoundListener(null)
             stopDetection()
         }

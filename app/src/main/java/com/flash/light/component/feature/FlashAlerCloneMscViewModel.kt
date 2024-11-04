@@ -1,4 +1,4 @@
-package com.flash.light.component.alert
+package com.flash.light.component.feature
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class FlashAlertViewModel @Inject constructor() : ViewModel() {
+class FlashAlerCloneMscViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var spManager: SpManager

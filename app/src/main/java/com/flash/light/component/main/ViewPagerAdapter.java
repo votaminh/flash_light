@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.flash.light.component.alert.FlashAlertFragment;
-import com.flash.light.component.blinks.FlashBlinksFragment;
-import com.flash.light.component.light.FlashLightFragment;
-import com.flash.light.component.setting.SettingFragment;
+import com.flash.light.component.feature.FlashAlertCloneMscFragment;
+import com.flash.light.component.feature.FlashBlinksCloneMscFragment;
+import com.flash.light.component.feature.FlashLightCloneMscFragment;
+import com.flash.light.component.feature.SettingCloneMscFragment;
 
 import java.util.List;
 
 public final class ViewPagerAdapter extends FragmentStateAdapter {
-    List<Fragment> fragments = List.of(new FlashAlertFragment(), new FlashLightFragment(), new FlashBlinksFragment(), new SettingFragment());
+    List<Fragment> fragments = List.of(new FlashAlertCloneMscFragment(), new FlashLightCloneMscFragment(), new FlashBlinksCloneMscFragment(), new SettingCloneMscFragment());
     public int getItemCount() {
         return fragments.size();
     }

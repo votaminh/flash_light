@@ -1,6 +1,5 @@
-package com.flash.light.component.blinks
+package com.flash.light.component.feature
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -11,9 +10,9 @@ import com.flash.light.utils.PermissionUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FlashBlinksFragment : BaseFragment<FragmentFlashBlinksBinding>() {
+class FlashBlinksCloneMscFragment : BaseFragment<FragmentFlashBlinksBinding>() {
 
-    val viewModel: FlashBlinksViewModel by viewModels()
+    val viewModel: FlashBlinksCloneMscViewModel by viewModels()
 
     override fun provideViewBinding(container: ViewGroup?): FragmentFlashBlinksBinding {
         return FragmentFlashBlinksBinding.inflate(layoutInflater)
@@ -45,7 +44,7 @@ class FlashBlinksFragment : BaseFragment<FragmentFlashBlinksBinding>() {
 
     override fun initObserver() {
         viewModel.run {
-            stateLive.observe(this@FlashBlinksFragment){
+            stateLive.observe(this@FlashBlinksCloneMscFragment){
                 updateStateUI(it)
             }
         }

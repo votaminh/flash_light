@@ -1,4 +1,4 @@
-package com.flash.light.component.light
+package com.flash.light.component.feature
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class FlashLightViewModel @Inject constructor(@ApplicationContext val context: Context) : ViewModel() {
+class FlashLightCloneMscViewModel @Inject constructor(@ApplicationContext val context: Context) : ViewModel() {
 
     @Inject
     lateinit var spManager : SpManager
