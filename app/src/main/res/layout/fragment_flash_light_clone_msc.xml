@@ -33,6 +33,7 @@
                 android:textSize="@dimen/size20"
                 android:gravity="center"
                 android:background="@color/bg_dark_app"
+                android:fontFamily="@font/bold"
                 />
             <ImageView
                 android:id="@+id/btnTurnOnFlash"

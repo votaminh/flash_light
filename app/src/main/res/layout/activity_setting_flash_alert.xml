@@ -219,7 +219,7 @@
         android:textSize="@dimen/size14"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/size10"
-        android:paddingVertical="@dimen/size9"
+        android:paddingVertical="@dimen/size11"
         android:textStyle="bold"
         android:layout_marginHorizontal="@dimen/size40"
         />

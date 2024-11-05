@@ -2,6 +2,7 @@ package com.flash.msc_light.component.main
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Handler
 import android.view.View
 import com.flash.msc_light.BuildConfig
 import com.flash.msc_light.R

@@ -67,6 +67,7 @@
     <style name="tv_header_1">
         <item name="android:textColor">@color/main</item>
         <item name="android:textSize">@dimen/size22</item>
+        <item name="android:fontFamily">@font/bold</item>
     </style>
 
     <style name="CustomTextViewFeature12sp">
@@ -76,6 +77,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">2</item>
+        <item name="android:fontFamily">@font/regular</item>
     </style>
 
     <style name="CustomTextViewFeature14sp">
@@ -86,6 +88,7 @@
         <item name="android:layout_height">0dp</item>
         <item name="android:lines">1</item>
         <item name="android:layout_marginLeft">@dimen/size5</item>
+        <item name="android:fontFamily">@font/regular</item>
     </style>
 
     <style name="CustomSeekbar">

@@ -141,11 +141,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun gotoMainScreen() {
         cancelLoadingListener()
-        if (spManager.getShowOnBoarding()) {
-            LanguageActivity.start(this, true)
-        } else {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+//        if (spManager.getShowOnBoarding()) {
+//            LanguageActivity.start(this, true)
+//        } else {
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

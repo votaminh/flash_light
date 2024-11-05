@@ -22,6 +22,7 @@
             android:textSize="@dimen/size20"
             android:gravity="center"
             android:background="@color/bg_dark_app"
+            android:fontFamily="@font/bold"
             />
 
         <LinearLayout
@@ -31,14 +32,6 @@
             android:layout_marginRight="@dimen/size7"
             android:layout_marginBottom="@dimen/size20"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_advanced"
-                style="@style/tv_header_1"
-                android:layout_marginTop="@dimen/size10"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,10 +47,6 @@
                     android:layout_height="@dimen/size52"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
-                    <ImageView
-                        android:layout_width="@dimen/size24"
-                        android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_light_mode_clone_msc"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -66,6 +55,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/size14"
                         android:layout_marginHorizontal="@dimen/size10"
+                        android:fontFamily="@font/regular"
                         />
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/swNotFlashWhenScreenOn"
@@ -80,10 +70,6 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     >
-                    <ImageView
-                        android:layout_width="@dimen/size24"
-                        android:layout_height="@dimen/size24"
-                        android:src="@drawable/ic_battery_clone_msc"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -96,6 +82,7 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/size14"
                             android:layout_marginHorizontal="@dimen/size10"
+                            android:fontFamily="@font/regular"
                             />
                         <TextView
                             android:layout_width="match_parent"
@@ -104,6 +91,7 @@
                             android:textColor="#00C582"
                             android:textSize="@dimen/size14"
                             android:layout_marginHorizontal="@dimen/size10"
+                            android:fontFamily="@font/regular"
                             />
                     </LinearLayout>
                     <androidx.appcompat.widget.SwitchCompat
@@ -122,7 +110,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size10"
             android:background="@drawable/corner_16_light_background_clone_msc"
             android:paddingHorizontal="@dimen/size10"
             android:paddingVertical="@dimen/size5"
@@ -135,10 +122,6 @@
                 android:layout_height="@dimen/size52"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="@dimen/size24"
-                    android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_privacy_clone_msc"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -147,6 +130,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/size14"
                     android:layout_marginHorizontal="@dimen/size10"
+                    android:fontFamily="@font/regular"
                     />
                 <ImageView
                     android:layout_width="@dimen/size24"
@@ -162,10 +146,6 @@
                 android:gravity="center_vertical"
                 >
 
-                <ImageView
-                    android:layout_width="@dimen/size24"
-                    android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_share_clone_msc" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -175,6 +155,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/size14"
                     android:layout_marginHorizontal="@dimen/size10"
+                    android:fontFamily="@font/regular"
                     />
                 <ImageView
                     android:layout_width="@dimen/size24"
@@ -189,10 +170,6 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
-                <ImageView
-                    android:layout_width="@dimen/size24"
-                    android:layout_height="@dimen/size24"
-                    android:src="@drawable/ic_language_clone_msc"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -201,6 +178,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/size14"
                     android:layout_marginHorizontal="@dimen/size10"
+                    android:fontFamily="@font/regular"
                     />
 
                 <ImageView
