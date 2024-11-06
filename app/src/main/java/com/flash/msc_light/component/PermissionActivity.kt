@@ -8,6 +8,7 @@ import com.flash.msc_light.component.main.MainActivity
 import com.flash.msc_light.databinding.ActivityPermisionBinding
 import com.flash.msc_light.utils.NativeAdmobUtils
 import com.flash.msc_light.utils.PermissionUtils
+import com.flash.msc_light.utils.gone
 
 class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
 
@@ -52,7 +53,7 @@ class PermissionActivity : BaseActivity<ActivityPermisionBinding>() {
         }
 
         if(NativeAdmobUtils.permissionNative == null){
-            NativeAdmobUtils.loadNativePermission()
+            viewBinding.flAdplaceholder.gone()
         }
 
         NativeAdmobUtils.permissionNative?.run {

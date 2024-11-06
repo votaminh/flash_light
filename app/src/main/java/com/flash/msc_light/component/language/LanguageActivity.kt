@@ -65,7 +65,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageCloneMscBinding>() {
 
     private fun showNative2() {
         viewBinding.flAdplaceholder1.root.gone()
-        viewBinding.flAdplaceholder2.root.visible()
+        viewBinding.flAdplaceholder2.root.gone()
 
         NativeAdmobUtils.languageNative2?.run {
             nativeAdLive?.observe(this@LanguageActivity){
@@ -77,6 +77,9 @@ class LanguageActivity : BaseActivity<ActivityLanguageCloneMscBinding>() {
     }
 
     override fun initObserver() {
+
+        viewBinding.flAdplaceholder1.root.gone()
+
         viewModel.listLanguage.observe(this) {
             languageAdapter.setData(ArrayList(it))
 //            languageAdapter.selectLanguage(spManager.getLanguage().languageCode)

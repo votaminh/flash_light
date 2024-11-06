@@ -6,7 +6,9 @@
     android:paddingVertical="6dp"
     android:paddingTop="6dp"
     android:paddingBottom="6dp"
-    android:tag="layout/item_language_0">
+    android:tag="layout/item_language_0"
+    android:background="@color/black"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -45,6 +47,7 @@
             app:layout_constraintTop_toTopOf="@+id/img_language"
             android:layout_marginLeft="@dimen/size6"
             style="@style/TextView.Body.Body1"
+            android:textColor="@color/white"
             />
 
         <androidx.appcompat.widget.AppCompatRadioButton
