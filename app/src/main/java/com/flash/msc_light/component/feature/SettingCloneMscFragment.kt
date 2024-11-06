@@ -38,7 +38,7 @@ class SettingCloneMscFragment : BaseFragment<FragmentSettingCloneMscBinding>() {
             }
 
             policy.setOnClickListener {
-                context?.let { it1 -> AppUtils.openLink(it1,"https://doc-hosting.flycricket.io/flash-alert-led-flashlight-privacy-policy/2ab51210-a0bb-4e77-8e6a-fac00effea73/privacy") }
+                context?.let { it1 -> AppUtils.openLink(it1,"https://sites.google.com/view/nongdinhlamstudio/privacy-policy") }
             }
 
             share.setOnClickListener {
