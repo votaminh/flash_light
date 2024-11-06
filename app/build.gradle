@@ -54,33 +54,33 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            manifestPlaceholders = [ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
+            manifestPlaceholders = [ad_app_id:"ca-app-pub-6687772034788117~7746749846"]
 
-            buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
-            buildConfigField "String", "open_splash", "\"ca-app-pub-3940256099942544/9257395921\""
-            buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "inter_splash_high", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "native_language_2_1", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_language_2_2", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_language_1_1", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_language_1_2", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_language_1_2_high", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "open_resume", "\"ca-app-pub-6687772034788117/7430392360\""
+            buildConfigField "String", "open_splash", "\"ca-app-pub-6687772034788117/5295183617\""
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-6687772034788117/6117310694\""
+            buildConfigField "String", "inter_splash_high", "\"ca-app-pub-6687772034788117/1112396022\""
+            buildConfigField "String", "native_language_2_1", "\"ca-app-pub-6687772034788117/2469839607\""
+            buildConfigField "String", "native_language_2_2", "\"ca-app-pub-6687772034788117/7729775269\""
+            buildConfigField "String", "native_language_1_1", "\"ca-app-pub-6687772034788117/4117833311\""
+            buildConfigField "String", "native_language_1_2", "\"ca-app-pub-6687772034788117/9864984016\""
+            buildConfigField "String", "native_language_1_2_high", "\"ca-app-pub-6687772034788117/5103611928\""
 
-            buildConfigField "String", "native_onboarding_1_1", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_onboarding_1_1_high", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_onboarding_1_2", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_onboarding_1_1", "\"ca-app-pub-6687772034788117/9178588309\""
+            buildConfigField "String", "native_onboarding_1_1_high", "\"ca-app-pub-6687772034788117/5239343298\""
+            buildConfigField "String", "native_onboarding_1_2", "\"ca-app-pub-6687772034788117/8551902340\""
 
-            buildConfigField "String", "native_onboarding_2_1", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_onboarding_2_2", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_onboarding_2_1", "\"ca-app-pub-6687772034788117/9422260763\""
+            buildConfigField "String", "native_onboarding_2_2", "\"ca-app-pub-6687772034788117/8600133683\""
 
 
-            buildConfigField "String", "native_permission", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "native_function", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "native_permission", "\"ca-app-pub-6687772034788117/2613179959\""
+            buildConfigField "String", "native_function", "\"ca-app-pub-6687772034788117/5973970347\""
 
-            buildConfigField "String", "native_home", "\"ca-app-pub-3940256099942544/2247696110\""
-            buildConfigField "String", "banner_home", "\"ca-app-pub-3940256099942544/2014213617\""
-            buildConfigField "String", "inter_home", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "inter_back", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "native_home", "\"ca-app-pub-6687772034788117/1300098281\""
+            buildConfigField "String", "banner_home", "\"ca-app-pub-6687772034788117/6360853274\""
+            buildConfigField "String", "inter_home", "\"ca-app-pub-6687772034788117/3734689939\""
+            buildConfigField "String", "inter_back", "\"ca-app-pub-6687772034788117/8596264254\""
         }
 
         debug {
