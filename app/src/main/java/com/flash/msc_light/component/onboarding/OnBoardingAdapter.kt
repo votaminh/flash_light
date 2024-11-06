@@ -9,8 +9,8 @@ class OnBoardingAdapter : BaseAdapter<OnBoarding, ItemOnboardingBinding>() {
 
     override fun binData(viewBinding: ItemOnboardingBinding, item: OnBoarding) {
         viewBinding.apply {
-            tvIntro.setText(item.resDescription)
-            tvTitle.setText(item.resTitle)
+//            tvIntro.setText(item.resDescription)
+            tvTitle.setText(item.resDescription)
             imgOnBoarding.setImageResource(item.resImage)
         }
     }

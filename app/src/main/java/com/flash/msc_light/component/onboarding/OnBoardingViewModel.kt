@@ -11,12 +11,12 @@ class OnBoardingViewModel : BaseViewModel() {
             R.string.onboarding_intro1
         ),
         OnBoarding(
-            R.drawable.ic_onboarding2_clone_msc,
+            R.drawable.ic_onboarding2,
             R.string.onboarding_title1,
             R.string.onboarding_intro2
         ),
         OnBoarding(
-            R.drawable.ic_onboarding3_clone_msc,
+            R.drawable.ic_onboarding3,
             R.string.onboarding_title1,
             R.string.onboarding_intro3
         )
