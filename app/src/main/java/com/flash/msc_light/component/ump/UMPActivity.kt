@@ -3,16 +3,17 @@ package com.flash.msc_light.component.ump
 import com.flash.msc_light.App
 import com.flash.msc_light.base.activity.BaseActivity
 import com.flash.msc_light.component.splash.SplashActivity
+import com.flash.msc_light.databinding.ActivitySplashBinding
 import com.flash.msc_light.databinding.ActivityUmpBinding
 import com.flash.msc_light.utils.RemoteConfig
 import com.flash.msc_light.utils.SpManager
 import com.flash.msc_light.utils.UMPUtils
 
 
-class UMPActivity : BaseActivity<ActivityUmpBinding>() {
+class UMPActivity : BaseActivity<ActivitySplashBinding>() {
     private val TAG = "ump_activity"
 
-    override fun provideViewBinding(): ActivityUmpBinding = ActivityUmpBinding.inflate(layoutInflater)
+    override fun provideViewBinding(): ActivitySplashBinding = ActivitySplashBinding.inflate(layoutInflater)
 
     override fun initData() {
         super.initData()

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "642477161109",
-    "project_id": "flash-light-7df66",
-    "storage_bucket": "flash-light-7df66.appspot.com"
+    "project_number": "1070204029742",
+    "project_id": "flash-light-a3614",
+    "storage_bucket": "flash-light-a3614.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:642477161109:android:5a62cd6707e1795678799c",
+        "mobilesdk_app_id": "1:1070204029742:android:c380b20bbea889be8008bf",
         "android_client_info": {
-          "package_name": "com.flashlight.flashalert.ledflashlight"
+          "package_name": "com.lamtac.flashlight.flashalert.ledflashlight"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCT5ku3u7hd5OdE6qvEP95IKVns-HCZDQI"
+          "current_key": "AIzaSyDDUNLLNCIf8VCjlHFRt7GIHv872WhKbCc"
         }
       ],
       "services": {

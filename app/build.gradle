@@ -22,7 +22,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.flashlight.flashalert.ledflashlight"
+        applicationId "com.lamtac.flashlight.flashalert.ledflashlight"
         minSdk 24
         targetSdk 34
         versionCode 16
