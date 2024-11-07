@@ -23,7 +23,8 @@ class UMPActivity : BaseActivity<ActivitySplashBinding>() {
             openSplash();
         }else{
             RemoteConfig.instance().fetch{
-                initUmp()
+                SpManager.getInstance(this).setUMPShowed(true)
+                openSplash();
             }
         }
     }
