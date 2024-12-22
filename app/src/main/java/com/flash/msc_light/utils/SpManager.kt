@@ -7,6 +7,7 @@ import com.flash.msc_light.domain.layer.LanguageModel
 
 class SpManager(private val preferences: SharedPreferences) {
     companion object {
+        val can_show_ads = "can_show_ads"
         private var instance: SpManager? = null
 
         fun getInstance(context: Context): SpManager {

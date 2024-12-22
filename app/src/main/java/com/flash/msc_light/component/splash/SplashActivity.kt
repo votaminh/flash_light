@@ -15,7 +15,6 @@ import com.flash.msc_light.admob.BaseAdmob
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobShowListener
 import com.flash.msc_light.admob.InterAdmob
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.utils.NativeAdmobUtils
 import com.flash.msc_light.utils.NetworkUtil
 
@@ -60,7 +59,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     override fun initViews() {
         if (spManager.getShowOnBoarding() && NetworkUtil.isOnline) {
-            if (spManager.getBoolean(NameRemoteAdmob.native_language, true)) {
+            if (spManager.getBoolean(SpManager.can_show_ads, true)) {
                 NativeAdmobUtils.loadNativeLanguage()
             }
         }
@@ -70,7 +69,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun runProgress() {
         showBanner()
-        if (spManager.getBoolean(NameRemoteAdmob.inter_splash, true)) {
+        if (spManager.getBoolean(SpManager.can_show_ads, true)) {
             loadShowOpenAds(successAction = {
                 gotoMainScreen()
             }, failAction = {

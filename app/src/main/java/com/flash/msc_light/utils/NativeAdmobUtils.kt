@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import com.flash.msc_light.App
 import com.flash.msc_light.BuildConfig
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.admob.NativeAdmob
 
 class NativeAdmobUtils {
@@ -104,7 +103,7 @@ class NativeAdmobUtils {
         fun loadNativeOnboard() {
             if(NetworkUtil.isOnline){
                 App.instance?.applicationContext?.let {context ->
-                    if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+                    if(SpManager.getInstance(context).getBoolean(SpManager.can_show_ads, true)){
 
                         val first = SpManager.getInstance(context).getBoolean("first_native_onboarding", true)
                         if(first) {

@@ -6,7 +6,6 @@ import com.flash.msc_light.BuildConfig
 import com.flash.msc_light.admob.BaseAdmob
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.msc_light.admob.InterAdmob
-import com.flash.msc_light.admob.NameRemoteAdmob
 
 class InterNativeUtils {
     companion object {
@@ -16,7 +15,7 @@ class InterNativeUtils {
 
         fun loadInterBack(){
             App.instance?.applicationContext?.let { context ->
-                if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.inter_back, true)){
+                if(SpManager.getInstance(context).getBoolean(SpManager.can_show_ads, true)){
                     interBack = InterAdmob(
                         context,
                         BuildConfig.inter_back
@@ -49,7 +48,7 @@ class InterNativeUtils {
 
             latestInterShow = System.currentTimeMillis()
 
-            if(interBack == null || !SpManager.getInstance(activity).getBoolean(NameRemoteAdmob.inter_back, true)){
+            if(interBack == null || !SpManager.getInstance(activity).getBoolean(SpManager.can_show_ads, true)){
                 nextAction?.invoke()
             }else{
                 interBack?.showInterstitial(activity, object : BaseAdmob.OnAdmobShowListener{

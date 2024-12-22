@@ -11,7 +11,6 @@ import com.flash.msc_light.BuildConfig
 import com.flash.msc_light.R
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobShowListener
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.admob.NativeAdmob
 import com.flash.msc_light.base.activity.BaseActivity
 import com.flash.msc_light.databinding.ActivitySettingFlashAlertBinding
@@ -72,7 +71,7 @@ class SettingsFlashCloneMscAlertActivity : BaseActivity<ActivitySettingFlashAler
     }
 
     private fun showNative() {
-        if(SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_function, true)){
+        if(SpManager.getInstance(this).getBoolean(SpManager.can_show_ads, true)){
             val nativeHome = NativeAdmob(this, BuildConfig.native_function)
             nativeHome.load(object : OnAdmobLoadListener{
                 override fun onLoad() {

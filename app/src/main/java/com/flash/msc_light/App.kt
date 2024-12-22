@@ -3,6 +3,7 @@ package com.flash.msc_light
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -15,7 +16,6 @@ import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.FirebaseApp
 import com.mbridge.msdk.MBridgeConstans
 import com.mbridge.msdk.out.MBridgeSDKFactory
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.admob.OpenAdmob
 import com.flash.msc_light.utils.NetworkUtil
 import com.flash.msc_light.utils.RemoteConfig
@@ -57,7 +57,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
         val requestConfiguration = RequestConfiguration.Builder().build()
         MobileAds.setRequestConfiguration(requestConfiguration)
 
-        if(spManager.getBoolean(NameRemoteAdmob.open_resume, true)){
+        if(spManager.getBoolean(SpManager.can_show_ads, true)){
             openAdmob = OpenAdmob(this, BuildConfig.open_resume)
             loadOpenResume()
         }
@@ -116,7 +116,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks, DefaultLifecy
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
-        if(spManager.getBoolean(NameRemoteAdmob.open_resume, true)){
+        if(spManager.getBoolean(SpManager.can_show_ads, true)){
             openAdmob?.run {
                 currentActivity?.let { showAdIfAvailable(it, object : OnAdmobShowListener{
                     override fun onShow() {

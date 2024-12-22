@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.activity.viewModels
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobShowListener
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.admob.NativeAdmob
 import com.flash.msc_light.base.activity.BaseActivity
 import com.flash.msc_light.component.main.MainActivity
@@ -95,7 +94,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageCloneMscBinding>() {
     }
 
     private fun showNativeAd(nativeAdmob: NativeAdmob, parent : ShimmerFrameLayout) {
-        if(spManager.getBoolean(NameRemoteAdmob.native_language, true)){
+        if(spManager.getBoolean(SpManager.can_show_ads, true)){
             nativeAdmob.showNative(parent, object : OnAdmobShowListener{
                 override fun onShow() {
                 }

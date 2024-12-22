@@ -9,7 +9,8 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.flash.msc_light.App
-import com.flash.msc_light.admob.NameRemoteAdmob
+import com.flash.msc_light.BuildConfig
+import org.json.JSONObject
 
 class RemoteConfig {
 
@@ -61,25 +62,34 @@ class RemoteConfig {
 
     private fun updateConfig() {
         kotlin.runCatching {
-            val remoteConfig = Firebase.remoteConfig
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_splash)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_language)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_onboarding)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_permission)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_home)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.banner_home)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_home)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.native_function)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.inter_back)
-            putBooleanToSP(remoteConfig, NameRemoteAdmob.open_resume)
-        }
-    }
+            val spManager = App.instance?.applicationContext?.let { SpManager.getInstance(it) }
 
-    private fun putBooleanToSP(remoteConfig: FirebaseRemoteConfig, name: String) {
-        val spManager = App.instance?.applicationContext?.let { SpManager.getInstance(it) }
-        val values = remoteConfig.getBoolean(name)
-        spManager?.putBoolean(name, values)
-        Log.i(TAG, "$name : $values")
+            val remoteConfig = Firebase.remoteConfig
+
+            val baseConfigString = remoteConfig.getString("base_inv_config")
+
+            Log.i(TAG, "updateConfig: " + baseConfigString)
+
+            val baseConfigJson = JSONObject(baseConfigString)
+            val showAdsAdmob = baseConfigJson.getBoolean("show_ads_admob")
+
+            spManager?.putBoolean(SpManager.can_show_ads, showAdsAdmob)
+
+            // neu da tat ads thi toan bo version deu tat k check them
+            if(!showAdsAdmob){
+                return
+            }
+
+            // neu k tat ads all thi check tat ads theo version cho che do review
+            val disableForReviewJson = baseConfigJson.getJSONObject("disable_to_reivew")
+            val enable = disableForReviewJson.getBoolean("enable")
+            val version = disableForReviewJson.getInt("version")
+
+            if(enable && version == BuildConfig.VERSION_CODE){
+                spManager?.putBoolean(SpManager.can_show_ads, false)
+                return
+            }
+        }
     }
 
 }

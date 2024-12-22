@@ -7,7 +7,6 @@ import com.flash.msc_light.BuildConfig
 import com.flash.msc_light.R
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobShowListener
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.admob.NativeAdmob
 import com.flash.msc_light.base.fragment.BaseFragment
 import com.flash.msc_light.component.PermissionActivity
@@ -116,7 +115,7 @@ class FlashAlertCloneMscFragment : BaseFragment<FragmentFlashAlertCloneMscBindin
     }
     private fun showNative() {
         context?.let { context ->
-            if(SpManager.getInstance(context).getBoolean(NameRemoteAdmob.native_home, true)){
+            if(SpManager.getInstance(context).getBoolean(SpManager.can_show_ads, true)){
                 val nativeHome = NativeAdmob(context, BuildConfig.native_home)
                 nativeHome.load(object : OnAdmobLoadListener{
                     override fun onLoad() {

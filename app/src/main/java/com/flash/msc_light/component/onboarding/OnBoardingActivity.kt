@@ -6,7 +6,6 @@ import android.os.Looper
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.flash.msc_light.admob.BaseAdmob
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.base.activity.BaseActivity
 import com.flash.msc_light.component.PermissionActivity
 import com.flash.msc_light.databinding.ActivityOnboardingBinding
@@ -59,14 +58,14 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
             onBoardingAdapter.setData(ArrayList(viewModel.listOnBoarding))
         }
 
-        if(SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+        if(SpManager.getInstance(this).getBoolean(SpManager.can_show_ads, true)){
             NativeAdmobUtils.loadNativePermission()
         }
     }
 
     private fun showNative(currentPosition: Int) {
 
-        if(!SpManager.getInstance(this).getBoolean(NameRemoteAdmob.native_onboarding, true)){
+        if(!SpManager.getInstance(this).getBoolean(SpManager.can_show_ads, true)){
             viewBinding.flAdplaceholder.gone()
             return
         }

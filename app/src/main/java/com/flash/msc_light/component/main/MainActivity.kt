@@ -11,7 +11,6 @@ import com.flash.msc_light.admob.BaseAdmob
 import com.flash.msc_light.admob.BaseAdmob.OnAdmobLoadListener
 import com.flash.msc_light.admob.CollapsiblePositionType
 import com.flash.msc_light.admob.InterAdmob
-import com.flash.msc_light.admob.NameRemoteAdmob
 import com.flash.msc_light.base.activity.BaseActivity
 import com.flash.msc_light.component.feature.FlashAlertCloneMscFragment
 import com.flash.msc_light.databinding.ActivityMainBinding
@@ -102,7 +101,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     private fun loadInter() {
-        if(spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
+        if(spManager.getBoolean(SpManager.can_show_ads, true)){
             interAdmob = InterAdmob(this, BuildConfig.inter_home)
             interAdmob?.load(object : OnAdmobLoadListener{
                 override fun onLoad() {
@@ -130,7 +129,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         latestInterShow = System.currentTimeMillis()
 
-        if(interAdmob == null || !spManager.getBoolean(NameRemoteAdmob.inter_home, true)){
+        if(interAdmob == null || !spManager.getBoolean(SpManager.can_show_ads, true)){
             nextAction?.invoke()
         }else{
             interAdmob?.showInterstitial(this, object : BaseAdmob.OnAdmobShowListener{
@@ -149,7 +148,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun showBanner() {
-        if(spManager.getBoolean(NameRemoteAdmob.banner_home, true)){
+        if(spManager.getBoolean(SpManager.can_show_ads, true)){
             val bannerAdmob = BannerAdmob(this, CollapsiblePositionType.BOTTOM)
             bannerAdmob.showBanner(this@MainActivity, BuildConfig.banner_home, viewBinding.banner, object : OnAdmobLoadListener{
                 override fun onLoad() {
